@@ -1,0 +1,831 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"link",
+				"linkColorHover"
+			],
+			[
+				"bac",
+				"background-repeat"
+			],
+			[
+				"progresSIn",
+				"progressIndicatorController"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"no",
+				"notesController"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"text-",
+				"text-transform"
+			],
+			[
+				"nts-",
+				"nts-notes"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"context",
+				"contextMenus"
+			],
+			[
+				"_",
+				"_blank"
+			],
+			[
+				"me",
+				"memberOf	@memberOf"
+			],
+			[
+				"constr",
+				"constructs	@constructs"
+			],
+			[
+				"norm",
+				"normaliseTableBorders"
+			],
+			[
+				"feed",
+				"feedController"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/javascript.sublime-build",
+	"command_palette":
+	{
+		"height": 93.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"soda",
+				"SublimeCodeIntel: Disable Live Autocompletion"
+			],
+			[
+				"build",
+				"Build: Build"
+			],
+			[
+				"copy",
+				"File: Copy Path"
+			],
+			[
+				"copy path ",
+				"File: Copy Path as URI"
+			],
+			[
+				"copy pa",
+				"File: Copy Path as URI"
+			],
+			[
+				"gist",
+				"Gist: Create Public Gist"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"j",
+				"Format: Javascript"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packa in",
+				"Package Control: Install Package"
+			],
+			[
+				"ja",
+				"Format: Javascript"
+			],
+			[
+				"java",
+				"Format: Javascript"
+			],
+			[
+				"jav",
+				"Format: Javascript"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"hand",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"f",
+				"Format: Javascript"
+			],
+			[
+				"p",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/mattrichards/Development/imvgm-frontend/app/index.html",
+		"/Users/mattrichards/Development/imvgm-frontend/.jslintrc",
+		"/Users/mattrichards/Development/imvgm-frontend/.jshintrc",
+		"/Users/mattrichards/Development/imvgm-frontend/app/views/main.html",
+		"/Users/mattrichards/Development/imvgm-frontend/app/scripts/main.js",
+		"/Users/mattrichards/Development/imvgm-frontend/app/scripts/app.js",
+		"/Users/mattrichards/Development/imvgm-frontend/app/scripts/controllers/main.js",
+		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/User/javascript.sublime-build",
+		"/Users/mattrichards/Downloads/test.js",
+		"/Users/mattrichards/Development/imvgm-frontend/imvgm-frontend.sublime-project",
+		"/Users/mattrichards/Development/imvgm-frontend/Gruntfile.js",
+		"/Users/mattrichards/Development/imvgm-frontend/app/styles/main.scss",
+		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/User/Gist.sublime-settings",
+		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/mattrichards/Development/imvgm-frontend/.editorconfig",
+		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/Theme - Default/Widget.sublime-settings",
+		"/usr/local/share/postgresql/timezonesets/Australia",
+		"/usr/local/share/postgresql/timezone/America/Porto_Acre",
+		"/etc/sysctl.conf",
+		"/Users/mattrichards/kern.sysv.shmmax=1610612736",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/index.html",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_digital.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_consultancy.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_lucid_who.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_creative.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_footer.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/jquery.merlin/jquery.merlin.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/lucid_who.html",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/get_in_touch.html",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_header.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/components/jquery.scrollTo/jquery.scrollTo.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/digital.html",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/consultancy.html",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/creative.html",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/raphael.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/kinetic.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/.gitignore",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/components/jquery.localScroll/jquery.localScroll.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/main.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/Gruntfile.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/lucidmoon_compass_twitter_bootstrap/_variables.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_panel.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_get_in_touch.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/lucidmoon_compass_twitter_bootstrap/_font-awesome.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/.gitmodules",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/main.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/jquery.expander.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/_merlin.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_social.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/jquery.merlin/jquery.merlin.scss",
+		"/Users/mattrichards/Downloads/jquery-ui-themes-1.10.1/themes/ui-lightness/jquery.ui.theme.css",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/_jquery_ui_theme.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/_chosen.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/lucidmoon_compass_twitter_bootstrap/_modals.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/chosen.jquery.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/util/getScrollbarWidth.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/_jquery_ui.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/app.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/_select2.scss",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/styles/partials/_request_for_quote_form.scss",
+		"/Users/mattrichards/Development/gitolite-admin/conf/gitolite.conf",
+		"/Users/mattrichards/Development/jquery.merlin.js/.git/config",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/jquery.ui.min.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/util/jquery.lucidmoon.rfq-form.js",
+		"/Users/mattrichards/Development/lucidmoon.co.uk/site/app/scripts/vendor/select2.js",
+		"/Users/mattrichards/Downloads/jquery-ui-1.10.1.custom/css/no-theme/_jquery_ui.s",
+		"/Users/mattrichards/Downloads/jquery-ui-1.10.1.custom/css/no-theme/_jquery_ui.scss",
+		"/Users/mattrichards/Development/shiva-server/shiva/config/local.py",
+		"/etc/php.ini",
+		"/private/etc/php.ini",
+		"/Users/mattrichards/Development/worldsbestring/site/wp-config.php",
+		"/Users/mattrichards/Development/notetoself/app/schemas/note.js",
+		"/Users/mattrichards/Development/notetoself/app/models/note.js",
+		"/Users/mattrichards/Development/notetoself-chrome-extension/.git/config",
+		"/Users/mattrichards/Development/notetoself/.git/config",
+		"/Users/mattrichards/Development/notetoself-api/.git/config",
+		"/Users/mattrichards/Development/notetoself/app/controllers/notes.js",
+		"/Users/mattrichards/Development/notetoself/package.json",
+		"/Users/mattrichards/Development/notetoself/.gitignore",
+		"/Users/mattrichards/Development/notetoself/app/views/register.jade",
+		"/Users/mattrichards/Development/notetoself/app/views/login.jade",
+		"/Users/mattrichards/Development/notetoself/server.js",
+		"/Users/mattrichards/Development/notetoself/src/css/content.css",
+		"/Users/mattrichards/Development/notetoself/src/feed.html",
+		"/Users/mattrichards/Development/notetoself/src/js/lib/nts.feed.js",
+		"/Users/mattrichards/Development/notetoself/src/manifest.json",
+		"/Users/mattrichards/Development/notetoself/src/background.js",
+		"/Users/mattrichards/Development/notetoself/src/content.css",
+		"/Volumes/Untitled/start.elf",
+		"/Users/mattrichards/Development/notetoself/src/handlebars.js",
+		"/Users/mattrichards/Development/notetoself/manifest.json",
+		"/Users/mattrichards/Development/notetoself/lodash.js",
+		"/Users/mattrichards/Development/notetoself/jquery.highlight.js",
+		"/Users/mattrichards/Development/notetoself/content.js",
+		"/Users/mattrichards/Development/notetoself/feed.js",
+		"/Users/mattrichards/Development/notetoself/content.css",
+		"/Users/mattrichards/Development/notetoself/feed.html",
+		"/Users/mattrichards/Development/notetoself/background.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/collections/playlists-collection.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/models/sound-model.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/models/playlist-model.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/views/sound-view.js",
+		"/Users/mattrichards/Development/playlistr/app/index.html",
+		"/Users/mattrichards/Development/playlistr/app/scripts/app.js",
+		"/Users/mattrichards/Development/playlistr/README.md",
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/playlist-detail.html",
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/playlists-select.html",
+		"/Users/mattrichards/Development/playlistr/app/scripts/router.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/views/alert-view.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/collections/sounds-collection.js",
+		"/Users/mattrichards/Development/playlistr/test/runner/mocha.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/controllers/application-controller.js",
+		"/Users/mattrichards/Development/playlistr/Gruntfile.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/views/playlist-detail-view.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/views/playlist-list-item-view.js",
+		"/Users/mattrichards/Documents/Lyrics/R&B/girl I know.txt",
+		"/Users/mattrichards/Development/playlistr/app/scripts/views/application-view.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/libs/text-2.0.3.js",
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/playlists.html",
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/playlist-list-item.html",
+		"/Users/mattrichards/Development/playlistr/app/scripts/views/playlists-view.js",
+		"/Users/mattrichards/Development/playlistr/.gitignore",
+		"/Users/mattrichards/Development/playlistr/app/scripts/config.js",
+		"/Users/mattrichards/Development/playlistr/app/styles/index.scss",
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/alert.html",
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/sound-item.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"<open folders>",
+			"/Users/mattrichards/Development/RadiumTest",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"myApp",
+			"\"",
+			"<script src=\"",
+			"compass",
+			"}]);\n",
+			"com",
+			"radius: 200",
+			"100",
+			"consult",
+			"lazy",
+			"l",
+			"lazy",
+			"draw()",
+			"draw",
+			"15px",
+			"img",
+			"data-background=\"/images/",
+			"data-background=\"/images",
+			"onBefor",
+			"social",
+			"&",
+			"&ie",
+			"&",
+			"label class=\"span8\"",
+			"where",
+			"label class=\"span8\"",
+			"    </div>\n                                                <div class=\"span4\">",
+			"doneButton",
+			"$doneButton",
+			"$doneButtong",
+			"console",
+			".fields",
+			"Review",
+			"buttonGroupTargetSelectoTargetr",
+			"buttonGroupSelector",
+			"review",
+			"Complete",
+			"complete",
+			"merlin",
+			"fade",
+			"el",
+			"$el",
+			"console",
+			"data-required=\"true\"",
+			"div",
+			"iconSprite",
+			"url",
+			"iconSpritePath",
+			"url",
+			"step0",
+			"console",
+			"id=\"step",
+			"id",
+			"rfq-step",
+			"span7",
+			"top",
+			"url",
+			"this.options",
+			"no_results_text",
+			"search_field_disabled",
+			". ",
+			"height",
+			"url",
+			"images",
+			"overlay",
+			"{\n",
+			"images",
+			"thumb",
+			"hyz",
+			"mysql.sock",
+			"sock",
+			"connect",
+			"mong",
+			"db",
+			"select",
+			"now",
+			"h2",
+			"radius",
+			"console",
+			"{{=",
+			"=",
+			"item",
+			"if (",
+			"%>",
+			"<%",
+			"<% ",
+			"item",
+			"\",\n",
+			"/bootstrap",
+			"bootstrap",
+			"Vent",
+			"PlaylistsCollection",
+			"Vent",
+			"SoundsCollection",
+			"Vent",
+			"region",
+			"modal-region",
+			"modal",
+			"play",
+			"event",
+			"true",
+			"playing",
+			"images",
+			"img",
+			"AMD\n",
+			"AMD",
+			"      // });",
+			"By",
+			"Buy",
+			"\"contact\": ",
+			"\"contact\": {",
+			"contact:",
+			"contact: {",
+			"datebook",
+			"                    RT.set(\"historyController\", RT.get(\"datebookController\").filter(function(item) {\n                        if (item.timestamp.search(RT.get('datebookController').objectAtContent(0).timestamp.substr(0,10)) != -1) {\n                            return true;\n                        }\n                        return false;\n                    }));        ",
+			"datebook",
+			"}));",
+			"li ",
+			"ul ",
+			"ul",
+			"list",
+			"asset-url",
+			"iconSpritePath",
+			"asset",
+			"asset-url",
+			"asset",
+			"meeting",
+			"kind"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"vent",
+			"Playlists",
+			"vent",
+			"Sounds",
+			"vent",
+			"",
+			"history",
+			"                    RT.set(\"historyController\", RT.get(\"datebookController\").filter(function(item) {\n                        if (item.timestamp.search(RT.get('datebookController').objectAtContent(0).timestamp.substr(0,10)) != -1) {\n                            return true;\n                        }\n                        return false;\n                    }));        ",
+			"history",
+			"\n                    RT.set(\"datebookController\", RT.get(\"datebookController\").filter(function(item) {\n                        if (item.timestamp.search(RT.get('datebookController').objectAtContent(0).timestamp.substr(0,10)) != -1) {\n                            return true;\n                        }\n                        return false;\n                    }));                    ",
+			"RT"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.run_mocha":
+	{
+		"height": 0.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"app",
+				"app/scripts/app.js"
+			],
+			[
+				"main.js",
+				"app/scripts/main.js"
+			],
+			[
+				"inde",
+				"app/index.html"
+			],
+			[
+				"",
+				"Gruntfile.js"
+			],
+			[
+				"gr",
+				"Gruntfile.js"
+			],
+			[
+				"cmcclubscs",
+				"sass/partials/_cmcclub.scss"
+			],
+			[
+				"style.scss",
+				"sass/style.scss"
+			],
+			[
+				"index",
+				"app/index.html"
+			],
+			[
+				"lucid_who",
+				"app/styles/partials/_lucid_who.scss"
+			],
+			[
+				"consultancy",
+				"app/styles/partials/_consultancy.scss"
+			],
+			[
+				"digital",
+				"app/styles/partials/_digital.scss"
+			],
+			[
+				"cre",
+				"app/styles/partials/_creative.scss"
+			],
+			[
+				"main",
+				"app/scripts/main.js"
+			],
+			[
+				"consult",
+				"app/styles/partials/_consultancy.scss"
+			],
+			[
+				"rap",
+				"app/scripts/vendor/raphael.js"
+			],
+			[
+				"localscro",
+				"app/scripts/vendor/components/jquery.localScroll/jquery.localScroll.js"
+			],
+			[
+				"scrollto",
+				"app/scripts/vendor/components/jquery.scrollTo/jquery.scrollTo.js"
+			],
+			[
+				"footer",
+				"app/styles/partials/_footer.scss"
+			],
+			[
+				"header",
+				"app/styles/partials/_header.scss"
+			],
+			[
+				"get_int",
+				"app/styles/partials/_get_in_touch.scss"
+			],
+			[
+				"lucid",
+				"app/styles/partials/_lucid_who.scss"
+			],
+			[
+				"digit",
+				"app/styles/partials/_digital.scss"
+			],
+			[
+				"_nav",
+				"app/styles/partials/_nav.scss"
+			],
+			[
+				"nav",
+				"app/styles/lucidmoon_compass_twitter_bootstrap/_navbar.scss"
+			],
+			[
+				"merlin",
+				"app/styles/_merlin.scss"
+			],
+			[
+				"getintouch",
+				"app/styles/partials/_get_in_touch.scss"
+			],
+			[
+				"who",
+				"app/styles/partials/_lucid_who.scss"
+			],
+			[
+				"creat",
+				"app/styles/partials/_creative.scss"
+			],
+			[
+				"noisy",
+				"app/scripts/vendor/jquery.noisy.js"
+			],
+			[
+				"variable",
+				"app/styles/lucidmoon_compass_twitter_bootstrap/_variables.scss"
+			],
+			[
+				"panel",
+				"app/styles/partials/_panel.scss"
+			],
+			[
+				"getint",
+				"app/styles/partials/_get_in_touch.scss"
+			],
+			[
+				"variables",
+				"app/styles/lucidmoon_compass_twitter_bootstrap/_variables.scss"
+			],
+			[
+				"lucid_wh",
+				"app/styles/partials/_lucid_who.scss"
+			],
+			[
+				"consut",
+				"app/styles/partials/_consultancy.scss"
+			],
+			[
+				"social",
+				"app/styles/partials/_social.scss"
+			],
+			[
+				"main.scss",
+				"app/styles/main.scss"
+			],
+			[
+				"sel",
+				"app/scripts/vendor/select2.js"
+			],
+			[
+				"selec",
+				"app/scripts/vendor/select2.js"
+			],
+			[
+				"select2",
+				"app/styles/_select2.scss"
+			],
+			[
+				"main.css",
+				"app/styles/main.scss"
+			],
+			[
+				"m",
+				"app/scripts/main.js"
+			],
+			[
+				"app.",
+				"app/scripts/app.js"
+			],
+			[
+				"jqueryuitheme",
+				"app/styles/_jquery_ui_theme.scss"
+			],
+			[
+				"get",
+				"app/styles/partials/_get_in_touch.scss"
+			],
+			[
+				"ma",
+				"app/scripts/main.js"
+			],
+			[
+				"main.",
+				"app/styles/main.scss"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"man",
+				"manifest.json"
+			],
+			[
+				"css",
+				"content.css"
+			],
+			[
+				"testsapp",
+				"test/spec/app.js"
+			],
+			[
+				"plstlstitm",
+				"app/scripts/views/playlist-list-item-view.js"
+			],
+			[
+				"pladetview",
+				"app/scripts/views/playlist-detail-view.js"
+			],
+			[
+				"applc",
+				"app/scripts/controllers/application-controller.js"
+			],
+			[
+				"plstlstitmvi",
+				"app/scripts/views/playlist-list-item-view.js"
+			],
+			[
+				"p",
+				"doc/persistence.md"
+			],
+			[
+				"active",
+				"core/static/utilitybelt/utilitybelt/core/views/View/ActiveAddress.js"
+			],
+			[
+				"location",
+				"core/static/utilitybelt/utilitybelt/core/views/View/LocationSearch.js"
+			],
+			[
+				"filter",
+				"core/static/utilitybelt/utilitybelt/core/views/Form/Filter.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 348.0,
+	"status_bar_visible": true
+}

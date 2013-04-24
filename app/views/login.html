@@ -1,0 +1,17 @@
+<form>
+	<fieldset>
+		<h2>Please Log In</h2>
+		<div class="row">
+			<label for="imvgm-reg-frm-username">Username</label>
+			<input name="username" id="imvgm-reg-frm-username" data-ng-model="login.username" type="text" />
+		</div>
+		<div class="row">
+			<label for="imvgm-reg-frm-password">Password</label>
+			<input name="password" id="imvgm-reg-frm-password" data-ng-model="login.password" type="text" />
+		</div>
+		<div class="row">
+			<button data-ng-click="login()">Login</button>
+			<button data-ng-click="getUsers()">Get Users</button>
+		</div>
+	</fieldset>
+</form>

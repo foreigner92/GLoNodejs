@@ -65,7 +65,7 @@
   "windows":    false,
 
   /*** Miscellaneous ***/
-  "indent":     4,
+  "indent":     2,
   "maxerr":     50,
   // "maxlen":     80,
   "passfail":   false

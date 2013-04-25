@@ -10,10 +10,9 @@ describe('Service: AuthService', function() {
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($factory, $rootScope) {
-    AuthService = $factory('AuthService');
+
+    // AuthService = $factory('AuthService');
   }));
 
-  it('should attach a list of awesomeThings to the scope', function() {
-    // expect(scope.awesomeThings.length).toBe(3);
-  });
+
 });

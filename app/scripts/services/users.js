@@ -1,9 +1,8 @@
 'use strict';
 angular.module('imvgm')
-  .factory('UsersService', ['$resource', function($resource) {
-    return $resource('http://localhost\::port/users/:id', {
-      id: '@id',
-      port: 3030
+  .factory('UsersService', ['$resource', 'apiHost', function($resource, apiHost) {
+    return $resource(apiHost + '/users/:id', {
+      id: '@id'
     }, {
       'index': {
         method: 'GET',

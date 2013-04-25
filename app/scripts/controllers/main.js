@@ -8,7 +8,7 @@ angular.module('imvgm')
   });
 
   var user = User.index(function (users) {
-    console.log(users);
+    // console.log(users);
   })
 
   // var authToken = sessionStorage.getItem('authToken');

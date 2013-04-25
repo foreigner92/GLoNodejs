@@ -1,6 +1,6 @@
 'use strict';
 angular.module('imvgm')
-  .factory('AuthService', ['$rootScope', '$http', 'Base64', '$q', 'UsersService', function($rootScope, $http, Base64, $q, User) {
+  .factory('AuthService', ['$rootScope', '$http', 'Base64', '$q', 'UsersService', '$resource', 'apiHost', function($rootScope, $http, Base64, $q, User, $resource, apiHost) {
   var _login = function(username, password) {
     var deferred = $q.defer();
 
@@ -8,7 +8,7 @@ angular.module('imvgm')
       username: username,
       password: password
     })
-      .success(function(data) {
+    .success(function(data) {
       if (data['auth-token']) {
         deferred.resolve(data);
       }
@@ -16,6 +16,28 @@ angular.module('imvgm')
     .error(function() {
       deferred.reject();
     });
+    return deferred.promise;
+  };
+
+  var _register = function (accountDetails) {
+    var deferred = $q.defer();
+
+    var UserRegistration = $resource(apiHost + '/auth/register', {}, {
+      'create': {
+        method: 'POST'
+      }
+    });
+
+    var registration = new UserRegistration(accountDetails);
+    registration.$save(
+      function (user) {
+        deferred.resolve(user);
+      },
+      function (err) {
+        deferred.reject(err);
+      }
+    );
+
     return deferred.promise;
   };
 
@@ -32,6 +54,7 @@ angular.module('imvgm')
 
   return {
     login: _login,
+    register: _register,
     getCurrentUser: _getCurrentUser
   };
 }]);

@@ -1,4 +1,4 @@
 imvgm-frontend
 ==============
 
-IMVGM Frontend
+IMVGM Frontend v1.0

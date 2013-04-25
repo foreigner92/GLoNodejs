@@ -20,7 +20,10 @@
 	  "console",
 	  "window"
     "require",
-    "define"
+    "define",
+    "describe",
+    "inject",
+    "beforeEach"
   ],
 
   /*** Enforcing options ***/

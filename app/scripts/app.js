@@ -1,6 +1,6 @@
 'use strict';
 (function (angular) {
-  var imvgm = angular.module('imvgm', ['ngResource']);
+  var imvgm = angular.module('imvgm', ['ngResource', 'ui']);
   imvgm.value('apiHost', 'http://localhost:3030\:3030');
   imvgm.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $http, $locationProvider) {
       $routeProvider.when('/', {

@@ -11,6 +11,16 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/main.css">
+    <!--[if lte IE 8]>
+    <script>
+    // The ieshiv takes care of our ui.directives, bootstrap module directives and
+    // AngularJS's ng-view, ng-include, ng-pluralize and ng-switch directives.
+    // However, IF you have custom directives (yours or someone else's) then
+    // enumerate the list of tags in window.myCustomTags
+    window.myCustomTags = [ 'yourDirective', 'somebodyElsesDirective' ]; // optional
+    </script>
+    <script src="components/angular-ui/build/angular-ui-ieshiv.js"></script>
+    <![endif]-->
   </head>
   <body data-ng-app="imvgm">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -85,6 +95,7 @@
     <!-- Add your site or application content here -->
 
     <script src="components/angular/angular.js"></script>
+    <script src="components/angular-ui/build/angular-ui.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
     <script src="components/angular-cookies/angular-cookies.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.js"></script>

@@ -18,26 +18,17 @@ angular.module('imvgm')
     };
 
     $scope.register = function () {
-      auth.register({
-        fullname: 'full name',
-        username: 'username',
-        password: 'password',
-        gender: 'male',
-        dob: '05/10/1982',
-        country: 'UK',
-        owned: [],
-        play: []
-      })
-      .then(
-        // Callback
-        function (user) {
-          console.log(user);
-        },
-        // Errback
-        function (err) {
-          console.log(err);
-        }
-      );
+      auth.register($scope.formData)
+        .then(
+          // Callback
+          function (user) {
+            console.log(user);
+          },
+          // Errback
+          function (err) {
+            console.log(err);
+          }
+        );
     }
 
     $scope.getUsers = function (id) {

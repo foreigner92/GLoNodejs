@@ -4,12 +4,12 @@
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Uh Oh!</strong> Best check yo self, you're not looking too good.
     </div>
-    <legend>Register</legend>
+    <legend><h2>newUser</h2></legend>
 
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.role.$valid}">
       <div class="controls">
         <label for="imvgm-reg-frm-fullname">I am a:</label>
-        <select name="role" id="imvgm-reg-frm-role" data-ng-model="register.role" data-ng-required="" data-remote-form-component="" type="text" placeholder="Account Type">
+        <select name="role" id="imvgm-reg-frm-role" data-ng-model="newUser.role" data-ng-required="" data-remote-form-component="" type="text" placeholder="Account Type">
           <option>-- Please Choose --</option>
           <option value="gamer">Gamer</options>
           <option value="developer">Game Developer</option>
@@ -20,28 +20,28 @@
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.fullname.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-fullname">Full Name</label> -->
-        <input name="fullname" id="imvgm-reg-frm-fullname" data-remote-form-component="" data-ng-model="register.fullname" type="text" placeholder="Full Name" />
+        <input name="fullname" id="imvgm-reg-frm-fullname" data-remote-form-component="" data-ng-model="newUser.fullname" type="text" placeholder="Full Name" />
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.fullname.$valid && imvgmRegistrationForm.fullname.$error.server">Please enter your Full Name.</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.username.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-username">Username</label> -->
-        <input name="username" id="imvgm-reg-frm-username" data-remote-form-component="" data-ng-model="register.username" type="text" placeholder="Username" />
+        <input name="username" id="imvgm-reg-frm-username" data-remote-form-component="" data-ng-model="newUser.username" type="text" placeholder="Username" />
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.username.$valid && imvgmRegistrationForm.username.$error.server">Please enter a username.</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.email.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-email">Email</label> -->
-        <input name="email" id="imvgm-reg-frm-email" data-email data-remote-form-component="" data-ng-model="register.email" type="text" placeholder="Email Address" />
+        <input name="email" id="imvgm-reg-frm-email" data-email data-remote-form-component="" data-ng-model="newUser.email" type="text" placeholder="Email Address" />
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.email.$valid">Please enter a valid email address.</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.password.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-password">Password</label> -->
-        <input name="password" id="imvgm-reg-frm-password" data-remote-form-component="" data-ng-model="register.password" type="password" placeholder="Password" />
+        <input name="password" id="imvgm-reg-frm-password" data-remote-form-component="" data-ng-model="newUser.password" type="password" placeholder="Password" />
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.password.$valid && imvgmRegistrationForm.password.$error.server">Please enter a strong password.</span>
       </div>
     </div>
@@ -49,11 +49,11 @@
       <div class="controls">
         <label>Gender</label>
         <label for="imvgm-reg-frm-gender-male" class="radio">
-          <input name="gender" id="imvgm-reg-frm-gender-male" data-remote-form-component="" data-ng-model="register.gender" type="radio" value="male" />
+          <input name="gender" id="imvgm-reg-frm-gender-male" data-remote-form-component="" data-ng-model="newUser.gender" type="radio" value="male" />
           Male
         </label>
         <label for="imvgm-reg-frm-gender-Female" class="radio">
-          <input name="gender" id="imvgm-reg-frm-gender-Female" data-remote-form-component="" data-ng-model="register.gender" type="radio" value="Female" />
+          <input name="gender" id="imvgm-reg-frm-gender-Female" data-remote-form-component="" data-ng-model="newUser.gender" type="radio" value="Female" />
           Female
         </label>
       </div>
@@ -61,31 +61,31 @@
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.dob.$valid}">
       <div class="controls">
         <label for="imvgm-reg-frm-dob">Date of Birth</label>
-        <input name="dob" id="imvgm-reg-frm-dob" data-ng-model="register.dob" data-remote-form-component="" type="date" />
+        <input name="dob" id="imvgm-reg-frm-dob" data-ng-model="newUser.dob" data-remote-form-component="" type="date" />
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.dob.$valid && imvgmRegistrationForm.dob.$error.server">Please enter your Date of Birth.</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.country.$valid}" >
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-country">Country</label> -->
-        <input name="country" id="imvgm-reg-frm-country" data-ng-model="register.country" data-remote-form-component="" type="text" placeholder="Country" />
+        <input name="country" id="imvgm-reg-frm-country" data-ng-model="newUser.country" data-remote-form-component="" type="text" placeholder="Country" />
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.owned.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-owned">I Own</label> -->
-        <input name="owned" id="imvgm-reg-frm-owned" data-ng-model="register.owned" data-remote-form-component="" type="text" placeholder="I Own..." />
+        <input name="owned" id="imvgm-reg-frm-owned" data-ng-model="newUser.owned" data-remote-form-component="" type="text" placeholder="I Own..." />
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.play.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-play">I Play</label> -->
-        <input name="play" id="imvgm-reg-frm-play" data-ng-model="register.play" data-remote-form-component="" placeholder="I Play..." type="text" />
+        <input name="play" id="imvgm-reg-frm-play" data-ng-model="newUser.play" data-remote-form-component="" placeholder="I Play..." type="text" />
       </div>
     </div>
     <div class="control-group">
       <div class="controls">
-        <button class="btn" data-ng-click="register()" data-ng-disabled="imvgmRegistrationForm.$pristine">Create Account</button>
+        <button class="btn" data-ng-click="register(newUser)" data-ng-disabled="imvgmRegistrationForm.$pristine">Create Account</button>
       </div>
     </div>
   </fieldset>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('remoteForm', ['$resource', 'apiHost', function($resource, apiHost) {
+  .directive('remoteForm', ['$resource', 'apiHost', 'AuthService', function($resource, apiHost, auth) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -51,37 +51,38 @@ angular.module('imvgm')
         if (!isSubmitted) {
           return;
         }
-        console.log(scope);
-        var UserRegistration = $resource(scope.target);
-        var newUser = new UserRegistration(scope.formData);
 
-        newUser.$save(
+      auth.register(scope.formData)
+        .then(
           // Callback
           function() {
             if ((typeof scope[scope.success]) === 'function') {
               scope[scope.success]();
             }
           },
-          // Errback
-          function (res) {
-            if (res.status === scope.validationErrorCode) {
+            // Errback
+            function (res) {
+              if (res.status === scope.validationErrorCode) {
 
-              forEach(res.data.error.fields, function(item) {
-                if (ctrl.hasFormComponent(item)) {
-                  console.log('form has has: ' + item);
+                forEach(res.data.error.fields, function(item) {
+                  if (ctrl.hasFormComponent(item)) {
+                    console.log('form has has: ' + item);
 
-                  ctrl.getFormComponent(item).$setValidity('server', false);
-                  scope.serverValidationError[item] = item;
-                  console.log(ctrl.getFormComponent(item));
-                }
-              });
+                    ctrl.getFormComponent(item).$setValidity('server', false);
+                    scope.serverValidationError[item] = item;
+                    console.log(ctrl.getFormComponent(item));
+                  }
+                });
+            }
           }
-        });
-        scope.isSubmitted = false;
-      });
+        );
+
+      scope.isSubmitted = false;
+      })
     }
   }
-}]).directive('remoteFormComponent', function() {
+}]
+).directive('remoteFormComponent', function() {
   return {
     'restrict': 'A',
     'require': ['^remoteForm', 'ngModel'],

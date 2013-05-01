@@ -60,24 +60,22 @@ angular.module('imvgm')
               scope[scope.success]();
             }
           },
-            // Errback
-            function (res) {
-              if (res.status === scope.validationErrorCode) {
-
-                forEach(res.data.error.fields, function(item) {
-                  if (ctrl.hasFormComponent(item)) {
-                    console.log('form has has: ' + item);
-
-                    ctrl.getFormComponent(item).$setValidity('server', false);
-                    scope.serverValidationError[item] = item;
-                    console.log(ctrl.getFormComponent(item));
-                  }
-                });
+          // Errback
+          function (res) {
+            if (res.status === scope.validationErrorCode) {
+              // Loop through API error response.
+              for (var key in res.data.error.fields) {
+                if (ctrl.hasFormComponent(key)) {
+                  ctrl.getFormComponent(key).$setValidity('server', false);
+                  scope.serverValidationError[key] = res.data.error.fields[key][0];
+                }
+              }
             }
           }
         );
 
       scope.isSubmitted = false;
+
       })
     }
   }

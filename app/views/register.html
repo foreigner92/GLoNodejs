@@ -9,8 +9,8 @@
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.role.$valid}">
       <div class="controls">
         <label for="imvgm-reg-frm-fullname">I am a:</label>
-        <select name="role" id="imvgm-reg-frm-role" data-ng-model="newUser.role" data-ng-required="" data-remote-form-component="" type="text" placeholder="Account Type">
-          <option>-- Please Choose --</option>
+        <select data-ui-select2="" name="role" id="imvgm-reg-frm-role" data-ng-model="newUser.role" data-ng-required="" data-remote-form-component="" type="text" placeholder="Please Choose" style="min-width: 220px">
+          <option></option>
           <option value="gamer">Gamer</options>
           <option value="developer">Game Developer</option>
         </select>
@@ -47,15 +47,14 @@
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.gender.$valid}">
       <div class="controls">
-        <label>Gender</label>
-        <label for="imvgm-reg-frm-gender-male" class="radio">
-          <input name="gender" id="imvgm-reg-frm-gender-male" data-remote-form-component="" data-ng-model="newUser.gender" type="radio" value="male" />
-          Male
-        </label>
-        <label for="imvgm-reg-frm-gender-Female" class="radio">
-          <input name="gender" id="imvgm-reg-frm-gender-Female" data-remote-form-component="" data-ng-model="newUser.gender" type="radio" value="Female" />
-          Female
-        </label>
+        <label for="imvgm-reg-frm-fullname">I am:</label>
+        <select data-ui-select2="" name="gender" id="imvgm-reg-frm-gender" data-ng-model="newUser.gender" data-ng-required="" data-remote-form-component="" type="text" placeholder="Please Choose" style="min-width: 220px">
+          <option></option>
+          <option value="gamer">Male</options>
+          <option value="developer">Female</option>
+          <option value="developer">Other</option>
+        </select>
+        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.gender.$valid && imvgmRegistrationForm.gender.$error.server">Please select your Account Type.</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.dob.$valid}">
@@ -69,7 +68,9 @@
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-country">Country</label> -->
         <input name="country" id="imvgm-reg-frm-country" data-ng-model="newUser.country" data-remote-form-component="" type="text" placeholder="Country" />
+        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.country.$valid && imvgmRegistrationForm.country.$error.server">Please enter your Country.</span>
       </div>
+
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.owned.$valid}">
       <div class="controls">

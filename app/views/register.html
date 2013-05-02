@@ -54,7 +54,7 @@
           <option value="developer">Female</option>
           <option value="developer">Other</option>
         </select>
-        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.gender.$valid && imvgmRegistrationForm.gender.$error.server">Please select your Account Type.</span>
+        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.gender.$valid && imvgmRegistrationForm.gender.$error.server">Please select your Gender Type.</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.dob.$valid}">
@@ -75,13 +75,15 @@
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.owned.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-owned">I Own</label> -->
-        <input name="owned" id="imvgm-reg-frm-owned" data-ng-model="newUser.owned" data-remote-form-component="" type="text" placeholder="I Own..." />
+        <input data-ui-select2="platformSelectOptions" multiple name="owned" id="imvgm-reg-frm-owned" data-ng-model="newUser.owned" data-remote-form-component="" type="hidden" placeholder="I Own..." />
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.play.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-play">I Play</label> -->
-        <input name="play" id="imvgm-reg-frm-play" data-ng-model="newUser.play" data-remote-form-component="" placeholder="I Play..." type="text" />
+        <input data-ui-select2="genresSelectOptions" multiple name="play" id="imvgm-reg-frm-play" data-ng-model="newUser.play" data-remote-form-component="" placeholder="I Play..." type="hidden" />
+
+
       </div>
     </div>
     <div class="control-group">

@@ -1,9 +1,7 @@
 'use strict';
 angular.module('imvgm')
-  .controller('AuthCtrl', ['$rootScope', '$scope', 'UsersService', 'AuthService', '$http', '$route',  function($rootScope, $scope, User, auth, $http, $route) {
+  .controller('AuthCtrl', ['$rootScope', '$scope', 'UsersService', 'AuthService', '$http', '$route', 'PlatformsService', 'PlatformsService', function($rootScope, $scope, User, auth, $http, $route, Platform, Genre) {
 
-
-    console.log($route);
     $scope.login = function () {
       auth.login($scope.login.username, $scope.login.password)
         .then(function (data) {
@@ -18,6 +16,7 @@ angular.module('imvgm')
     };
 
     $scope.register = function () {
+
       auth.register($scope.formData)
         .then(
           // Callback
@@ -29,7 +28,7 @@ angular.module('imvgm')
             console.log(err);
           }
         );
-    }
+    };
 
     $scope.getUsers = function (id) {
       auth.getCurrentUser()
@@ -37,6 +36,40 @@ angular.module('imvgm')
           console.log(user);
         });
     };
+
+    $scope.platformSelectOptions = {
+      data: function () {
+        return {
+          results: $scope.platforms
+        }
+      }
+    };
+
+    $scope.genresSelectOptions = {
+      data: function () {
+        return {
+          results: $scope.genres
+        }
+      }
+    };
+
+    Platform.index(function (platforms) {
+      $scope.platforms = platforms.map(function (platform) {
+        return {
+          id: platform.id,
+          text: platform.name
+        };
+      });
+    });
+
+    Genre.index(function (genres) {
+      $scope.genres = genres.map(function (genre) {
+        return {
+          id: genre.id,
+          text: genre.name
+        };
+      });
+    });
 
   }]);
 

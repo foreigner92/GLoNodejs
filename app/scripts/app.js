@@ -16,6 +16,7 @@
             controller: function() {
               delete sessionStorage.authToken;
               delete sessionStorage.userId;
+              delete $http.defaults.headers.common['Auth-Token'];
               $location.path = '#/';
             }
         })

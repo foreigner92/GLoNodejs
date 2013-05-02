@@ -18,6 +18,8 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
+  "laxcomma": true,
+  "indent": 2,
   "globals": {
     "angular": false,
     "describe": true,

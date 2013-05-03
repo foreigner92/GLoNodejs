@@ -1,6 +1,6 @@
 <form name="imvgmRegistrationForm" data-remote-form="">
   <fieldset>
-    <div class="alert">
+    <div class="alert" data-ng-show="!imvgmRegistrationForm.$valid">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Uh Oh!</strong> Best check yo self, you're not looking too good.
     </div>
@@ -28,14 +28,14 @@
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-username">Username</label> -->
         <input name="username" id="imvgm-reg-frm-username" data-remote-form-component="" data-ng-model="newUser.username" type="text" placeholder="Username" />
-        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.username.$valid && imvgmRegistrationForm.username.$error.server">Please enter a username.</span>
+        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.username.$valid && imvgmRegistrationForm.username.$error.server">{{serverValidationError['username']}}</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.email.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-email">Email</label> -->
         <input name="email" id="imvgm-reg-frm-email" data-email data-remote-form-component="" data-ng-model="newUser.email" type="text" placeholder="Email Address" />
-        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.email.$valid">Please enter a valid email address.</span>
+        <span class="help-inline" data-ng-show="!imvgmRegistrationForm.email.$valid">{{serverValidationError['email']}}</span>
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.password.$valid}">
@@ -50,9 +50,9 @@
         <label for="imvgm-reg-frm-fullname">I am:</label>
         <select data-ui-select2="" name="gender" id="imvgm-reg-frm-gender" data-ng-model="newUser.gender" data-ng-required="" data-remote-form-component="" type="text" placeholder="Please Choose" style="min-width: 220px">
           <option></option>
-          <option value="gamer">Male</options>
-          <option value="developer">Female</option>
-          <option value="developer">Other</option>
+          <option value="male">Male</options>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
         </select>
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.gender.$valid && imvgmRegistrationForm.gender.$error.server">Please select your Gender Type.</span>
       </div>
@@ -67,23 +67,22 @@
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.country.$valid}" >
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-country">Country</label> -->
-        <input name="country" id="imvgm-reg-frm-country" data-ng-model="newUser.country" data-remote-form-component="" type="text" placeholder="Country" />
+        <input data-ui-select2="countriesSelectOptions" name="country" id="imvgm-reg-frm-country" data-ng-model="newUser.country" data-remote-form-component="" type="hidden" placeholder="Country" />
+
         <span class="help-inline" data-ng-show="!imvgmRegistrationForm.country.$valid && imvgmRegistrationForm.country.$error.server">Please enter your Country.</span>
       </div>
 
     </div>
-    <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.owned.$valid}">
+    <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.platforms.$valid}">
       <div class="controls">
-        <!-- <label for="imvgm-reg-frm-owned">I Own</label> -->
-        <input data-ui-select2="platformSelectOptions" multiple name="owned" id="imvgm-reg-frm-owned" data-ng-model="newUser.owned" data-remote-form-component="" type="hidden" placeholder="I Own..." />
+        <!-- <label for="imvgm-reg-frm-platforms">I Own</label> -->
+        <input data-ui-select2="platformSelectOptions" multiple name="platforms" id="imvgm-reg-frm-platforms" data-ng-model="newUser.platforms" data-remote-form-component="" type="hidden" placeholder="I Own... (Platforms)" />
       </div>
     </div>
     <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.play.$valid}">
       <div class="controls">
         <!-- <label for="imvgm-reg-frm-play">I Play</label> -->
-        <input data-ui-select2="genresSelectOptions" multiple name="play" id="imvgm-reg-frm-play" data-ng-model="newUser.play" data-remote-form-component="" placeholder="I Play..." type="hidden" />
-
-
+        <input data-ui-select2="genresSelectOptions" multiple name="genres" id="imvgm-reg-frm-genres" data-ng-model="newUser.genres" data-remote-form-component="" placeholder="I Play... (Genres)" type="hidden" />
       </div>
     </div>
     <div class="control-group">

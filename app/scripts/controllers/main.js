@@ -3,21 +3,17 @@
 angular.module('imvgm')
   .controller('MainCtrl', ['$scope', '$http', '$rootScope', '$resource', 'UsersService', 'GenresService', 'PlatformsService', function($scope, $http, $rootScope, $resource, User, Genre, Platform) {
 
-  $rootScope.$on('event:loginRequired', function() {
-    window.location = '/#/login';
-  });
+  // User.index(function (users) {
+  //   // console.log(users);
+  // });
 
-  User.index(function (users) {
-    // console.log(users);
-  });
+  // Genre.index(function (users) {
+  //   // console.log(users);
+  // });
 
-  Genre.index(function (users) {
-    // console.log(users);
-  });
-
-  Platform.index(function (users) {
-    // console.log(users);
-  });
+  // Platform.index(function (users) {
+  //   // console.log(users);
+  // });
 
   // var authToken = sessionStorage.getItem('authToken');
   // if (!authToken) {

@@ -12,67 +12,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/main.css">
   </head>
-  <body data-ng-app="imvgm" data-ng-cloak="">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">IMVGM <em>alpha</em></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">Account</a></li>
-              <li><a href="#contact">About</a></li>
-            </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Welcome to IMVGM.</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi similique magni quae ipsum pariatur enim laudantium commodi. Consequatur, nostrum tenetur ut nemo deserunt porro autem ad possimus ullam recusandae saepe.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>Join the Journey</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo.</p>
-          <h2>Engage</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo.</p>
-          <h2>Exclusive</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-
-        <div class="span8" data-ng-view="">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div> <!-- /container -->
+  <body data-ng-app="imvgm" data-ng-controller="AppCtrl">
+    <div class="view" data-ng-view=""></div>
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -82,31 +23,39 @@
       <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="components/jquery/jquery.min.js"><\/script>')</script>
 
-    <script src="components/angular/angular.js"></script>
-    <script src="components/angular-ui/build/angular-ui.js"></script>
-    <script src="components/angular-resource/angular-resource.js"></script>
-    <script src="components/angular-cookies/angular-cookies.js"></script>
-    <script src="components/angular-sanitize/angular-sanitize.js"></script>
-
     <!-- build:js scripts/scripts.js -->
-    <script src="components/select2/select2.js"></script>
-
-    <script src="scripts/app.js"></script>
-    <script src="scripts/lib/http.interceptor.js"></script>
-    <script src="scripts/directives/remoteForm.js"></script>
-    <script src="scripts/services/base64.js"></script>
-    <script src="scripts/services/auth.js"></script>
-    <script src="scripts/services/users.js"></script>
-    <script src="scripts/services/genres.js"></script>
-    <script src="scripts/services/platforms.js"></script>
-    <script src="scripts/controllers/auth.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    // <script src="scripts/controllers/controllers.js"></script>
+      <!-- dependencies -->
+      <script src="components/angular/angular.js"></script>
+      <script src="components/angular-ui/build/angular-ui.js"></script>
+      <script src="components/angular-ui-bootstrap/src/transition/transition.js"></script>
+      <script src="components/angular-ui-bootstrap/src/dialog/dialog.js"></script>
+      <script src="components/angular-resource/angular-resource.js"></script>
+      <script src="components/angular-cookies/angular-cookies.js"></script>
+      <script src="components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="components/select2/select2.js"></script>
+      <script src="scripts/app.js"></script>
+      <script src="scripts/lib/http.interceptor.js"></script>
+      <!-- directives -->
+      <script src="scripts/directives/registrationForm.js"></script>
+      <script src="scripts/directives/loginForm.js"></script>
+      <script src="scripts/directives/navBar.js"></script>
+      <!--<script src="scripts/directives/mainNavigation.js"></script>-->
+      <script src="scripts/directives/secondaryNavigation.js"></script>
+      <!-- services -->
+      <script src="scripts/services/base64.js"></script>
+      <script src="scripts/services/auth.js"></script>
+      <script src="scripts/services/users.js"></script>
+      <script src="scripts/services/genres.js"></script>
+      <script src="scripts/services/platforms.js"></script>
+      <script src="scripts/services/globalHelpers.js"></script>
+      <!-- controllers -->
+      <script src="scripts/controllers/app.js"></script>
+      <script src="scripts/controllers/auth.js"></script>
+      <script src="scripts/controllers/main.js"></script>
+      <script src="scripts/controllers/account.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

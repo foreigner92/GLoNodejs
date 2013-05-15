@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('remoteForm', ['$resource', 'apiHost', 'AuthService', function($resource, apiHost, auth) {
+  .directive('registrationForm', ['$resource', 'apiHost', 'AuthService', function($resource, apiHost, auth) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -34,13 +34,12 @@ angular.module('imvgm')
       };
 
       $scope.serverValidationError = {};
-      $scope.target = apiHost + $attrs.remoteFormAction;
+      $scope.target = apiHost + '/auth/register';
       $scope.method = 'post';
       $scope.validationErrorCode = 400;
       $scope.isSubmitted = false;
 
       $scope.submit = function(formData) {
-        console.log('submit');
         $scope.formData = formData;
         $scope.isSubmitted = true;
         self.resetFormComponentsValidity();
@@ -67,7 +66,9 @@ angular.module('imvgm')
             if (res.status === scope.validationErrorCode) {
               // Loop through API error response.
               for (var key in res.data.error.fields) {
+                console.log(key);
                 if (ctrl.hasFormComponent(key)) {
+                  console.log(ctrl.getFormComponent(key));
                   ctrl.getFormComponent(key).$setValidity('server', false);
                   scope.serverValidationError[key] = res.data.error.fields[key][0];
                 }
@@ -82,10 +83,10 @@ angular.module('imvgm')
     }
   }
 }]
-).directive('remoteFormComponent', function() {
+).directive('registrationFormComponent', function() {
   return {
     'restrict': 'A',
-    'require': ['^remoteForm', 'ngModel'],
+    'require': ['^registrationForm', 'ngModel'],
 
     'link': function(scope, element, attrs, ctrls) {
       var formCtrl = ctrls[0];

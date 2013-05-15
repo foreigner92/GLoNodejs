@@ -1,6 +1,6 @@
 'use strict';
 angular.module('imvgm')
-  .factory('AuthService', ['$rootScope', '$http', 'Base64', '$q', 'UsersService', '$resource', 'apiHost', function($rootScope, $http, Base64, $q, User, $resource, apiHost) {
+  .factory('AuthService', ['$rootScope', '$http', 'Base64', '$q', 'UsersService', '$resource', 'apiHost', '$location', function($rootScope, $http, Base64, $q, User, $resource, apiHost, $location) {
   var _login = function(username, password) {
     var deferred = $q.defer();
 
@@ -9,12 +9,14 @@ angular.module('imvgm')
       password: password
     })
     .success(function(data) {
+      console.log('success');
       if (data['auth-token']) {
         deferred.resolve(data);
       }
     })
-    .error(function() {
-      deferred.reject();
+    .error(function(err) {
+      console.log('error');
+      deferred.reject(err);
     });
     return deferred.promise;
   };
@@ -41,20 +43,52 @@ angular.module('imvgm')
     return deferred.promise;
   };
 
-  var _getCurrentUser = function() {
-    var deferred = $q.defer();
-    var userId = sessionStorage.getItem('userId');
+  var _logout = function () {
+    delete sessionStorage.authToken;
+    delete sessionStorage.user;
+    delete $http.defaults.headers.common['Auth-Token'];
+    $location.path('/');
+  }
 
-    User.get({id: userId}, function (user) {
-      deferred.resolve(user);
-    });
+  var _getCurrentUser = function () {
+
+    var deferred = $q.defer();
+    var user = sessionStorage.getItem('user');
+    console.log(user);
+    deferred.resolve(JSON.parse(user));
+    // User.get({id: userId}, function (user) {
+    //   deferred.resolve(user);
+    // });
 
     return deferred.promise;
+  };
+
+  var _userIsLoggedIn = function () {
+    // var deferred = $q.defer();
+
+    // var user = _getCurrentUser().then(function () {
+    //   console.log(user);
+    //   if (user) {
+    //     deferred.resolve(user);
+    //   } else {
+    //     deferred.reject();
+    //   }
+    // });
+
+    // return deferred.promise.then(function (user) {
+    //   return user || null;
+    // }, function () {
+    //   return false;
+    // });
+    //
+    return sessionStorage.getItem('user') || false;
   };
 
   return {
     login: _login,
     register: _register,
-    getCurrentUser: _getCurrentUser
+    logout: _logout,
+    getCurrentUser: _getCurrentUser,
+    userIsLoggedIn: _userIsLoggedIn
   };
 }]);

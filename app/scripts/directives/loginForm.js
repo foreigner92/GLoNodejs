@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('remoteForm', ['$resource', 'apiHost', 'AuthService', function($resource, apiHost, auth) {
+  .directive('loginForm', ['$resource', 'apiHost', 'AuthService', '$http', function($resource, apiHost, auth, $http) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -34,13 +34,12 @@ angular.module('imvgm')
       };
 
       $scope.serverValidationError = {};
-      $scope.target = apiHost + $attrs.remoteFormAction;
+      $scope.target = apiHost + '/auth/login';
       $scope.method = 'post';
-      $scope.validationErrorCode = 400;
+      $scope.validationErrorCode = 401;
       $scope.isSubmitted = false;
 
       $scope.submit = function(formData) {
-        console.log('submit');
         $scope.formData = formData;
         $scope.isSubmitted = true;
         self.resetFormComponentsValidity();
@@ -53,17 +52,24 @@ angular.module('imvgm')
           return;
         }
 
-      auth.register(scope.formData)
+      var username = scope.formData ? scope.formData.username : '';
+      var password = scope.formData ? scope.formData.password : '';
+
+      auth.login(username, password)
         .then(
           // Callback
-          function() {
-            if ((typeof scope[scope.success]) === 'function') {
-              scope[scope.success]();
-            }
+          function(data) {
+          // Set Auth-Token header
+          $http.defaults.headers.common['Auth-Token'] = data.user.username + ':' + data['auth-token'];
+
+          // Store authToken and userId in sessionStorage
+          sessionStorage.setItem('authToken', data.user.username + ':' + data['auth-token']);
+          sessionStorage.setItem('user', JSON.stringify(data.user));
+
+          location.href = "#/account";
           },
           // Errback
-          function (res) {
-            console.log(res.status === scope.validationErrorCode);
+          function (res, data) {
             if (res.status === scope.validationErrorCode) {
               // Loop through API error response.
               for (var key in res.data.error.fields) {
@@ -85,7 +91,7 @@ angular.module('imvgm')
 ).directive('remoteFormComponent', function() {
   return {
     'restrict': 'A',
-    'require': ['^remoteForm', 'ngModel'],
+    'require': ['^loginForm', 'ngModel'],
 
     'link': function(scope, element, attrs, ctrls) {
       var formCtrl = ctrls[0];

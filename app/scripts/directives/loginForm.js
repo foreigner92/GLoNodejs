@@ -36,10 +36,11 @@ angular.module('imvgm')
       $scope.serverValidationError = {};
       $scope.target = apiHost + '/auth/login';
       $scope.method = 'post';
-      $scope.validationErrorCode = 401;
+      $scope.validationErrorCode = 400;
       $scope.isSubmitted = false;
 
       $scope.submit = function(formData) {
+        console.log('submit');
         $scope.formData = formData;
         $scope.isSubmitted = true;
         self.resetFormComponentsValidity();
@@ -47,6 +48,8 @@ angular.module('imvgm')
 
     },
     'link': function(scope, element, attrs, ctrl) {
+
+
       scope.$watch('isSubmitted', function(isSubmitted) {
         if (!isSubmitted) {
           return;
@@ -59,6 +62,8 @@ angular.module('imvgm')
         .then(
           // Callback
           function(data) {
+
+            console.log('authenticated');
           // Set Auth-Token header
           $http.defaults.headers.common['Auth-Token'] = data.user.username + ':' + data['auth-token'];
 
@@ -69,15 +74,9 @@ angular.module('imvgm')
           location.href = "#/account";
           },
           // Errback
-          function (res, data) {
-            if (res.status === scope.validationErrorCode) {
-              // Loop through API error response.
-              for (var key in res.data.error.fields) {
-                if (ctrl.hasFormComponent(key)) {
-                  ctrl.getFormComponent(key).$setValidity('server', false);
-                  scope.serverValidationError[key] = res.data.error.fields[key][0];
-                }
-              }
+          function (err) {
+            if (err.code === 'InvalidContent') {
+              ctrl.getFormComponent('username').$setValidity('server', false);
             }
           }
         );

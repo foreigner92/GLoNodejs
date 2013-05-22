@@ -7,17 +7,17 @@ angular.module('imvgm')
     $http.post('http://localhost:3030/auth/login', {
       username: username,
       password: password
-    })
-    .success(function(data) {
-      console.log('success');
+    }).success(function(data) {
       if (data['auth-token']) {
         deferred.resolve(data);
       }
     })
     .error(function(err) {
       console.log('error');
+
       deferred.reject(err);
     });
+
     return deferred.promise;
   };
 
@@ -48,7 +48,7 @@ angular.module('imvgm')
     delete sessionStorage.user;
     delete $http.defaults.headers.common['Auth-Token'];
     $location.path('/');
-  }
+  };
 
   var _getCurrentUser = function () {
 

@@ -52,36 +52,35 @@ angular.module('imvgm')
 
   var _getCurrentUser = function () {
 
-    var deferred = $q.defer();
-    var user = sessionStorage.getItem('user');
-    console.log(user);
-    deferred.resolve(JSON.parse(user));
-    // User.get({id: userId}, function (user) {
-    //   deferred.resolve(user);
-    // });
+    var deferred = $q.defer()
+      , user = sessionStorage.getItem('user');
+
+    if (user) {
+      console.log(user);
+      deferred.resolve(JSON.parse(user));
+    } else {
+      deferred.reject();
+    }
 
     return deferred.promise;
+
   };
 
   var _userIsLoggedIn = function () {
-    // var deferred = $q.defer();
-
-    // var user = _getCurrentUser().then(function () {
-    //   console.log(user);
-    //   if (user) {
-    //     deferred.resolve(user);
-    //   } else {
-    //     deferred.reject();
-    //   }
-    // });
-
-    // return deferred.promise.then(function (user) {
-    //   return user || null;
-    // }, function () {
-    //   return false;
-    // });
-    //
     return sessionStorage.getItem('user') || false;
+  };
+
+  var _verifyEmailAddress = function (token) {
+    var deferred = $q.defer();
+    $http.post(apiHostRaw + '/auth/verify/email/' + token)
+      .success(function (data) {
+        deferred.resolve(data);
+      })
+      .error(function (err) {
+        deferred.reject(err);
+      });
+
+    return deferred.promise;
   };
 
   return {
@@ -89,6 +88,7 @@ angular.module('imvgm')
     register: _register,
     logout: _logout,
     getCurrentUser: _getCurrentUser,
-    userIsLoggedIn: _userIsLoggedIn
+    userIsLoggedIn: _userIsLoggedIn,
+    verifyEmailAddress: _verifyEmailAddress
   };
 }]);

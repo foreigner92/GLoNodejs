@@ -1,8 +1,6 @@
 'use strict';
 angular.module('imvgm')
-  .controller('AuthCtrl', ['$rootScope', '$scope', 'UsersService', 'AuthService', '$http', 'PlatformsService', 'GenresService', '$dialog', '$location', function($rootScope, $scope, User, auth, $http, Platform, Genre, $dialog, $location) {
-
-
+  .controller('AuthCtrl', ['$rootScope', '$scope', 'UsersService', 'AuthService', function($rootScope, $scope, User, auth) {
 
     $scope.registerUser = function () {
 
@@ -25,40 +23,6 @@ angular.module('imvgm')
           console.log(user);
         });
     };
-
-    $scope.platformSelectOptions = {
-      data: function () {
-        return {
-          results: $scope.platforms
-        };
-      }
-    };
-
-    $scope.genresSelectOptions = {
-      data: function () {
-        return {
-          results: $scope.genres
-        };
-      }
-    };
-
-    Platform.index(function (platforms) {
-      $scope.platforms = platforms.map(function (platform) {
-        return {
-          id: platform.id,
-          text: platform.name
-        };
-      });
-    });
-
-    Genre.index(function (genres) {
-      $scope.genres = genres.map(function (genre) {
-        return {
-          id: genre.id,
-          text: genre.name
-        };
-      });
-    });
 
   }]);
 

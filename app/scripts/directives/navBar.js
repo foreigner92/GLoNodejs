@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('navBar', ['$resource', 'apiHost', 'AuthService', '$dialog', '$rootScope', function($resource, apiHost, auth, $dialog, $rootScope) {
+  .directive('navBar', ['$resource', 'apiHost', 'AuthService', '$dialog', '$rootScope', 'config', function($resource, apiHost, auth, $dialog, $rootScope, config) {
     return {
       restrict: 'A',
       scope: true,
       templateUrl: 'templates/directives/navBar/default.html',
       controller: function ($scope, $element, $attrs, $dialog) {
+
+        $scope.app = config.app;
+
         var loggedInUserNav = [
           {
             href: '/#/account',

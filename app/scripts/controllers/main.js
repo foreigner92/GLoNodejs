@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('imvgm')
-  .controller('MainCtrl', ['$scope', '$http', '$rootScope', '$resource', 'UsersService', 'GenresService', 'PlatformsService', function($scope, $http, $rootScope, $resource, User, Genre, Platform) {
+  .controller('MainCtrl', ['$scope', '$http', '$rootScope', '$resource', 'UsersService', 'GenresService', 'PlatformsService', 'config', function($scope, $http, $rootScope, $resource, User, Genre, Platform, config) {
+
+
+  $scope.applicationName = config.app.name;
 
   // User.index(function (users) {
   //   // console.log(users);

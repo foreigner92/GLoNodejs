@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('registrationForm', ['$resource', 'apiHost', 'AuthService', function($resource, apiHost, auth) {
+  .directive('registrationForm', ['$resource', 'apiHost', 'AuthService', 'PlatformsService', 'GenresService', function($resource, apiHost, auth, Platform, Genre) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -38,6 +38,41 @@ angular.module('imvgm')
       $scope.method = 'post';
       $scope.validationErrorCode = 400;
       $scope.isSubmitted = false;
+
+      $scope.platformSelectOptions = {
+        data: function () {
+          return {
+            results: $scope.platforms
+          };
+        }
+      };
+
+      $scope.genresSelectOptions = {
+        data: function () {
+          return {
+            results: $scope.genres
+          };
+        }
+      };
+
+      Platform.index(function (platforms) {
+        $scope.platforms = platforms.map(function (platform) {
+          return {
+            id: platform.id,
+            text: platform.name
+          };
+        });
+      });
+
+      Genre.index(function (genres) {
+        $scope.genres = genres.map(function (genre) {
+          return {
+            id: genre.id,
+            text: genre.name
+          };
+        });
+      });
+
 
       $scope.submit = function(formData) {
         $scope.formData = formData;

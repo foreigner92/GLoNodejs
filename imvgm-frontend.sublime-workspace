@@ -216,6 +216,7 @@
 	},
 	"file_history":
 	[
+		"/Users/mattrichards/Development/imvgm-frontend/imvgm-frontend.sublime-workspace",
 		"/Users/mattrichards/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/mattrichards/Development/imvgm-frontend/app/index.html",
 		"/Users/mattrichards/Development/imvgm-frontend/.jslintrc",
@@ -342,8 +343,7 @@
 		"/Users/mattrichards/Development/playlistr/.gitignore",
 		"/Users/mattrichards/Development/playlistr/app/scripts/config.js",
 		"/Users/mattrichards/Development/playlistr/app/styles/index.scss",
-		"/Users/mattrichards/Development/playlistr/app/scripts/templates/alert.html",
-		"/Users/mattrichards/Development/playlistr/app/scripts/templates/sound-item.html"
+		"/Users/mattrichards/Development/playlistr/app/scripts/templates/alert.html"
 	],
 	"find":
 	{

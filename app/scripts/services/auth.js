@@ -1,6 +1,6 @@
 'use strict';
 angular.module('imvgm')
-  .factory('AuthService', ['$rootScope', '$http', 'Base64', '$q', 'UsersService', '$resource', 'apiHost', '$location', function($rootScope, $http, Base64, $q, User, $resource, apiHost, $location) {
+  .factory('AuthService', ['$rootScope', '$http', 'Base64', '$q', 'UsersService', '$resource', 'apiHost', 'apiHostRaw', '$location', function($rootScope, $http, Base64, $q, User, $resource, apiHost, apiHostRaw, $location) {
   var _login = function(username, password) {
     var deferred = $q.defer();
 

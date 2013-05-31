@@ -97,15 +97,15 @@ angular.module('imvgm')
           },
           // Errback
           function (res) {
-            console.log(res.status === scope.validationErrorCode);
             if (res.status === scope.validationErrorCode) {
               // Loop through API error response.
-              for (var key in res.data.error.fields) {
-                console.log(key);
+
+              for (var key in res.data.message) {
+
                 if (ctrl.hasFormComponent(key)) {
                   console.log(ctrl.getFormComponent(key));
                   ctrl.getFormComponent(key).$setValidity('server', false);
-                  scope.serverValidationError[key] = res.data.error.fields[key][0];
+                  scope.serverValidationError[key] = res.data.message[key][0];
                 }
               }
             }

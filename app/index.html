@@ -1,8 +1,8 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!doctype html data-ng-app="gloliquid">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" data-ng-app="gloliquid"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" data-ng-app="gloliquid"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" data-ng-app="gloliquid"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" data-ng-app="gloliquid"> <!--<![endif]-->
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -12,8 +12,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/main.css">
   </head>
-  <body data-ng-app="imvgm" data-ng-controller="AppCtrl">
+  <body data-ng-controller="AppCtrl" data-ng-cloak="">
+
+    <div data-ng-include="'scripts/common/templates/header.tpl.html'"></div>
+
     <div class="view" data-ng-view=""></div>
+
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -27,7 +31,7 @@
     <script>window.jQuery || document.write('<script src="components/jquery/jquery.min.js"><\/script>')</script>
 
     <!-- build:js scripts/scripts.js -->
-      <!-- dependencies -->
+      <!-- components -->
       <script src="components/angular/angular.js"></script>
       <script src="components/angular-ui/build/angular-ui.js"></script>
       <script src="components/angular-ui-bootstrap/src/transition/transition.js"></script>
@@ -36,28 +40,48 @@
       <script src="components/angular-cookies/angular-cookies.js"></script>
       <script src="components/angular-sanitize/angular-sanitize.js"></script>
       <script src="components/select2/select2.js"></script>
+
+      <!-- scripts/common/security -->
+      <script src="scripts/common/security/authorization.js"></script>
+      <script src="scripts/common/security/interceptor.js"></script>
+      <script src="scripts/common/security/retryQueue.js"></script>
+      <script src="scripts/common/security/security.js"></script>
+      <script src="scripts/common/security/index.js"></script>
+
+      <!-- scripts/common/security/login -->
+      <script src="scripts/common/security/login/login.js"></script>
+      <script src="scripts/common/security/login/navigation.js"></script>
+      <script src="scripts/common/security/login/LoginFormController.js"></script>
+
+      <!-- scripts/common/services -->
+      <script src="scripts/common/services/breadcrumbs.js"></script>
+      <script src="scripts/common/services/crud.js"></script>
+      <script src="scripts/common/services/crudRouteProvider.js"></script>
+      <script src="scripts/common/services/exceptionHandler.js"></script>
+      <script src="scripts/common/services/httpRequestTracker.js"></script>
+      <script src="scripts/common/services/i18nNotifications.js"></script>
+      <script src="scripts/common/services/localizedMessages.js"></script>
+      <script src="scripts/common/services/notifications.js"></script>
+
+      <!-- scripts/common/directives -->
+      <script src="scripts/common/directives/crud/crud.js"></script>
+      <script src="scripts/common/directives/crud/crudButtons.js"></script>
+      <script src="scripts/common/directives/crud/edit.js"></script>
+      <script src="scripts/common/directives/gravatar.js"></script>
+      <script src="scripts/common/directives/modal.js"></script>
+
+      <!-- scripts/common/resources -->
+
+      <!-- MODULES -->
+      <script src="scripts/modules/homepage/homepage.js"></script>
+
+      <!-- templates -->
+      <script src="templates/app.js"></script>
+      <script src="templates/common.js"></script>
+
+      <!-- scripts/app -->
       <script src="scripts/app.js"></script>
-      <script src="scripts/lib/http.interceptor.js"></script>
-      <!-- directives -->
-      <script src="scripts/directives/registrationForm.js"></script>
-      <script src="scripts/directives/loginForm.js"></script>
-      <script src="scripts/directives/navBar.js"></script>
-      <!--<script src="scripts/directives/mainNavigation.js"></script>-->
-      <script src="scripts/directives/secondaryNavigation.js"></script>
-      <!-- services -->
-      <script src="scripts/services/base64.js"></script>
-      <script src="scripts/services/auth.js"></script>
-      <script src="scripts/services/users.js"></script>
-      <script src="scripts/services/genres.js"></script>
-      <script src="scripts/services/platforms.js"></script>
-      <script src="scripts/services/networkErrorDialog.js"></script>
-      <script src="scripts/services/globalHelpers.js"></script>
-      <!-- controllers -->
-      <script src="scripts/controllers/app.js"></script>
-      <script src="scripts/controllers/auth.js"></script>
-      <script src="scripts/controllers/main.js"></script>
-      <script src="scripts/controllers/account.js"></script>
-      <script src="scripts/controllers/emailVerification.js"></script>
+
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('remoteForm', ['$resource', 'apiHost', 'AuthService', function($resource, apiHost, auth) {
+  .directive('registrationForm', ['$resource', 'apiHost', 'AuthService', 'PlatformsService', 'GenresService', function($resource, apiHost, auth, Platform, Genre) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -34,13 +34,47 @@ angular.module('imvgm')
       };
 
       $scope.serverValidationError = {};
-      $scope.target = apiHost + $attrs.remoteFormAction;
+      $scope.target = apiHost + '/auth/register';
       $scope.method = 'post';
       $scope.validationErrorCode = 400;
       $scope.isSubmitted = false;
 
+      $scope.platformSelectOptions = {
+        data: function () {
+          return {
+            results: $scope.platforms
+          };
+        }
+      };
+
+      $scope.genresSelectOptions = {
+        data: function () {
+          return {
+            results: $scope.genres
+          };
+        }
+      };
+
+      Platform.index(function (platforms) {
+        $scope.platforms = platforms.map(function (platform) {
+          return {
+            id: platform.id,
+            text: platform.name
+          };
+        });
+      });
+
+      Genre.index(function (genres) {
+        $scope.genres = genres.map(function (genre) {
+          return {
+            id: genre.id,
+            text: genre.name
+          };
+        });
+      });
+
+
       $scope.submit = function(formData) {
-        console.log('submit');
         $scope.formData = formData;
         $scope.isSubmitted = true;
         self.resetFormComponentsValidity();
@@ -63,13 +97,15 @@ angular.module('imvgm')
           },
           // Errback
           function (res) {
-            console.log(res.status === scope.validationErrorCode);
             if (res.status === scope.validationErrorCode) {
               // Loop through API error response.
-              for (var key in res.data.error.fields) {
+
+              for (var key in res.data.message) {
+
                 if (ctrl.hasFormComponent(key)) {
+                  console.log(ctrl.getFormComponent(key));
                   ctrl.getFormComponent(key).$setValidity('server', false);
-                  scope.serverValidationError[key] = res.data.error.fields[key][0];
+                  scope.serverValidationError[key] = res.data.message[key][0];
                 }
               }
             }
@@ -82,10 +118,10 @@ angular.module('imvgm')
     }
   }
 }]
-).directive('remoteFormComponent', function() {
+).directive('registrationFormComponent', function() {
   return {
     'restrict': 'A',
-    'require': ['^remoteForm', 'ngModel'],
+    'require': ['^registrationForm', 'ngModel'],
 
     'link': function(scope, element, attrs, ctrls) {
       var formCtrl = ctrls[0];

@@ -1,0 +1,28 @@
+<div class="form" data-login-form="">
+    <div class="modal-header">
+      <h2>Login</h2>
+    </div>
+    <div class="modal-body">
+      <form name="imvgmLoginForm">
+        <fieldset>
+          <div class="alert alert-error" data-ng-show="!imvgmLoginForm.username.$valid && imvgmLoginForm.username.$error.server">Username or password incorrect.</div>
+          <div class="control-group">
+            <div class="controls">
+             <input name="username" id="imvgm-reg-frm-username" data-ng-model="login.username" type="text" placeholder="Username"  data-ng-required="" data-remote-form-component="" />
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+             <input name="password" id="imvgm-reg-frm-password" data-ng-model="login.password" type="text" placeholder="Password"  data-ng-required="" data-remote-form-component="" />
+             <span class="help-block"><a href="#/password/reset">Forgotten your password?</a><br /><a href="#/register">Create an Account</a></span>
+             <span class="help-block"></span>
+            </div>
+          </div>
+      </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+         <div class="pull-right"><button class="btn" data-ng-click="submit(login)">Log In</button> or <a href="/">Cancel</a></div>
+    </div>
+
+</div>

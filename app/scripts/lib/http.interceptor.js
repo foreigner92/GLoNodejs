@@ -10,11 +10,19 @@ angular.module('imvgm')
   function error(response) {
     var status = response.status;
 
-    if (status === 401) {
-      $rootScope.$broadcast('event:loginRequired');
-      return;
+    // Check for connection
+    if (status === 0) {
+      // Broadcast a networkError event to the $rootScope
+      $rootScope.$broadcast('event:networkError');
     }
-    // otherwise
+
+    // Check for 401 (Unauthorised) response
+    if (status === 401) {
+      // Broadcast a loginRequired event to the $rootScope
+      $rootScope.$broadcast('event:loginRequired');
+    }
+
+    // reject and return the deferred.
     return $q.reject(response);
   }
 

@@ -1,9 +1,14 @@
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_awesome";
 @import "compass_twitter_bootstrap_responsive";
+@import "animate";
 
 @import "../../components/select2/select2.css";
 
 body {
   padding: 60px 0 0 0;
+}
+
+.alert {
+  @include animate(shake, 1s, 0s);
 }

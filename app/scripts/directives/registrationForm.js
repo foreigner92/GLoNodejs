@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imvgm')
-  .directive('registrationForm', ['$resource', 'apiHost', 'AuthService', 'PlatformsService', 'GenresService', function($resource, apiHost, auth, Platform, Genre) {
+  .directive('registrationForm', ['$resource', 'CONFIG', 'AuthService', 'PlatformsService', 'GenresService', function($resource, config, auth, Platform, Genre) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -34,8 +34,6 @@ angular.module('imvgm')
       };
 
       $scope.serverValidationError = {};
-      $scope.target = apiHost + '/auth/register';
-      $scope.method = 'post';
       $scope.validationErrorCode = 400;
       $scope.isSubmitted = false;
 
@@ -87,7 +85,7 @@ angular.module('imvgm')
           return;
         }
 
-      auth.register(scope.formData)
+      $http.post(config.api.host + '/auth/register', scope.formData)
         .then(
           // Callback
           function() {

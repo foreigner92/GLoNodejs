@@ -14,6 +14,9 @@ angular.module('gloliquid', [
   'services.i18nNotifications',
   'services.httpRequestTracker',
   'security.login.navigation',
+
+  'resources.platforms',
+  'resources.genres',
   'security',
   'directives.crud',
   'templates.app',
@@ -48,7 +51,7 @@ angular.module('gloliquid').constant('I18N.MESSAGES', {
 });
 
 angular.module('gloliquid').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
   $routeProvider.otherwise({redirectTo:'/'});
 }]);
 

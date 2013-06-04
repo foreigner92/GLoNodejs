@@ -7,6 +7,9 @@ angular.module('gloliquid', [
   // 'projects',
   // 'admin',
   'homepage',
+  'account',
+  'account.gamer',
+  'account.gamer.register',
   'services.breadcrumbs',
   'services.i18nNotifications',
   'services.httpRequestTracker',
@@ -77,7 +80,6 @@ angular.module('gloliquid').controller('HeaderCtrl', ['$scope', '$location', '$r
   $scope.isAdmin = security.isAdmin;
 
   $scope.home = function () {
-    console.log(security.isAuthenticated() ? 'logged in' : 'not logged in');
     if (security.isAuthenticated()) {
       $location.path('/account');
     } else {

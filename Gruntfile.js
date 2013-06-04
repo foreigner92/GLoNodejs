@@ -46,14 +46,13 @@ module.exports = function (grunt) {
         tasks: ['compass']
       },
       html2js: {
-        files: ['<%= yeoman.app %>/{,*}*.tpl.html'],
+        files: ['**/*.tpl.html'],
         tasks: ['html2js']
       },
       livereload: {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '.tmp/templates/{,*/}*.js',
           '<%= yeoman.app %>/templates/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'

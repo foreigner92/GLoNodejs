@@ -59,12 +59,11 @@ angular.module('security.service', [
 
     // Attempt to authenticate a user by the given email and password
     login: function(username, password) {
-      console.log(CONFIG.api.host);
+
       var request = $http.post(CONFIG.api.host + '/auth/login', {username: username, password: password});
 
       return request.then(function(response) {
-        console.log('response');
-        console.log(response);
+
         service.currentUser = response.data.user;
 
         // Store authToken and userId in sessionStorage
@@ -74,8 +73,6 @@ angular.module('security.service', [
         if ( service.isAuthenticated() ) {
           closeLoginDialog(true);
         }
-      }, function () {
-
       });
     },
 
@@ -87,10 +84,12 @@ angular.module('security.service', [
 
     // Logout the current user and redirect
     logout: function(redirectTo) {
-      $http.post('/logout').then(function() {
-        service.currentUser = null;
-        redirect(redirectTo);
-      });
+      service.currentUser = null;
+      delete sessionStorage.authToken;
+      delete sessionStorage.user;
+      delete $http.defaults.headers.common['Auth-Token'];
+      redirect(redirectTo);
+
     },
 
     // Ask the backend to see if a user is already authenticated - this may be from a previous session.

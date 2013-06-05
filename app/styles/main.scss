@@ -12,5 +12,12 @@ body {
 }
 
 .alert {
-  @include animate(shake, 1s, 0s);
+
+  @include animate(bounceInDown, 1s, 0s);
+
+  .error {
+    @include animate(shake, 1s, 0s);
+  }
+
+
 }

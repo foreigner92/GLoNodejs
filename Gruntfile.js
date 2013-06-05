@@ -314,6 +314,7 @@ module.exports = function (grunt) {
     'clean:server',
     'coffee',
     'compass',
+    'html2js',
     'connect:test',
     'karma'
   ]);
@@ -324,6 +325,7 @@ module.exports = function (grunt) {
     'test',
     'coffee',
     'compass:dist',
+    'html2js',
     'useminPrepare',
     'imagemin',
     'cssmin',

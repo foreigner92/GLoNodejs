@@ -8,7 +8,7 @@ angular.module('account.developer.register', ['resources.platforms', 'resources.
 .controller('AccountDeveloperRegisterCtrl', ['$scope', '$location', 'Platform', 'Genre', function ($scope, $location, Platform, Genre) {
 
   $scope.newUser = {
-    role: 'gamer'
+    role: 'game_developer'
   };
 
   $scope.platformSelectOptions = {
@@ -44,4 +44,9 @@ angular.module('account.developer.register', ['resources.platforms', 'resources.
       };
     });
   });
+
+  $scope.success = function () {
+    $location.path('/account/register/success');
+  };
+
 }]);

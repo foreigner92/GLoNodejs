@@ -12,17 +12,18 @@ angular.module('security.login.navigation', [])
       $scope.isAuthenticated = security.isAuthenticated;
       $scope.login = security.showLogin;
       $scope.logout = security.logout;
+      $scope.$watch(function() {
+        return security.currentUser;
+      }, function(currentUser) {
+        $scope.currentUser = currentUser;
+      });
 
       $scope.register = function () {
         $location.path('/account/register/gamer');
       }
 
 
-      $scope.$watch(function() {
-        return security.currentUser;
-      }, function(currentUser) {
-        $scope.currentUser = currentUser;
-      });
+
     }
   };
   return directive;

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('resources.genres', ['ngResource', 'gloliquid'])
+angular.module('resources.genres', ['ngResource', 'app'])
 angular.module('resources.genres')
 .factory('Genre', ['$resource', 'CONFIG', function($resource, config) {
 

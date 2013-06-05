@@ -1,7 +1,7 @@
 'use strict';
 (function (angular) {
 
-angular.module('gloliquid', [
+angular.module('app', [
   // Modules
   'homepage',
   'account',
@@ -32,8 +32,8 @@ angular.module('gloliquid', [
   'ui.bootstrap.dialog'
 ]);
 
-angular.module('gloliquid').constant('CONFIG', {
-  name: 'GloLiquid',
+angular.module('app').constant('CONFIG', {
+  name: 'app',
   version: 'Alpha',
   api: {
     host: 'http://localhost:3030'
@@ -41,7 +41,7 @@ angular.module('gloliquid').constant('CONFIG', {
 });
 
 //TODO: move those messages to a separate module
-angular.module('gloliquid').constant('I18N.MESSAGES', {
+angular.module('app').constant('I18N.MESSAGES', {
   'errors.route.changeError':'Route change error',
   'crud.user.save.success':"A user with id '{{id}}' was saved successfully.",
   'crud.user.remove.success':"A user with id '{{id}}' was removed successfully.",
@@ -58,18 +58,18 @@ angular.module('gloliquid').constant('I18N.MESSAGES', {
   'logout.success': 'You have successfully logged out of your account.',
 });
 
-angular.module('gloliquid').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   // $locationProvider.html5Mode(true);
   $routeProvider.otherwise({redirectTo:'/'});
 }]);
 
-angular.module('gloliquid').run(['security', function(security) {
+angular.module('app').run(['security', function(security) {
   // Get the current user when the application starts
   // (in case they are still logged in from a previous session)
   security.requestCurrentUser();
 }]);
 
-angular.module('gloliquid').controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications) {
+angular.module('app').controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications) {
 
   $scope.notifications = i18nNotifications;
 
@@ -82,7 +82,7 @@ angular.module('gloliquid').controller('AppCtrl', ['$scope', 'i18nNotifications'
   });
 }]);
 
-angular.module('gloliquid').controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker', 'CONFIG',
+angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker', 'CONFIG',
   function ($scope, $location, $route, security, breadcrumbs, notifications, httpRequestTracker, config) {
   $scope.location = $location;
   $scope.breadcrumbs = breadcrumbs;
@@ -136,7 +136,7 @@ angular.module('gloliquid').controller('HeaderCtrl', ['$scope', '$location', '$r
   // imvgm.value('apiHostRaw', 'http://localhost:3030');
   // imvgm.value('config', {
   //   app: {
-  //     name: 'GloLiquid',
+  //     name: 'app',
   //     version: 'alpha'
   //   }
   // });

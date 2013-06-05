@@ -2,10 +2,13 @@
 angular.module('security.service', [
   'security.retryQueue',    // Keeps track of failed requests that need to be retried once the user logs in
   'security.login',         // Contains the login form template and controller
-  'ui.bootstrap.dialog'     // Used to display the login form as a modal dialog.
+  'ui.bootstrap.dialog',     // Used to display the login form as a modal dialog.
+  'services.i18nNotifications'
 ])
 
-.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'CONFIG', function($http, $q, $location, queue, $dialog, CONFIG) {
+.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'CONFIG', '$injector', function($http, $q, $location, queue, $dialog, CONFIG, $injector) {
+
+  var i18nNotifications = $injector.get('i18nNotifications');
 
   // Redirect to the given url (defaults to '/')
   function redirect(url) {
@@ -71,6 +74,7 @@ angular.module('security.service', [
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
 
         if ( service.isAuthenticated() ) {
+          i18nNotifications.pushSticky('login.success', 'success');
           closeLoginDialog(true);
         }
       });
@@ -88,6 +92,7 @@ angular.module('security.service', [
       delete sessionStorage.authToken;
       delete sessionStorage.user;
       delete $http.defaults.headers.common['Auth-Token'];
+      i18nNotifications.pushForNextRoute('logout.success', 'success', {}, {});
       redirect(redirectTo);
 
     },
@@ -115,6 +120,20 @@ angular.module('security.service', [
     // Is the current user an adminstrator?
     isAdmin: function() {
       return !!(service.currentUser && service.currentUser.admin);
+    },
+
+    verifyEmailAddress: function (token) {
+      var deferred = $q.defer();
+      $http.post(CONFIG.api.host + '/auth/verify/email/' + token)
+        .success(function (data) {
+          deferred.resolve(data);
+        })
+        .error(function (err) {
+          deferred.reject(err);
+        });
+
+      return deferred.promise;
+
     }
   };
 

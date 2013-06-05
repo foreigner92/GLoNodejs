@@ -1,7 +1,7 @@
 'use strict';
 angular.module('account.gamer', [], ['$routeProvider', function($routeProvider) {
   $routeProvider.when('/gamer/account', {
-    templateUrl:'modules/account/gamer/account.tpl.html',
+    templateUrl:'modules/account/gamer/account.gamer.tpl.html',
     controller:'GamerAccountCtrl',
     // resolve:{
     //   projects:['Projects', function(Projects){
@@ -11,6 +11,7 @@ angular.module('account.gamer', [], ['$routeProvider', function($routeProvider) 
   });
 }]);
 
-angular.module('account.gamer').controller('GamerAccountCtrl',['$scope', 'CONFIG', function($scope, CONFIG) {
+angular.module('account.gamer').controller('GamerAccountCtrl',['$scope', 'CONFIG', 'security', function($scope, CONFIG, security) {
   $scope.config = CONFIG;
+  $scope.user = security.requestCurrentUser();
 }]);

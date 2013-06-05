@@ -1,7 +1,5 @@
-'use strict';
-
-angular.module('imvgm')
-  .directive('registrationForm', ['$resource', 'CONFIG', 'AuthService', 'PlatformsService', 'GenresService', function($resource, config, auth, Platform, Genre) {
+angular.module('directives.remoteForm', [])
+.directive('remoteForm', ['$resource', 'CONFIG', 'Platform', 'Genre', '$http', '$location', function($resource, config, Platform, Genre, $http, $location) {
 
   function IllegalArgumentException (message) {
     this.message = message;
@@ -34,53 +32,15 @@ angular.module('imvgm')
       };
 
       $scope.serverValidationError = {};
+
       $scope.validationErrorCode = 400;
       $scope.isSubmitted = false;
-
-      $scope.platformSelectOptions = {
-        data: function () {
-          return {
-            results: $scope.platforms
-          };
-        }
-      };
-
-      $scope.genresSelectOptions = {
-        data: function () {
-          return {
-            results: $scope.genres
-          };
-        }
-      };
-
-      Platform.index(function (platforms) {
-        $scope.platforms = platforms.map(function (platform) {
-          return {
-            id: platform.id,
-            text: platform.name
-          };
-        });
-      });
-
-      Genre.index(function (genres) {
-        $scope.genres = genres.map(function (genre) {
-          return {
-            id: genre.id,
-            text: genre.name
-          };
-        });
-      });
-
 
       $scope.submit = function(formData) {
         $scope.formData = formData;
         $scope.isSubmitted = true;
         self.resetFormComponentsValidity();
       };
-
-      $scope.navigateToGameDeveloperRegistrationForm = function () {
-        $location.path('/account/register/developer');
-      }
 
     },
     'link': function(scope, element, attrs, ctrl) {
@@ -93,9 +53,7 @@ angular.module('imvgm')
         .then(
           // Callback
           function() {
-            if ((typeof scope[scope.success]) === 'function') {
-              scope[scope.success]();
-            }
+            $location.path('/account/register/success');
           },
           // Errback
           function (res) {
@@ -119,11 +77,11 @@ angular.module('imvgm')
       })
     }
   }
-}]
-).directive('registrationFormComponent', function() {
+}])
+.directive('remoteFormComponent', function() {
   return {
     'restrict': 'A',
-    'require': ['^registrationForm', 'ngModel'],
+    'require': ['^remoteForm', 'ngModel'],
 
     'link': function(scope, element, attrs, ctrls) {
       var formCtrl = ctrls[0];

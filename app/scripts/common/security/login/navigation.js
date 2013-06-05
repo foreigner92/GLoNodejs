@@ -14,7 +14,7 @@ angular.module('security.login.navigation', [])
       $scope.logout = security.logout;
 
       $scope.register = function () {
-        $location.path('/account/gamer/register');
+        $location.path('/account/register/gamer');
       }
 
 

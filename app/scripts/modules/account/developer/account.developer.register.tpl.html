@@ -1,54 +1,44 @@
-  <form name="imvgmRegistrationForm" data-registration-form="" data-registration-form-action="/auth/register">
+  <form name="imvgmRegistrationForm" data-remote-form="" data-remote-form-action="/auth/register">
     <fieldset>
+      <legend><h2>Create Developer account</h2></legend>
+
       <div class="alert alert-error" data-ng-show="!imvgmRegistrationForm.$valid">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Uh Oh!</strong> Best check yo self, you're not looking too good.
       </div>
-      <legend><h2>Create an account</h2></legend>
 
-      <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.role.$valid}">
-        <div class="controls">
-          <label for="imvgm-reg-frm-fullname">Account Type:</label>
-          <select data-ui-select2="" name="role" id="imvgm-reg-frm-role" data-ng-model="newUser.role" data-ng-required="" data-registration-form-component="" type="text" placeholder="Please Choose" style="min-width: 220px">
-            <option></option>
-            <option value="gamer">Gamer</options>
-            <option value="developer">Game Developer</option>
-          </select>
-          <span class="help-inline" data-ng-show="!imvgmRegistrationForm.role.$valid && imvgmRegistrationForm.role.$error.server">Please select your Account Type.</span>
-        </div>
-      </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.fullname.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-fullname">Name:</label>
-          <input name="fullname" id="imvgm-reg-frm-fullname" data-registration-form-component="" data-ng-model="newUser.fullname" type="text" placeholder="Full Name" />
+          <input name="fullname" id="imvgm-reg-frm-fullname" data-remote-form-component="" data-ng-model="newUser.fullname" type="text" placeholder="Full Name" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.fullname.$valid && imvgmRegistrationForm.fullname.$error.server">Please enter your Full Name.</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.username.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-username">Username:</label>
-          <input name="username" id="imvgm-reg-frm-username" data-registration-form-component="" data-ng-model="newUser.username" type="text" placeholder="Username" />
+          <input name="username" id="imvgm-reg-frm-username" data-remote-form-component="" data-ng-model="newUser.username" type="text" placeholder="Username" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.username.$valid && imvgmRegistrationForm.username.$error.server">{{serverValidationError['username']}}</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.email.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-email">Email</label>
-          <input name="email" id="imvgm-reg-frm-email" data-email data-registration-form-component="" data-ng-model="newUser.email" type="text" placeholder="Email Address" />
+          <input name="email" id="imvgm-reg-frm-email" data-email data-remote-form-component="" data-ng-model="newUser.email" type="text" placeholder="Email Address" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.email.$valid">{{serverValidationError['email']}}</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.password.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-password">Password</label>
-          <input name="password" id="imvgm-reg-frm-password" data-registration-form-component="" data-ng-model="newUser.password" type="password" placeholder="Password" />
+          <input name="password" id="imvgm-reg-frm-password" data-remote-form-component="" data-ng-model="newUser.password" type="password" placeholder="Password" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.password.$valid && imvgmRegistrationForm.password.$error.server">Please enter a strong password.</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.gender.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-fullname">Gender:</label>
-          <select data-ui-select2="" name="gender" id="imvgm-reg-frm-gender" data-ng-model="newUser.gender" data-ng-required="" data-registration-form-component="" type="text" placeholder="Please Choose" style="min-width: 220px">
+          <select data-ui-select2="" name="gender" id="imvgm-reg-frm-gender" data-ng-model="newUser.gender" data-ng-required="" data-remote-form-component="" type="text" placeholder="Please Choose" style="min-width: 220px">
             <option></option>
             <option value="male">Male</options>
             <option value="female">Female</option>
@@ -60,14 +50,14 @@
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.dob.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-dob">Date of Birth</label>
-          <input name="dob" id="imvgm-reg-frm-dob" data-ng-model="newUser.dob" data-registration-form-component="" type="date" />
+          <input name="dob" id="imvgm-reg-frm-dob" data-ng-model="newUser.dob" data-remote-form-component="" type="date" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.dob.$valid && imvgmRegistrationForm.dob.$error.server">Please enter your Date of Birth.</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.country.$valid}" >
         <div class="controls">
           <label for="imvgm-reg-frm-country">Country</label>
-          <select data-ui-select2="" name="country" id="imvgm-reg-frm-country" data-ng-model="newUser.country" data-registration-form-component="" type="hidden" placeholder="Country" style="min-width: 220px">
+          <select data-ui-select2="" name="country" id="imvgm-reg-frm-country" data-ng-model="newUser.country" data-remote-form-component="" type="hidden" placeholder="Country" style="min-width: 220px">
             <option value=""></option>
             <option value="Afganistan">Afghanistan</option>
             <option value="Albania">Albania</option>
@@ -324,22 +314,22 @@
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.platforms.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-platforms">I Own</label>
-          <input style="min-width: 220px" data-ui-select2="platformSelectOptions" multiple name="platforms" id="imvgm-reg-frm-platforms" data-ng-model="newUser.platforms" data-registration-form-component="" type="hidden" placeholder="Platforms" />
+          <input style="min-width: 220px" data-ui-select2="platformSelectOptions" multiple name="platforms" id="imvgm-reg-frm-platforms" data-ng-model="newUser.platforms" data-remote-form-component="" type="hidden" placeholder="Platforms" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.platforms.$valid && imvgmRegistrationForm.platforms.$error.server">Please enter at least one Platform.</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.genres.$valid}">
         <div class="controls">
           <label for="imvgm-reg-frm-play">I Play</label>
-          <input style="min-width: 220px" data-ui-select2="genresSelectOptions" multiple name="genres" id="imvgm-reg-frm-genres" data-ng-model="newUser.genres" data-registration-form-component="" placeholder="Genres" type="hidden" />
+          <input style="min-width: 220px" data-ui-select2="genresSelectOptions" multiple name="genres" id="imvgm-reg-frm-genres" data-ng-model="newUser.genres" data-remote-form-component="" placeholder="Genres" type="hidden" />
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.genres.$valid && imvgmRegistrationForm.genres.$error.server">Please enter at least one Genre.</span>
         </div>
       </div>
       <div class="control-group">
         <div class="controls">
+          <input type="hidden" name="role" value="game_developer" data-ng-model="newUser.role" />
           <button class="btn" data-ng-click="submit(newUser)" data-ng-disabled="imvgmRegistrationForm.$pristine">Create Account</button>
         </div>
       </div>
     </fieldset>
   </form>
-

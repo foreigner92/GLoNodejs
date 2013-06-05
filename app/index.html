@@ -15,8 +15,11 @@
   <body data-ng-controller="AppCtrl" data-ng-cloak="">
 
     <div data-ng-include="'scripts/common/templates/header.tpl.html'"></div>
-
-    <div class="view" data-ng-view=""></div>
+    <div class="container">
+      <div ng-include="'scripts/common/templates/notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>
+      <div class="view" data-ng-view=""></div>
+      <div data-ng-include="'scripts/common/templates/footer.tpl.html'"></div>
+    </div>
 
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -69,6 +72,7 @@
       <script src="scripts/common/directives/crud/edit.js"></script>
       <script src="scripts/common/directives/gravatar.js"></script>
       <script src="scripts/common/directives/modal.js"></script>
+      <script src="scripts/common/directives/remoteForm.js"></script>
 
       <!-- scripts/common/resources -->
       <script src="scripts/common/resources/platforms.js"></script>
@@ -79,7 +83,8 @@
       <script src="scripts/modules/account/account.js"></script>
       <script src="scripts/modules/account/gamer/account.gamer.js"></script>
       <script src="scripts/modules/account/gamer/account.gamer.register.js"></script>
-
+      <script src="scripts/modules/account/developer/account.developer.js"></script>
+      <script src="scripts/modules/account/developer/account.developer.register.js"></script>
       <!-- templates -->
       <script src="templates/app.js"></script>
       <script src="templates/common.js"></script>

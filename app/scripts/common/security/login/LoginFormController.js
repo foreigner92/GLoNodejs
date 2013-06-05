@@ -24,12 +24,10 @@ angular.module('security.login.form', ['services.localizedMessages'])
     $scope.authError = null;
 
     // Try to login
-    security.login($scope.user.username, $scope.user.password).then(function(loggedIn) {
+    security.login($scope.user.username, $scope.user.password).then(function() {
       if (security.isAuthenticated()) {
         $location.path('/account');
       }
-
-
     }, function(x) {
       // If we get here then the login failed due to bad credentials
       $scope.authError = localizedMessages.get('login.error.invalidCredentials');

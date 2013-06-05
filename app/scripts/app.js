@@ -2,25 +2,31 @@
 (function (angular) {
 
 angular.module('gloliquid', [
-  // 'projectsinfo',
-  // 'dashboard',
-  // 'projects',
-  // 'admin',
+  // Modules
   'homepage',
   'account',
   'account.gamer',
   'account.gamer.register',
+  'account.developer',
+  'account.developer.register',
+
+  // Common
   'services.breadcrumbs',
   'services.i18nNotifications',
   'services.httpRequestTracker',
   'security.login.navigation',
-
-  'resources.platforms',
-  'resources.genres',
   'security',
   'directives.crud',
+
+  // Resources
+  'resources.platforms',
+  'resources.genres',
+
+  // Templates
   'templates.app',
   'templates.common',
+
+  // Vendor
   'ngResource',
   'ui',
   'ui.bootstrap.dialog'
@@ -47,7 +53,9 @@ angular.module('gloliquid').constant('I18N.MESSAGES', {
   'login.reason.notAuthorized':"You do not have the necessary access permissions.  Do you want to login as someone else?",
   'login.reason.notAuthenticated':"You must be logged in to access this part of the application.",
   'login.error.invalidCredentials': "Login failed.  Please check your credentials and try again.",
-  'login.error.serverError': "There was a problem with authenticating: {{exception}}."
+  'login.error.serverError': "There was a problem with authenticating: {{exception}}.",
+  'login.success': 'You have successfully logged in.',
+  'logout.success': 'You have successfully logged out of your account.',
 });
 
 angular.module('gloliquid').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -96,21 +104,6 @@ angular.module('gloliquid').controller('HeaderCtrl', ['$scope', '$location', '$r
       href: 'some link'
     }
   ];
-
-  // $scope.navUser = function () {
-  //   if (!security.isAuthenticated()) {
-  //     return [
-  //       {
-  //         name: 'Login',
-  //         href: '/login'
-  //       },
-  //       {
-  //         name: 'Register',
-  //         href: '/register'
-  //       }
-  //     ];
-  //   };
-  // };
 
   if (!security.isAuthenticated()) {
     $scope.navUser = [

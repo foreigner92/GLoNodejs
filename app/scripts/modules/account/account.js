@@ -1,9 +1,12 @@
 'use strict';
-angular.module('account', ['config'], ['$routeProvider', function($routeProvider) {
+angular.module('account', ['config', 'security'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 
   $routeProvider.when('/account', {
     templateUrl: 'account/account.tpl.html',
-    controller:'AccountCtrl'
+    controller:'AccountCtrl',
+    resolve: {
+      authorization: securityAuthorizationProvider.requireAuthenticatedUser
+    }
   })
   .when('/account/register/success', {
     templateUrl: 'account/account.register.success.tpl.html',

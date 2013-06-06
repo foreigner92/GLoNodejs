@@ -11,7 +11,7 @@ angular.module('account.gamer', [], ['$routeProvider', function($routeProvider) 
   });
 }]);
 
-angular.module('account.gamer').controller('GamerAccountCtrl',['$scope', 'CONFIG', 'security', function($scope, CONFIG, security) {
-  $scope.config = CONFIG;
+angular.module('account.gamer').controller('GamerAccountCtrl',['$scope', 'config', 'security', function($scope, config, security) {
+  $scope.config = config;
   $scope.user = security.requestCurrentUser();
 }]);

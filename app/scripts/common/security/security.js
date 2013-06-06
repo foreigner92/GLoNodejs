@@ -5,9 +5,10 @@ angular.module('security.service', [
   'security.login',         // Contains the login form template and controller
   'ui.bootstrap.dialog',     // Used to display the login form as a modal dialog.
   'services.i18nNotifications',
+  'config'
 ])
 
-.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'CONFIG', '$injector', function($http, $q, $location, queue, $dialog, CONFIG, $injector) {
+.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'config', '$injector', function($http, $q, $location, queue, $dialog, config, $injector) {
 
   var i18nNotifications = $injector.get('i18nNotifications');
 
@@ -24,7 +25,7 @@ angular.module('security.service', [
       throw new Error('Trying to open a dialog that is already open!');
     }
     loginDialog = $dialog.dialog();
-    loginDialog.open('common/security/login/form.tpl.html', 'LoginFormController').then(onLoginDialogClose);
+    loginDialog.open('security/login/form.tpl.html', 'LoginFormController').then(onLoginDialogClose);
   }
   function closeLoginDialog(success) {
     if (loginDialog) {
@@ -64,7 +65,7 @@ angular.module('security.service', [
     // Attempt to authenticate a user by the given email and password
     login: function(username, password) {
 
-      var request = $http.post(CONFIG.api.host + '/auth/login', {username: username, password: password});
+      var request = $http.post(config.api.host + '/auth/login', {username: username, password: password});
 
       return request.then(function(response) {
 
@@ -125,7 +126,7 @@ angular.module('security.service', [
 
     verifyEmailAddress: function (token) {
       var deferred = $q.defer();
-      $http.post(CONFIG.api.host + '/auth/verify/email/' + token)
+      $http.post(config.api.host + '/auth/verify/email/' + token)
         .success(function (data) {
           deferred.resolve(data);
         })

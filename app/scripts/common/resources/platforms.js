@@ -1,7 +1,7 @@
 'use strict';
-angular.module('resources.platforms', ['ngResource', 'app'])
+angular.module('resources.platforms', ['ngResource', 'config'])
 angular.module('resources.platforms')
-.factory('Platform', ['$resource', 'CONFIG', function($resource, config) {
+.factory('Platform', ['$resource', 'config', function($resource, config) {
     return $resource(config.api.host.replace(/:([0-9].*)$/,'\\:' + config.api.host.match(/([0-9].*)$/)[0]) + '/platforms/:id', {
       id: '@id'
     }, {

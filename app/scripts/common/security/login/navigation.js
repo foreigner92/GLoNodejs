@@ -4,7 +4,7 @@ angular.module('security.login.navigation', [])
 // and information the current authenticated user
 .directive('userNavigation', ['security', '$location', function(security, $location) {
   var directive = {
-    templateUrl: 'common/security/login/navigation.tpl.html',
+    templateUrl: 'security/login/navigation.tpl.html',
     restrict: 'A',
     replace: true,
     scope: true,

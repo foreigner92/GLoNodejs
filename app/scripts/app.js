@@ -26,19 +26,14 @@ angular.module('app', [
   'templates.app',
   'templates.common',
 
+  // config
+  'config',
+
   // Vendor
   'ngResource',
   'ui',
   'ui.bootstrap.dialog'
 ]);
-
-angular.module('app').constant('CONFIG', {
-  name: 'app',
-  version: 'Alpha',
-  api: {
-    host: 'http://localhost:3030'
-  }
-});
 
 //TODO: move those messages to a separate module
 angular.module('app').constant('I18N.MESSAGES', {
@@ -82,7 +77,7 @@ angular.module('app').controller('AppCtrl', ['$scope', 'i18nNotifications', 'loc
   });
 }]);
 
-angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker', 'CONFIG',
+angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker', 'config',
   function ($scope, $location, $route, security, breadcrumbs, notifications, httpRequestTracker, config) {
   $scope.location = $location;
   $scope.breadcrumbs = breadcrumbs;

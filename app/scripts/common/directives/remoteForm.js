@@ -1,5 +1,5 @@
-angular.module('directives.remoteForm', [])
-.directive('remoteForm', ['$resource', 'CONFIG', 'Platform', 'Genre', '$http', '$location', function($resource, config, Platform, Genre, $http, $location) {
+angular.module('directives.remoteForm', ['config'])
+.directive('remoteForm', ['$resource', 'config', 'Platform', 'Genre', '$http', '$location', function($resource, config, Platform, Genre, $http, $location) {
 
   function IllegalArgumentException (message) {
     this.message = message;

@@ -1,7 +1,7 @@
 angular.module('account.developer.register', ['resources.platforms', 'resources.genres', 'directives.remoteForm'])
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/account/register/developer', {
-    templateUrl:'modules/account/developer/account.developer.register.tpl.html',
+    templateUrl:'account/developer/account.developer.register.tpl.html',
     controller:'AccountDeveloperRegisterCtrl',
   });
 }])

@@ -1,7 +1,7 @@
 'use strict';
-angular.module('homepage', [], ['$routeProvider', function($routeProvider) {
+angular.module('homepage', ['config'], ['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
-    templateUrl:'modules/homepage/homepage.tpl.html',
+    templateUrl:'homepage/homepage.tpl.html',
     controller:'HomepageCtrl',
     // resolve:{
     //   projects:['Projects', function(Projects){
@@ -11,7 +11,7 @@ angular.module('homepage', [], ['$routeProvider', function($routeProvider) {
   });
 }]);
 
-angular.module('homepage').controller('HomepageCtrl',['$scope', 'CONFIG', function($scope, CONFIG) {
-  $scope.config = CONFIG;
+angular.module('homepage').controller('HomepageCtrl',['$scope', 'config', function($scope, config) {
+  $scope.config = config;
   // $scope.projects = projects;
 }]);

@@ -63,7 +63,7 @@ module.exports = function (grunt) {
     html2js: {
       app: {
         options: {
-          base: 'app/scripts'
+          base: 'app/scripts/modules'
         },
         src: ['<%= src.tpl.app %>'],
         dest: '.tmp/templates/app.js',
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
       },
       common: {
         options: {
-          base: 'src/common'
+          base: 'app/scripts/common'
         },
         src: ['<%= src.tpl.common %>'],
         dest: '.tmp/templates/common.js',

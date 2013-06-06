@@ -1,13 +1,11 @@
 'use strict';
-angular.module('account.gamer', ['config'], ['$routeProvider', function($routeProvider) {
+angular.module('account.gamer', ['config'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
   $routeProvider.when('/gamer/account', {
     templateUrl:'account/gamer/account.gamer.tpl.html',
     controller:'GamerAccountCtrl',
-    // resolve:{
-    //   projects:['Projects', function(Projects){
-    //     return Projects.all();
-    //   }]
-    // }
+    resolve: {
+      authorization: securityAuthorizationProvider.requireGamerRole
+    }
   });
 }]);
 

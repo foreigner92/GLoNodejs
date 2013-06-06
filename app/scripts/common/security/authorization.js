@@ -13,6 +13,14 @@ angular.module('security.authorization', ['security.service'])
     return securityAuthorization.requireAuthenticatedUser();
   }],
 
+  requireDeveloperRole: ['securityAuthorization', function(securityAuthorization) {
+    return securityAuthorization.requireDeveloperRole();
+  }],
+
+  requireGamerRole: ['securityAuthorization', function(securityAuthorization) {
+    return securityAuthorization.requireGamerRole();
+  }],
+
   $get: ['security', 'securityRetryQueue', function(security, queue) {
     var service = {
 
@@ -33,6 +41,26 @@ angular.module('security.authorization', ['security.service'])
         var promise = security.requestCurrentUser().then(function(userInfo) {
           if ( !security.isAdmin() ) {
             return queue.pushRetryFn('unauthorized-client', service.requireAdminUser);
+          }
+        });
+        return promise;
+      },
+
+      requireDeveloperRole: function () {
+        var promise = security.requestCurrentUser().then(function(user) {
+          console.log(user.role);
+          if ( user.role && user.role != 'game_developer') {
+            return queue.pushRetryFn('unauthorized-client', service.requireDeveloperRole);
+          }
+        });
+        return promise;
+      },
+
+      requireGamerRole: function () {
+        var promise = security.requestCurrentUser().then(function(user) {
+          console.log(user.role);
+          if ( user.role && user.role != 'gamer') {
+            return queue.pushRetryFn('unauthorized-client', service.requireGamerRole);
           }
         });
         return promise;

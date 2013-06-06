@@ -1,7 +1,7 @@
 'use strict';
-angular.module('account.gamer', [], ['$routeProvider', function($routeProvider) {
+angular.module('account.gamer', ['config'], ['$routeProvider', function($routeProvider) {
   $routeProvider.when('/gamer/account', {
-    templateUrl:'modules/account/gamer/account.gamer.tpl.html',
+    templateUrl:'account/gamer/account.gamer.tpl.html',
     controller:'GamerAccountCtrl',
     // resolve:{
     //   projects:['Projects', function(Projects){

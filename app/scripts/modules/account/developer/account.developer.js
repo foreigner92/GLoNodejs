@@ -1,13 +1,14 @@
 'use strict';
 angular.module('account.developer', ['config'], ['$routeProvider', function($routeProvider) {
   $routeProvider.when('/developer/account', {
-    templateUrl:'modules/account/developer/account.developer.tpl.html',
+    templateUrl:'account/developer/account.developer.tpl.html',
     controller:'DeveloperAccountCtrl',
     // resolve:{
     //   projects:['Projects', function(Projects){
     //     return Projects.all();
     //   }]
     // }
+
   });
 }]);
 

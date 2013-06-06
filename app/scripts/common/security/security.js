@@ -107,7 +107,7 @@ angular.module('security.service', [
       } else {
         var currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
         service.currentUser = currentUser;
-        return currentUser;
+        return $q.when(service.currentUser);
       }
     },
 

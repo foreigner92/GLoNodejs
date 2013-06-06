@@ -30,7 +30,7 @@ describe('securityInterceptor', function() {
 
   it('intercepts 401 error responses and adds it to the retry queue', function() {
     var notAuthResponse = {
-      status: 401
+      status: 403
     };
     interceptor(promise);
     var errorHandler = promise.then.mostRecentCall.args[1];

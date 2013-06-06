@@ -1,6 +1,8 @@
 describe('login-navigation', function() {
   var $rootScope, scope, userNav, security;
-  beforeEach(module('common/security/login/navigation.tpl.html', 'security'));
+  angular.module('test', []).value('I18N.MESSAGES', {});
+  beforeEach(module('security/login/navigation.tpl.html', 'security', 'test'));
+
   beforeEach(inject(function(_$rootScope_, $compile, _security_) {
     $rootScope = _$rootScope_;
     security = _security_;
@@ -34,7 +36,7 @@ describe('login-navigation', function() {
   });
 
   it('should display login when user is not authenticated', function() {
-    expect(userNav.find('button:visible').text()).toBe('Log in');
+    expect(userNav.find('button:visible').text()).toBe('Log inRegister');
     expect(userNav.find('button:hidden').text()).toBe('Log out');
   });
 
@@ -42,7 +44,7 @@ describe('login-navigation', function() {
     security.currentUser = {};
     $rootScope.$digest();
     expect(userNav.find('button:visible').text()).toBe('Log out');
-    expect(userNav.find('button:hidden').text()).toBe('Log in');
+    expect(userNav.find('button:hidden').text()).toBe('Log inRegister');
   });
 
   it('should call logout when the logout button is clicked', function () {

@@ -63,7 +63,6 @@ angular.module('directives.remoteForm', ['config'])
               for (var key in res.data.message) {
 
                 if (ctrl.hasFormComponent(key)) {
-                  console.log(ctrl.getFormComponent(key));
                   ctrl.getFormComponent(key).$setValidity('server', false);
                   scope.serverValidationError[key] = res.data.message[key][0];
                 }
@@ -86,7 +85,6 @@ angular.module('directives.remoteForm', ['config'])
     'link': function(scope, element, attrs, ctrls) {
       var formCtrl = ctrls[0];
       var ngModel = ctrls[1];
-      console.log(attrs);
       formCtrl.registerFormComponent(attrs.name, ngModel);
     }
   }

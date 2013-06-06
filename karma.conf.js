@@ -13,10 +13,8 @@ files = [
   'app/components/angular-ui-bootstrap/src/**/*.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
-
   'test/mock/**/*.js',
   'test/spec/**/*.js',
-
   '.tmp/templates/**/*.js'
 
 ];
@@ -47,7 +45,7 @@ colors = true;
 logLevel = LOG_INFO;
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
+autoWatch = true;
 
 // Start these browsers, currently available:
 // - Chrome

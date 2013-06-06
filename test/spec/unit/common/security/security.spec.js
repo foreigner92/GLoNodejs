@@ -1,17 +1,17 @@
 describe('security', function() {
 
-  var $rootScope, $http, $httpBackend, status, userInfo, CONFIG;
+  var $rootScope, $http, $httpBackend, status, userInfo, config;
 
   angular.module('test',[]).constant('I18N.MESSAGES', messages = {});
-  beforeEach(module('security', 'test', 'common/security/login/form.tpl.html'));
-  beforeEach(inject(function(_$rootScope_, _$httpBackend_, _$http_, _CONFIG_) {
+  beforeEach(module('security', 'test', 'security/login/form.tpl.html'));
+  beforeEach(inject(function(_$rootScope_, _$httpBackend_, _$http_, _config_) {
     $rootScope = _$rootScope_;
     $httpBackend = _$httpBackend_;
     $http = _$http_;
-    CONFIG = _CONFIG_
+    config = _config_;
 
-    userInfo = { id: '1234567890', email: 'jo@bloggs.com', firstName: 'Jo', lastName: 'Bloggs'};
-    $httpBackend.when('GET', '/current-user').respond(200, { user: userInfo });
+    userInfo = { id: '1234567890', email: 'jo@bloggs.com', username: 'username'};
+    $httpBackend.when('GET', config.api.host + '/auth/current-user').respond(200, userInfo );
   }));
 
   afterEach(function() {
@@ -35,14 +35,15 @@ describe('security', function() {
 
   describe('login', function() {
     it('sends a http request to login the specified user', function() {
-      $httpBackend.when('POST', CONFIG.api.host + '/login').respond(200, { user: userInfo });
-      $httpBackend.expect('POST', '/login');
-      service.login('email', 'password');
+      $httpBackend.when('POST', config.api.host + '/auth/login').respond(200,  {user: userInfo} );
+      $httpBackend.expect('POST', config.api.host + '/auth/login');
+      service.login('username', 'password');
       $httpBackend.flush();
+
       expect(service.currentUser).toBe(userInfo);
     });
     it('calls queue.retry on a successful login', function() {
-      $httpBackend.when('POST', CONFIG.api.host + '/login').respond(200, { user: userInfo });
+      $httpBackend.when('POST', config.api.host + '/auth/login').respond(200, {user: userInfo} );
       spyOn(queue, 'retryAll');
       service.showLogin();
       service.login('email', 'password');
@@ -52,7 +53,7 @@ describe('security', function() {
       expect(service.currentUser).toBe(userInfo);
     });
     it('does not call queue.retryAll after a login failure', function() {
-      $httpBackend.when('POST', CONFIG.api.host + '/login').respond(200, { user: null });
+      $httpBackend.when('POST', config.api.host + '/auth/login').respond(401, null );
       spyOn(queue, 'retryAll');
       expect(queue.retryAll).not.toHaveBeenCalled();
       service.login('email', 'password');
@@ -63,11 +64,11 @@ describe('security', function() {
 
   describe('logout', function() {
     beforeEach(function() {
-      $httpBackend.when('POST', CONFIG.api.host + '/logout').respond(200, {});
+      $httpBackend.when('POST', config.api.host + '/auth/logout').respond(200, {});
     });
 
     // it('sends a http post to clear the current logged in user', function() {
-    //   $httpBackend.expect('POST', CONFIG.api.host + '/logout');
+    //   $httpBackend.expect('POST', config.api.host + '/logout');
     //   service.logout();
     //   $httpBackend.flush();
     // });
@@ -130,7 +131,7 @@ describe('security', function() {
   describe('requestCurrentUser', function() {
     it('makes a GET request to current-user url', function() {
       expect(service.isAuthenticated()).toBe(false);
-      $httpBackend.expect('GET', '/current-user');
+      $httpBackend.expect('GET', config.api.host + '/auth/current-user');
       service.requestCurrentUser().then(function(data) {
         resolved = true;
         expect(service.isAuthenticated()).toBe(true);

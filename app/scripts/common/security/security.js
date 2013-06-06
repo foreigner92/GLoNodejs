@@ -1,6 +1,5 @@
 // Based loosely around work by Witold Szczerba - https://github.com/witoldsz/angular-http-auth
 angular.module('security.service', [
-  'app',
   'security.retryQueue',    // Keeps track of failed requests that need to be retried once the user logs in
   'security.login',         // Contains the login form template and controller
   'ui.bootstrap.dialog',     // Used to display the login form as a modal dialog.
@@ -101,13 +100,13 @@ angular.module('security.service', [
 
     // Ask the backend to see if a user is already authenticated - this may be from a previous session.
     requestCurrentUser: function() {
-
       if ( service.isAuthenticated() ) {
         return $q.when(service.currentUser);
       } else {
-        var currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
-        service.currentUser = currentUser;
-        return $q.when(service.currentUser);
+        return $http.get(config.api.host + '/auth/current-user').then(function(response) {
+          service.currentUser = response.data;
+          return service.currentUser;
+        });
       }
     },
 

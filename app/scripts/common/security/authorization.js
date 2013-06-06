@@ -48,8 +48,7 @@ angular.module('security.authorization', ['security.service'])
 
       requireDeveloperRole: function () {
         var promise = security.requestCurrentUser().then(function(user) {
-          console.log(user.role);
-          if ( user.role && user.role != 'game_developer') {
+          if ( !user || user.role != 'game_developer') {
             return queue.pushRetryFn('unauthorized-client', service.requireDeveloperRole);
           }
         });
@@ -58,8 +57,7 @@ angular.module('security.authorization', ['security.service'])
 
       requireGamerRole: function () {
         var promise = security.requestCurrentUser().then(function(user) {
-          console.log(user.role);
-          if ( user.role && user.role != 'gamer') {
+          if ( !user || user.role != 'gamer') {
             return queue.pushRetryFn('unauthorized-client', service.requireGamerRole);
           }
         });

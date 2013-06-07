@@ -12,12 +12,11 @@ body {
 }
 
 .alert {
-
-  @include animate(bounceInDown, 1s, 0s);
-
   .error {
     @include animate(shake, 1s, 0s);
   }
+}
 
-
+.modal {
+  @include animate(bounceInDown, 1s, 0s);
 }

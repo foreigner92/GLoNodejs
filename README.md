@@ -37,7 +37,7 @@ GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer
 ##### Clone your fork & add 'upstream' remote
 
 	git clone git@github.com:<USERNAME>/gloliquid-frontend.git
-	git remote add upstream git@github.com/gloliquid/gloliquid-frontend.git
+	git remote add upstream git@github.com/Gloliquid/gloliquid-frontend.git
 
 #### Keeping up-to-date ####
 
@@ -60,6 +60,7 @@ GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer
 
 Now make a pull request from your feature branch on your fork to the `develop` branch on the master repo.  Once the PR has been closed and the changes have been merged with `develop` then repeat 'Keeping up-to-date' and 'finish' the feature branch with the following commands:
 
+  git fetch --all
 	git checkout developer
 	git pull --rebase upstream develop
 	git hf feature finish <NAME_OF_NEW_FEATURE>

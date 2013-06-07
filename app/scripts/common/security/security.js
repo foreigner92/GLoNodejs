@@ -71,8 +71,12 @@ angular.module('security.service', [
         service.currentUser = response.data.user;
 
         // Store authToken and userId in sessionStorage
-        sessionStorage.setItem('authToken', response.data.user.username + ':' + response.data['auth-token']);
+        var authTokenString = response.data.user.username + ':' + response.data['auth-token'];
+        sessionStorage.setItem('authToken', authTokenString);
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
+
+        // Set Auth-Token Header
+        $http.defaults.headers.common['Auth-Token'] = authTokenString;
 
         if ( service.isAuthenticated() ) {
           i18nNotifications.pushSticky('login.success', 'success');

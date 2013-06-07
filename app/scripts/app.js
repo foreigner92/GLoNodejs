@@ -58,10 +58,15 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function ($
   $routeProvider.otherwise({redirectTo:'/'});
 }]);
 
-angular.module('app').run(['security', function(security) {
+angular.module('app').run(['security', '$http', function(security, $http) {
   // Get the current user when the application starts
   // (in case they are still logged in from a previous session)
-  security.requestCurrentUser();
+  var authTokenString = sessionStorage.getItem('authToken') || null;
+  if (authTokenString) {
+    $http.defaults.headers.common['Auth-Token'] = authTokenString;
+    security.requestCurrentUser();
+  }
+
 }]);
 
 angular.module('app').controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications) {

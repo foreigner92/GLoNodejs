@@ -13,7 +13,7 @@
 
 
 ### Install Dependencies ###
-	
+
 The GloLiquid Frontend relys on the [Bower](https://github.com/bower/bower) and [npm](https://npmjs.org/) package managers to handle client-side dependencies and development dependencies respectively.
 
     npm install
@@ -22,7 +22,7 @@ The GloLiquid Frontend relys on the [Bower](https://github.com/bower/bower) and 
 
 ## Development ##
 
-GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/) branching model along with the [Github Pull Request](https://help.github.com/articles/using-pull-requests) mechanism in order to develop features, hotfixes and manage releases. [Hub-Flow](http://datasift.github.io/gitflow/) is highly recommended in order to streamline the command line process. 
+GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/) branching model along with the [Github Pull Request](https://help.github.com/articles/using-pull-requests) mechanism in order to develop features, hotfixes and manage releases. [Hub-Flow](http://datasift.github.io/gitflow/) is highly recommended in order to streamline the command line process.
 
 ### Example (Hub-flow) ###
 #### Process Overview: ####
@@ -37,8 +37,8 @@ GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer
 ##### Clone your fork & add 'upstream' remote
 
 	git clone git@github.com:<USERNAME>/gloliquid-frontend.git
-	git remote add upstream git@github.com/lucidmoon/gloliquid-frontend.git
-	
+	git remote add upstream git@github.com/gloliquid/gloliquid-frontend.git
+
 #### Keeping up-to-date ####
 
 	git checkout develop
@@ -48,7 +48,7 @@ GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer
 
 	git hf feature start <NAME_OF_NEW_FEATURE>
 
-	# Do some work and then stage some changes 
+	# Do some work and then stage some changes
 
 	git add <WHATEVER>
 
@@ -57,7 +57,7 @@ GloLiquid developers are required to adopt the [GitFlow](http://jeffkreeftmeijer
 
 	# push changes to github
 	git hf push
-	
+
 Now make a pull request from your feature branch on your fork to the `develop` branch on the master repo.  Once the PR has been closed and the changes have been merged with `develop` then repeat 'Keeping up-to-date' and 'finish' the feature branch with the following commands:
 
 	git checkout developer
@@ -68,17 +68,17 @@ Now make a pull request from your feature branch on your fork to the `develop` b
 ### Launching the development server ###
 
     grunt server
-    
+
 This will launch a new HTTP server, open your default web browser, watch your changes (including Compass/SASS) and auto-refresh with LiveReload. _n.b ensure you don't have any other instances of LiveReload running otherwise you will run into trouble_
 
 ## Production ##
 
 Building a production distribution:
 
-	grunt build 
-	
+	grunt build
+
 The distribution bundle can be found at `<APP_ROOT>/dist`.
 
-	
+
 
 

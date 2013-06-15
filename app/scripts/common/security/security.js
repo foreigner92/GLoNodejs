@@ -76,7 +76,7 @@ angular.module('security.service', [
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
 
         // Set Auth-Token Header
-        $http.defaults.headers.common['Auth-Token'] = authTokenString;
+        $http.defaults.headers.common['X-Auth-Token'] = authTokenString;
 
         if ( service.isAuthenticated() ) {
           i18nNotifications.pushSticky('login.success', 'success');
@@ -96,7 +96,7 @@ angular.module('security.service', [
       service.currentUser = null;
       delete sessionStorage.authToken;
       delete sessionStorage.user;
-      delete $http.defaults.headers.common['Auth-Token'];
+      delete $http.defaults.headers.common['X-Auth-Token'];
       i18nNotifications.pushForNextRoute('logout.success', 'success', {}, {});
       redirect(redirectTo);
 

@@ -96,23 +96,27 @@ angular.module('security.service', [
 
     // Ask the backend to see if a user is already authenticated - this may be from a previous session.
     requestCurrentUser: function() {
-      // if ( service.isAuthenticated() ) {
-      //   return $q.when(service.currentUser);
-      // } else {
+      if ( service.isAuthenticated() ) {
+        return $q.when(service.currentUser);
+      } else {
 				// Check cookies for goodies
 				var cookieAuthTokenString = $cookieStore.get('authToken');
 				if (cookieAuthTokenString) {
 					$http.defaults.headers.common['X-Auth-Token'] = cookieAuthTokenString;
 				}
 
+				return this.refreshCurrentUser();
+      }
+    },
+
+		refreshCurrentUser: function() {
         return $http.get(config.api.host + '/auth/current-user').then(function(response) {
           service.currentUser = response.data;
           return service.currentUser;
         }, function (err) {
           console.log(err);
         });
-      // }
-    },
+		},
 
     // Information about the current user
     currentUser: null,

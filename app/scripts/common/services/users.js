@@ -12,8 +12,8 @@ angular.module('services.users', []).factory('usersService', ['$rootScope', '$up
 			file: $files
 		}).success(function () {
 			defer.resolve();
-		}).error(function () {
-			defer.reject();
+		}).error(function (err) {
+			defer.reject(err);
 		});
 
 		return defer.promise;

@@ -38,6 +38,7 @@ angular.module('app', [
   'ui.bootstrap.dialog',
 	'ui.bootstrap.dropdownToggle',
 	'ui.bootstrap.tooltip',
+	'ui.bootstrap.tabs',
 	'angularFileUpload'
 ]);
 
@@ -67,10 +68,10 @@ angular.module('app').config(['$routeProvider', '$locationProvider', function ($
   $routeProvider.otherwise({redirectTo:'/'});
 }]);
 
-angular.module('app').run(['security', '$http', function(security, $http) {
+angular.module('app').run(['security', '$http', '$cookieStore', function(security, $http, $cookieStore) {
   // Get the current user when the application starts
   // (in case they are still logged in from a previous session)
-  var authTokenString = sessionStorage.getItem('authToken') || null;
+  var authTokenString = $cookieStore.get('authToken');
   if (authTokenString) {
     $http.defaults.headers.common['X-Auth-Token'] = authTokenString;
     security.requestCurrentUser();

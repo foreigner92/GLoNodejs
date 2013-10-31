@@ -1,5 +1,5 @@
 'use strict';
-angular.module('account.developer', ['config', 'security'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
+angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 	$routeProvider.when('/developer/account', {
 		templateUrl:'account/developer/account.developer.tpl.html',
 		controller:'DeveloperAccountCtrl',
@@ -8,9 +8,18 @@ angular.module('account.developer', ['config', 'security'], ['$routeProvider', '
 		}
 
 	})
+	.when('/account/settings', {redirectTo: '/developer/account/settings'})
 	.when('/developer/account/settings', {
 		templateUrl:'account/developer/account.developer.settings.tpl.html',
 		controller: 'DeveloperAccountCtrl',
+		resolve: {
+			authorization: securityAuthorizationProvider.requireDeveloperRole
+		}
+	})
+	.when('/account/invites', {redirectTo: '/developer/account/invites'})
+	.when('/developer/account/invites', {
+		templateUrl: 'account/developer/account.developer.invites.tpl.html',
+		controller: 'DeveloperAccountInvitesCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireDeveloperRole
 		}
@@ -23,10 +32,6 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 	.then(function (user) {
 		$scope.user = user;
 	});;
-
-	$scope.updateAccountSettings = function () {
-		$scope.updateAccountSettingsLoading = true;
-	};
 
 	$scope.resetPassword = function (e) {
 		$scope.passwordResetLoading = true;
@@ -49,12 +54,10 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 	$scope.uploadProfilePicture = function(files) {
 		usersService.uploadProfilePicture($scope.user, files[0])
 		.then(function () {
-			security.requestCurrentUser()
+			security.refreshCurrentUser()
 			.then(function (user) {
 				$scope.user = user;
-				console.log($scope.user.profilePicture);
-				// $scope.$digest();
-			});;
+			});
 
 		});
 	};
@@ -65,7 +68,6 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 
 		User.update($scope.user, function () {
 			i18nNotifications.pushForCurrentRoute('account.details.updated.success', 'success');
-
 		}, function () {
 
 		});
@@ -75,7 +77,11 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 	}
 }]);
 
-angular.module('account.developer').controller('DeveloperAccountSettingsCtrl',['$scope', function ($scope) {
+angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$scope', 'security', function ($scope, security) {
+	security.requestCurrentUser()
+	.then(function (user) {
+		$scope.user = user;
+	});
 
 }]);
 

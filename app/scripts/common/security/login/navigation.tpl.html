@@ -1,17 +1,39 @@
 <ul class="nav pull-right">
   <li class="divider-vertical"></li>
   <li ng-show="isAuthenticated()">
-      <a href="#">{{currentUser.username}}</a>
+
   </li>
-  <li ng-show="isAuthenticated()" class="logout">
-      <form class="navbar-form">
-          <button class="btn btn-link logout" ng-click="logout()">Log out</button>
-      </form>
+  <li class="dropdown" ng-hide="isAuthenticated()">
+  <a href="#" class="dropdown-toggle">
+    <i class="icon-lock"></i>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li ng-hide="isAuthenticated()" class="login">
+    <a ng-click="login()">Log in</a>
+    </li>
+    <li ng-hide="isAuthenticated()" class="login">
+    <a ng-click="register()">Register</a>
+    </li>
+  </ul>
   </li>
-  <li ng-hide="isAuthenticated()" class="login">
-      <form class="navbar-form">
-          <button class="btn btn-link login" ng-click="login()">Log in</button>
-          <button class="btn btn-link login" ng-click="register()">Register</button>
-      </form>
+  <li ng-show="isAuthenticated()" class="dropdown">
+  <a href="#" class="dropdown-toggle avatar ng-class: {'avatar-default': !currentUser.profilePicture}">
+    {{currentUser.email}}&nbsp;
+    <span class="profile-picture"><i ng-hide="currentUser.profilePicture" class="icon icon-user"></i></span>
+      
+      <img src="http://localhost:3030/profile_pictures/{{ currentUser.profilePicture }}" ng-hide="!currentUser.profilePicture" alt="" width="32" height="32" />
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+    <li class="nav-header">{{ currentUser.company || currentUser.fullname }}</li>
+    <li><a ng-click="account()">Account</a></li>
+    <li><a ng-click="profile()">Profile</a><li>
+    <li><a ng-click="invites()">Invites</a><li>
+    <li class="divider"></li>
+    <li ng-show="isAuthenticated()" class="logout">
+    <a ng-click="logout()">Log out</a>
+    </li>
+  </ul>
   </li>
 </ul>

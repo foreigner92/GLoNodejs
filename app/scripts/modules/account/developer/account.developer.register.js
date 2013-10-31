@@ -11,39 +11,39 @@ angular.module('account.developer.register', ['resources.platforms', 'resources.
     role: 'game_developer'
   };
 
-  $scope.platformSelectOptions = {
-    data: function () {
-      return {
-        results: $scope.platforms
-      };
-    }
-  };
+  // $scope.platformSelectOptions = {
+  //   data: function () {
+  //     return {
+  //       results: $scope.platforms
+  //     };
+  //   }
+  // };
 
-  $scope.genresSelectOptions = {
-    data: function () {
-      return {
-        results: $scope.genres
-      };
-    }
-  };
+  // $scope.genresSelectOptions = {
+  //   data: function () {
+  //     return {
+  //       results: $scope.genres
+  //     };
+  //   }
+  // };
 
-  Platform.index(function (platforms) {
-    $scope.platforms = platforms.map(function (platform) {
-      return {
-        id: platform.id,
-        text: platform.name
-      };
-    });
-  });
+  // Platform.index(function (platforms) {
+  //   $scope.platforms = platforms.map(function (platform) {
+  //     return {
+  //       id: platform.id,
+  //       text: platform.name
+  //     };
+  //   });
+  // });
 
-  Genre.index(function (genres) {
-    $scope.genres = genres.map(function (genre) {
-      return {
-        id: genre.id,
-        text: genre.name
-      };
-    });
-  });
+  // Genre.index(function (genres) {
+  //   $scope.genres = genres.map(function (genre) {
+  //     return {
+  //       id: genre.id,
+  //       text: genre.name
+  //     };
+  //   });
+  // });
 
   $scope.success = function () {
     $location.path('/account/register/success');

@@ -14,6 +14,7 @@ angular.module('app', [
   'services.breadcrumbs',
   'services.i18nNotifications',
   'services.httpRequestTracker',
+	'services.users',
   'security.login.navigation',
   'security',
   'directives.crud',
@@ -21,6 +22,7 @@ angular.module('app', [
   // Resources
   'resources.platforms',
   'resources.genres',
+  'resources.users',
 
   // Templates
   'templates.app',
@@ -31,8 +33,12 @@ angular.module('app', [
 
   // Vendor
   'ngResource',
+	'ngCookies',
   'ui',
-  'ui.bootstrap.dialog'
+  'ui.bootstrap.dialog',
+	'ui.bootstrap.dropdownToggle',
+	'ui.bootstrap.tooltip',
+	'angularFileUpload'
 ]);
 
 //TODO: move those messages to a separate module
@@ -41,16 +47,19 @@ angular.module('app').constant('I18N.MESSAGES', {
   'crud.user.save.success':"A user with id '{{id}}' was saved successfully.",
   'crud.user.remove.success':"A user with id '{{id}}' was removed successfully.",
   'crud.user.remove.error':"Something went wrong when removing user with id '{{id}}'.",
-  'crud.user.save.error':"Something went wrong when saving a user...",
+  'crud.user.save.error':"Something went wrong when trying to save a user...",
   'crud.project.save.success':"A project with id '{{id}}' was saved successfully.",
   'crud.project.remove.success':"A project with id '{{id}}' was removed successfully.",
   'crud.project.save.error':"Something went wrong when saving a project...",
   'login.reason.notAuthorized':"You do not have the necessary access permissions.  Do you want to login as someone else?",
   'login.reason.notAuthenticated':"You must be logged in to access this part of the application.",
   'login.error.invalidCredentials': "Login failed.  Please check your credentials and try again.",
+	'login.error.emailVerificationIncomplete': 'You must verify your email address before you can access the system',
   'login.error.serverError': "There was a problem with authenticating: {{exception}}.",
   'login.success': 'You have successfully logged in.',
   'logout.success': 'You have successfully logged out of your account.',
+	'account.details.password.reset.email.sent': 'We\'ve sent an email to your registered email account.  Check your inbox for further instructions',
+	'account.details.updated.success': 'Account details succesfully updated'
 });
 
 angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -63,7 +72,7 @@ angular.module('app').run(['security', '$http', function(security, $http) {
   // (in case they are still logged in from a previous session)
   var authTokenString = sessionStorage.getItem('authToken') || null;
   if (authTokenString) {
-    $http.defaults.headers.common['Auth-Token'] = authTokenString;
+    $http.defaults.headers.common['X-Auth-Token'] = authTokenString;
     security.requestCurrentUser();
   }
 
@@ -91,32 +100,21 @@ angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route',
   $scope.isAdmin = security.isAdmin;
 
   $scope.home = function () {
-    if (security.isAuthenticated()) {
-      $location.path('/account');
-    } else {
-      $location.path('/');
-    }
+		$location.path('/');
   };
 
-  $scope.navUser = [
-    {
-      name: 'item 1',
-      href: 'some link'
-    }
-  ];
-
-  if (!security.isAuthenticated()) {
-    $scope.navUser = [
-      {
-        name: 'Login',
-        href: '/login'
-      },
-      {
-        name: 'Register',
-        href: '/register'
-      }
-    ];
-  }
+  // if (!security.isAuthenticated()) {
+  //   $scope.navUser = [
+  //     {
+  //       name: 'Login',
+  //       href: '/login'
+  //     },
+  //     {
+  //       name: 'Register',
+  //       href: '/register'
+  //     }
+  //   ];
+  // }
 
   $scope.config = config;
 
@@ -130,85 +128,4 @@ angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route',
 }]);
 
 
-  // var imvgm = angular.module('imvgm', ['ngResource', 'ui', 'ui.bootstrap.dialog']);
-
-  // imvgm.value('apiHost', 'http://localhost:3030\:3030');
-  // imvgm.value('apiHostRaw', 'http://localhost:3030');
-  // imvgm.value('config', {
-  //   app: {
-  //     name: 'app',
-  //     version: 'alpha'
-  //   }
-  // });
-
-  // imvgm.config(['$routeProvider', '$httpProvider', '$locationProvider', '$dialogProvider', function($routeProvider, $http, $locationProvider, $dialog) {
-  //     $routeProvider.when('/', {
-  //       templateUrl: 'views/main.html',
-  //       controller: 'MainCtrl'
-  //     })
-  //       .when('/login', {
-  //           template: '<div></div>',
-  //           controller: function ($dialog) {
-  //             var d = $dialog.dialog({keyboard:false, backdropClick: false});
-  //             d.open('templates/dialogs/login.html', 'AuthCtrl');
-  //           }
-  //       })
-  //       .when('/logout', {
-  //           templateUrl: 'views/logout.html',
-  //           controller: function($location) {
-  //             delete sessionStorage.authToken;
-  //             delete sessionStorage.user;
-  //             delete $http.defaults.headers.common['Auth-Token'];
-  //             $location.path('/');
-  //           }
-  //       })
-  //       .when('/register', {
-  //           templateUrl: 'views/register.html',
-  //           controller: 'AuthCtrl'
-  //       })
-  //       .when('/account/verify/:token', {
-  //         templateUrl: 'views/account/verify.html',
-  //         controller: 'EmailVerificationCtrl',
-  //         resolve: {
-  //           verification: ['AuthService', '$q', '$route', function (AuthService, $q, $route) {
-  //             var deferred = $q.defer()
-  //               , token = $route.current.params.token;
-
-  //             AuthService.verifyEmailAddress(token)
-  //               .then(function (data) {
-  //                 console.log(data);
-  //                 if ( !data.error ) {
-  //                   deferred.resolve(data);
-  //                 } else {
-  //                   console.log('reject');
-  //                   deferred.reject();
-  //                 }
-
-  //               }, function (err) {
-
-  //                 deferred.reject(err);
-  //               });
-  //             return deferred.promise;
-  //           }]
-  //         }
-  //       })
-  //       .when('/account', {
-  //         templateUrl: 'views/account.html',
-  //         controller: 'AccountCtrl'
-  //       })
-  //       .otherwise({
-  //           redirectTo: '/'
-  //       });
-
-  //   // Push response interceptor
-  //   $http.responseInterceptors.push('httpInterceptor');
-
-  //   // Check session storage for authToken
-  //   var authToken = sessionStorage.getItem('authToken') || null;
-
-  //   if (authToken) {
-  //     // Set Auth-Token header
-  //     $http.defaults.headers.common['Auth-Token'] = authToken;
-  //   }
-  // }]);
 })(angular);

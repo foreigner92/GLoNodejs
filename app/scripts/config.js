@@ -1,7 +1,7 @@
 angular.module('config', []);
 angular.module('config').constant('config', {
-  name: 'GloLiquid',
-  version: 'alpha',
+  name: 'TastemakerTools',
+  version: '1.0',
   api: {
     host: 'http://localhost:3030'
   }

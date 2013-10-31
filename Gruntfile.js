@@ -78,6 +78,9 @@ module.exports = function (grunt) {
         module: 'templates.common'
       }
     },
+    livereload: {
+      port: 35730
+    },
     connect: {
       options: {
         port: 9000,
@@ -86,6 +89,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
+          // port: 35730,
           middleware: function (connect) {
             return [
               lrSnippet,
@@ -167,7 +171,8 @@ module.exports = function (grunt) {
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: '<%= yeoman.app %>/components',
-        relativeAssets: true
+        relativeAssets: true,
+				require: 'bootstrap-sass'
       },
       dist: {},
       server: {

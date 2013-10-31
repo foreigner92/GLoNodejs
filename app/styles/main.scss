@@ -1,6 +1,7 @@
+@import "compass";
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_awesome";
-@import "compass_twitter_bootstrap_responsive";
+// @import "compass_twitter_bootstrap_responsive";
 @import "animate";
 @import "../../components/select2/select2.css";
 
@@ -8,7 +9,16 @@
 // @import "common/security/login/_navigation"
 
 body {
-  padding: 60px 0 0 0;
+  padding: 80px 0 0 0;
+}
+
+.navbar .nav > li,
+.navbar .brand {
+  line-height: 32px;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+  margin-top: 16px;
 }
 
 .alert {
@@ -19,4 +29,43 @@ body {
 
 .modal {
   @include animate(bounceInDown, 1s, 0s);
+}
+
+.avatar {
+  &.avatar-default {
+    > span {
+    background: #ccc;
+    display: inline-block;
+    width: 32px; height: 32px;
+    text-align: center;
+    &:hover {
+      background: #ccc !important;
+    }
+  }
+  }
+
+}
+
+.account {
+
+  input[type=file] {
+    display: none;
+  }
+
+  .avatar {
+      cursor: pointer;
+      height: 200px;
+      width: 200px;
+    &.avatar-default {
+      > span {
+        display: block;
+        color: #999;
+        width: 200px; height: 200px;
+        background: #ccc;
+      }
+      font-size: 200px;
+      padding: 20px;
+      text-align: center;
+    }
+  }
 }

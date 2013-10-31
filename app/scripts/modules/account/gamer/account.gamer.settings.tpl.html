@@ -1,0 +1,49 @@
+<div class="account">
+<div class="row-fluid">
+  <div class="span3">
+    <div class="well well-small">
+      <ul class="nav nav-list">
+        <li class="nav-header">My Account</li>
+        <li class="active"><a href="/#/gamer/account/settings">Account Settings</a></li>
+        <li class="nav-header">Profile</li>
+        <li><a href="">Edit Profile</a></li>
+        <li><a href="">View Public Profile</a></li>
+        <li class="nav-header">Invites ({{ user.inviteCount }})</li>
+        <li><a href="">Invite People</a></li>
+      </ul> 
+    </div>
+
+  </div>
+  <div class="span9">
+
+
+    <form name="userDetailsForm">
+      <fieldset>
+        <legend>Account</legend>
+        <div class="pull-right">
+        <div class="avatar ng-class: {'avatar-default': !user.profilePicture}" tooltip="Click to Change" tooltip-toggle="mouseenter" tooltip-placement="bottom" ng-click="showFilesystemDialog()">
+          <span ng-hide="user.profilePicture"><i class="icon-user"></i></span>
+          <img ng-show="user.profilePicture" src="http://localhost:3030/profile_pictures/{{user.profilePicture}}" alt="" />
+        </div>
+        <!-- <p><a href="" ng-click="uploadProfilePicture">Change Profile Picture</a></p> -->
+        <input type="file" name="profilePicture" ng-file-select="uploadProfilePicture($files)"/>
+      </div>
+        <label for="">Name</label>
+        <input type="text" ng-model="user.fullname" placeholder="Name" required />
+        <label for="">Email</label>
+        <input type="email" ng-model="user.email" placeholder="Name" required />
+        <div>
+          <button ng-disabled="updateAccountSettingsLoading" type="submit" class="btn btn-primary" ng-click="submit(userDetailsForm)">Save</button>
+        </div>
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        <legend>Password</legend>
+        <p><a class="btn btn-warning" ng-disabled="passwordResetLoading" href="" ng-click="resetPassword()">Reset Password</a></p>
+      </fieldset>
+  </div>
+</div>
+
+</div>
+

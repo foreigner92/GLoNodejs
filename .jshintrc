@@ -28,5 +28,10 @@
     "sinon": true,
     "it": true,
     "expect": true
-  }
+  },
+  "prefdef":[
+    "angular"
+  ]
+
+
 }

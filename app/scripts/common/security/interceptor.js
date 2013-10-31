@@ -5,7 +5,8 @@ angular.module('security.interceptor', ['security.retryQueue'])
   return function(promise) {
     // Intercept failed requests
     return promise.then(null, function(originalResponse) {
-      if(originalResponse.status === 403) {
+			console.log(originalResponse);
+      if(originalResponse.status === 403 && originalResponse.config.url.indexOf('/auth/login') == -1) {
         // The request bounced because it was not authorized - add a new request to the retry queue
         promise = queue.pushRetryFn('unauthorized-server', function retryRequest() {
           // We must use $injector to get the $http service to prevent circular dependency

@@ -7,7 +7,7 @@ angular.module('security.service', [
   'config'
 ])
 
-.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'config', '$injector', function($http, $q, $location, queue, $dialog, config, $injector) {
+.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'config', '$injector', '$cookieStore', function($http, $q, $location, queue, $dialog, config, $injector, $cookieStore) {
 
   var i18nNotifications = $injector.get('i18nNotifications');
 
@@ -32,12 +32,13 @@ angular.module('security.service', [
     }
   }
   function onLoginDialogClose(success) {
-    loginDialog = null;
+    // console.log(success);
+		loginDialog = null;
     if ( success ) {
       queue.retryAll();
     } else {
-      queue.cancelAll();
-      redirect();
+      // queue.cancelAll();
+      // redirect();
     }
   }
 
@@ -61,29 +62,14 @@ angular.module('security.service', [
       openLoginDialog();
     },
 
+		closeLoginDialog: function (cb) {
+			closeLoginDialog(false);
+		},
+
     // Attempt to authenticate a user by the given email and password
-    login: function(username, password) {
-
-      var request = $http.post(config.api.host + '/auth/login', {username: username, password: password});
-
-      return request.then(function(response) {
-
-        service.currentUser = response.data.user;
-
-        // Store authToken and userId in sessionStorage
-        var authTokenString = response.data.user.username + ':' + response.data['auth-token'];
-        sessionStorage.setItem('authToken', authTokenString);
-        sessionStorage.setItem('user', JSON.stringify(response.data.user));
-
-        // Set Auth-Token Header
-        $http.defaults.headers.common['X-Auth-Token'] = authTokenString;
-
-        if ( service.isAuthenticated() ) {
-          i18nNotifications.pushSticky('login.success', 'success');
-          closeLoginDialog(true);
-        }
-      });
-    },
+    login: function(email, password) {
+			return $http.post(config.api.host + '/auth/login', {email: email, password: password});
+		},
 
     // Give up trying to login and clear the retry queue
     cancelLogin: function() {
@@ -94,9 +80,15 @@ angular.module('security.service', [
     // Logout the current user and redirect
     logout: function(redirectTo) {
       service.currentUser = null;
+			// Delete Session Storage
       delete sessionStorage.authToken;
       delete sessionStorage.user;
+			// Delete X-Auth-Token
       delete $http.defaults.headers.common['X-Auth-Token'];
+			// Delete Cookies
+			$cookieStore.remove('authToken');
+			$cookieStore.remove('user');
+
       i18nNotifications.pushForNextRoute('logout.success', 'success', {}, {});
       redirect(redirectTo);
 
@@ -104,14 +96,22 @@ angular.module('security.service', [
 
     // Ask the backend to see if a user is already authenticated - this may be from a previous session.
     requestCurrentUser: function() {
-      if ( service.isAuthenticated() ) {
-        return $q.when(service.currentUser);
-      } else {
+      // if ( service.isAuthenticated() ) {
+      //   return $q.when(service.currentUser);
+      // } else {
+				// Check cookies for goodies
+				var cookieAuthTokenString = $cookieStore.get('authToken');
+				if (cookieAuthTokenString) {
+					$http.defaults.headers.common['X-Auth-Token'] = cookieAuthTokenString;
+				}
+
         return $http.get(config.api.host + '/auth/current-user').then(function(response) {
           service.currentUser = response.data;
           return service.currentUser;
+        }, function (err) {
+          console.log(err);
         });
-      }
+      // }
     },
 
     // Information about the current user
@@ -139,7 +139,21 @@ angular.module('security.service', [
 
       return deferred.promise;
 
-    }
+    },
+
+		requestPasswordReset: function (email) {
+			return $http.post(config.api.host + '/auth/request_password_reset', {
+				email: email
+			});
+		},
+
+		resetPasswordWithToken: function (newPassword, token) {
+			return $http.post(config.api.host + '/auth/reset_password', {
+				password: newPassword,
+				token: token
+			});
+		}
+
   };
 
   return service;

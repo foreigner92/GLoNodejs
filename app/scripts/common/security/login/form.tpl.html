@@ -10,23 +10,26 @@
     <div class="alert alert-error" ng-show="authError">
       {{authError}}
     </div>
-    <form class="form" novalidate class="login-form">
+    <form novalidate class="form login-form">
       <fieldset>
         <div class="control-group">
           <div class="controls">
-            <input name="username" data-ng-model="user.username" type="text" placeholder="Username" required autofocus />
+            <input name="email" data-ng-model="user.email" type="text" placeholder="Email" required autofocus />
           </div>
         </div>
         <div class="control-group">
           <div class="controls">
             <input name="password" data-ng-model="user.password" type="password" placeholder="Password" required />
-           <span class="help-block"><a href="#/password/reset">Forgotten your password?</a><br /><a href="#/register">Create an Account</a></span>
+           <span class="help-block"><a ng-click="resetPassword()" href="">Forgotten your password?</a><br /><a href="#/register">Create an Account</a></span>
           </div>
         </div>
     </fieldset>
     </form>
   </div>
   <div class="modal-footer">
+      <label class="pull-left">
+      <input type="checkbox" data-ng-model="user.rememberLogin" value="true" /> Keep me logged in?
+      </label>
     <button class="btn btn-primary login" ng-click="login()" ng-disabled='form.$invalid'>Sign in</button>
     <button class="btn btn-warning cancel" ng-click="cancelLogin()">Cancel</button>
   </div>

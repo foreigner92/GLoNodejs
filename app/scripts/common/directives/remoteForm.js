@@ -48,6 +48,7 @@ angular.module('directives.remoteForm', ['config'])
         if (!isSubmitted) {
           return;
         }
+				console.log(attrs);
 
       $http.post(config.api.host + '/auth/register', scope.formData)
         .then(

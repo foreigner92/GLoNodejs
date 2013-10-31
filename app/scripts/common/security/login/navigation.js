@@ -12,6 +12,10 @@ angular.module('security.login.navigation', [])
       $scope.isAuthenticated = security.isAuthenticated;
       $scope.login = security.showLogin;
       $scope.logout = security.logout;
+			$scope.account = function () {
+				$location.path('/account');
+			};
+
       $scope.$watch(function() {
         return security.currentUser;
       }, function(currentUser) {

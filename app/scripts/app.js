@@ -32,6 +32,8 @@ angular.module('app', [
   'config',
 
   // Vendor
+	'angulartics',
+	'angulartics.google.analytics',
   'ngResource',
 	'ngCookies',
   'ui',

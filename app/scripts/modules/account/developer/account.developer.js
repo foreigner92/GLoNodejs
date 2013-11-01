@@ -13,7 +13,8 @@ angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs'],
 		templateUrl:'account/developer/account.developer.settings.tpl.html',
 		controller: 'DeveloperAccountCtrl',
 		resolve: {
-			authorization: securityAuthorizationProvider.requireDeveloperRole
+			authorization: securityAuthorizationProvider.requireDeveloperRole,
+
 		}
 	})
 	.when('/account/invites', {redirectTo: '/developer/account/invites'})
@@ -21,7 +22,22 @@ angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs'],
 		templateUrl: 'account/developer/account.developer.invites.tpl.html',
 		controller: 'DeveloperAccountInvitesCtrl',
 		resolve: {
-			authorization: securityAuthorizationProvider.requireDeveloperRole
+			authorization: securityAuthorizationProvider.requireDeveloperRole,
+			invites: ['$http','security', 'config', function ($http, security, config) {
+				console.log('here');
+				return security.requestCurrentUser()
+					.then(function (user) {
+						$http.get(config.api.host + '/users/' + user.id + '/invites')
+							.success(function (invites) {
+								console.log(invites);
+								return invites;
+							})
+							.error(function (err) {
+								console.log(err);
+								return err;
+							});
+					});
+				}]
 		}
 	});
 }]);
@@ -77,11 +93,21 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 	}
 }]);
 
-angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$scope', 'security', function ($scope, security) {
+angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$scope', 'security','config','$http', function ($scope, security, config, $http) {
 	security.requestCurrentUser()
 	.then(function (user) {
 		$scope.user = user;
 	});
+
+	$scope.generateInviteCode = function() {
+		$http.post(config.api.host + '/invites/create')
+			.success(function (invite) {
+				console.log(invite);
+			})
+			.error(function (err) {
+				console.log(err);
+			});
+	};
 
 }]);
 

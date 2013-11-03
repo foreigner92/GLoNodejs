@@ -22,32 +22,14 @@
         <fieldset>
           <legend>Invite by Email</legend>
           <p>You can invite people by sending them an email.  You have <span class="badge badge-info">{{ user.inviteCount }}</span> invites remaning.<p>
-          <div class="well well-large">
-            <h4>Send Email Invites</h4>
-
-            <input class="input-xxlarge" type="text" ui-select2="{tags:[]}" ng-model="select2" data-placeholder="Enter some email addresses..." />
-            <span class="help-block">Just hit enter after each email address and hit send when you're done.</span>
-            <button class="btn btn-primary">Send</button>
-          </div>
-
+          <email-invites invites="invites"></email-invites>
         </fieldset>
       </form>
       <form class="form">
         <fieldset>
           <legend>Generate Invite Code</legend>
           <p>You can invite people by generating an invite code and sending the code to them yourself</p>
-          <div class="well well-large">
-            <h4>Active Invites</h4>
-            <p><em>You have 3 active invites</em></p>
-            <p><a class="btn btn-mini" ng-click="generateInviteCode()">Generate a new Invite Code</a></p>
-            <ul class="codes">
-              <li><span class="label label-info">A23DSfGSD</span> <i class="icon-share pull-right"></i></li>
-              <li><span class="label label-info">A23DSfGSD</span></li>
-              <li><span class="label label-info">A23DSfGSD</span></li>
-            </ul>
-
-          </div>
-
+          <active-invites invites="invites"></active-invites>
           <hr />
 
           <h4>Invite History</h4>

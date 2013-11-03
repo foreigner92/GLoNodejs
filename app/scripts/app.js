@@ -15,6 +15,7 @@ angular.module('app', [
   'services.i18nNotifications',
   'services.httpRequestTracker',
 	'services.users',
+	'services.invites',
   'security.login.navigation',
   'security',
   'directives.crud',

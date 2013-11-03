@@ -1,5 +1,5 @@
 'use strict';
-angular.module('account', ['config', 'security'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
+angular.module('account', ['config', 'security', 'services.invites'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 
   $routeProvider.when('/account', {
     templateUrl: 'account/account.tpl.html',
@@ -148,21 +148,102 @@ angular.module('account')
 
 	}
 
-}]).directive('inviteHistory', ['$q',function ($q) {
+}]).directive('emailInvites', [function () {
+
+	var directive = {
+		restrict: 'E',
+		templateUrl: 'scripts/modules/account/account.emailInvites.tpl.html',
+		scope: {
+			invites: '='
+		},
+		controller: ['$scope', '$element', '$attrs', 'invitesService','$timeout','security', function ($scope, $element, $attrs, invitesService, $timeout, security) {
+			$scope.emailAddresses = [];
+			$scope.send = function () {
+
+				var emailAddresses = $scope.emailAddresses.map(function (item) {
+					return item.text;
+				});
+
+
+					// $element.find('input[type=hidden]').val() !="" ? $element.find('input[type=hidden]').val().split(',') : undefined;
+
+
+				if (emailAddresses) {
+					invitesService.sendEmailInvites(emailAddresses)
+						.success(function (invites) {
+							var inviteArr = [];
+							invites.forEach(function (invite) {
+								$scope.invites.unshift(invite);
+							});
+
+							$scope.emailAddresses = [];
+
+							security.requestCurrentUser()
+								.then(function (currentUser) {
+								currentUser.inviteCount = currentUser.inviteCount - invites.length;
+							});
+						})
+						.error(function (err) {
+							console.log(err);
+						});
+				}
+			};
+		}]
+	};
+
+	return directive;
+
+}]).directive('inviteHistory', [function () {
 	var directive = {
 		restrict: 'E',
 		templateUrl: 'scripts/modules/account/account.inviteHistory.tpl.html',
 		scope: {
 			invites: '='
 		},
-		link: function (scope, element, attrs) {
-		// scope.$watch('invites', function (invites) {
-			// 	console.log(invites);
-			// });
-		}
-		// controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
-		// 	$scope.invites = $attrs.invites;
-		// }]
+		controller: ['$scope', '$element', '$attrs', '$timeout', function ($scope, $element, $attrs, $timeout) {
+				$timeout(function () {
+					$scope.$apply();
+				}, 60000);
+
+				$scope.$watch('invites', function (invites) {
+					console.log('WATCH');
+					console.log($scope.invites);
+					// $scope.$apply();
+				});
+
+		}]
+
+	};
+
+	return directive;
+}]).directive('activeInvites', ['invitesService', function(invitesService) {
+	var directive = {
+		restrict: 'E',
+		templateUrl: 'scripts/modules/account/account.activeInvites.tpl.html',
+		scope: {
+			invites: '='
+		},
+		controller: ['$scope', '$element', '$attrs', 'security', function ($scope, $element, $attrs, security) {
+
+			$scope.generateInviteCode = function () {
+				invitesService.generateInviteCode()
+					.success(function (invite) {
+						$scope.invites.unshift(invite);
+						security.requestCurrentUser()
+							.then(function (currentUser) {
+								currentUser.inviteCount--;
+							});
+
+					})
+					.error(function (err) {
+						console.log(err);
+					});
+			};
+
+			$scope.showPendingInvites = function (item) {
+				return (item.status === 'pending');
+			};
+		}]
 	};
 
 	return directive;

@@ -95,7 +95,7 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 	}
 }]);
 
-angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$q','$scope', 'security','config','$http', 'invites', function ($q, $scope, security, config, $http, invites) {
+angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$q','$scope', 'security','config','$http', 'invites', 'invitesService', function ($q, $scope, security, config, $http, invites, invitesService) {
 
 	$q.when(invites).then(function (invites) {
 		$scope.invites = invites;
@@ -108,12 +108,11 @@ angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$
 	});
 
 	$scope.generateInviteCode = function() {
-		$http.post(config.api.host + '/invites/create')
-			.success(function (invite) {
-				console.log(invite);
+		invitesService.generateInviteCode()
+			.success(function () {
+
 			})
-			.error(function (err) {
-				console.log(err);
+			.error(function () {
 			});
 	};
 

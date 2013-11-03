@@ -17,7 +17,7 @@
     <div class="span9">
 
 
-        <h2>Invites</h2>
+      <h2>Invites</h2>
       <form class="form" name="invitesForm">
         <fieldset>
           <legend>Invite by Email</legend>
@@ -40,27 +40,20 @@
             <h4>Active Invites</h4>
             <p><em>You have 3 active invites</em></p>
             <p><a class="btn btn-mini" ng-click="generateInviteCode()">Generate a new Invite Code</a></p>
-            
             <ul class="codes">
               <li><span class="label label-info">A23DSfGSD</span> <i class="icon-share pull-right"></i></li>
               <li><span class="label label-info">A23DSfGSD</span></li>
               <li><span class="label label-info">A23DSfGSD</span></li>
             </ul>
 
-        </div>
-      
-            <hr />
-              
-            <h4>Invite History</h4>
-            <div class="well well-large">
-            <ul class="codes">
-              <li><span class="label label-success">A23DSfGSD</span> <em>was redeemed by <i class="icon-user"></i><strong>Lucid Games</strong> yesterday at 21:59</em></li>
-              <li><span class="label label-info">A23DSfGSD</span> <em>was sent to <i class="icon-envelope"></i><strong>matt@lucidmoon.co.uk</strong> yesterday at 20:22</em></li>
-              <li><span class="label">A23DSfGSD</span> <em>was generated yesterday at 13:49</em></li>
-            </ul>
           </div>
-      </div>
-    </div>
 
-  </div>
+          <hr />
+
+          <h4>Invite History</h4>
+          <invite-history invites="invites"></invite-history>
+        </div>
+      </div>
+
+    </div>
 

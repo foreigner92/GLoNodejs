@@ -18,6 +18,7 @@ angular.module('app', [
   'security.login.navigation',
   'security',
   'directives.crud',
+	'filters.fromNow',
 
   // Resources
   'resources.platforms',

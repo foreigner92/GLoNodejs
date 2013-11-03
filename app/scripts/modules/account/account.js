@@ -148,5 +148,22 @@ angular.module('account')
 
 	}
 
-}]);
+}]).directive('inviteHistory', ['$q',function ($q) {
+	var directive = {
+		restrict: 'E',
+		templateUrl: 'scripts/modules/account/account.inviteHistory.tpl.html',
+		scope: {
+			invites: '='
+		},
+		link: function (scope, element, attrs) {
+		// scope.$watch('invites', function (invites) {
+			// 	console.log(invites);
+			// });
+		}
+		// controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+		// 	$scope.invites = $attrs.invites;
+		// }]
+	};
 
+	return directive;
+}]);

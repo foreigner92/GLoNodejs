@@ -23,19 +23,21 @@ angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs'],
 		controller: 'DeveloperAccountInvitesCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireDeveloperRole,
-			invites: ['$http','security', 'config', function ($http, security, config) {
+			invites: ['$http','security', 'config', '$q', function ($http, security, config, $q) {
 				console.log('here');
 				return security.requestCurrentUser()
 					.then(function (user) {
+						var deferred = $q.defer();
+
 						$http.get(config.api.host + '/users/' + user.id + '/invites')
-							.success(function (invites) {
-								console.log(invites);
-								return invites;
+							.success(function (data) {
+								deferred.resolve(data.invites);
 							})
 							.error(function (err) {
-								console.log(err);
-								return err;
+								deferred.reject(err);
 							});
+
+							return deferred.promise;
 					});
 				}]
 		}
@@ -93,7 +95,13 @@ angular.module('account.developer').controller('DeveloperAccountCtrl',['$scope',
 	}
 }]);
 
-angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$scope', 'security','config','$http', function ($scope, security, config, $http) {
+angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$q','$scope', 'security','config','$http', 'invites', function ($q, $scope, security, config, $http, invites) {
+
+	$q.when(invites).then(function (invites) {
+		$scope.invites = invites;
+	});
+
+
 	security.requestCurrentUser()
 	.then(function (user) {
 		$scope.user = user;
@@ -110,4 +118,5 @@ angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$
 	};
 
 }]);
+
 

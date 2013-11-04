@@ -1,5 +1,5 @@
 'use strict';
-angular.module('account', ['config', 'security', 'services.invites'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
+angular.module('account', ['config', 'security', 'services.invites', 'ngRoute'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 
   $routeProvider.when('/account', {
     templateUrl: 'account/account.tpl.html',

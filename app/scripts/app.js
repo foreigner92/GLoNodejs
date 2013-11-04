@@ -37,6 +37,7 @@ angular.module('app', [
 	'angulartics',
 	'angulartics.google.analytics',
   'ngResource',
+	'ngRoute',
 	'ngCookies',
   'ui',
   'ui.bootstrap.dialog',
@@ -46,6 +47,7 @@ angular.module('app', [
 	'angularFileUpload',
 	'chieffancypants.loadingBar',
 	'ngAnimate'
+
 ]);
 
 //TODO: move those messages to a separate module

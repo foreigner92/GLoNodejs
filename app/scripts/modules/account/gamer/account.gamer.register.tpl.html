@@ -7,11 +7,11 @@
         <strong>Uh Oh!</strong> Best check yo self, you're not looking too good.
       </div>
 
-      <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.fullname.$valid}">
+      <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.inviteToken.$valid}">
         <div class="controls">
-          <label for="imvgm-reg-frm-fullname">Invite Code:</label>
-          <input name="fullname" id="imvgm-reg-frm-fullname" data-remote-form-component="" data-ng-model="newUser.inviteCode" type="text" placeholder="Full Name" />
-          <span class="help-inline" data-ng-show="!imvgmRegistrationForm.inviteCode.$valid && imvgmRegistrationForm.inviteCode.$error.server">Please enter your Invite Code.</span>
+          <label for="imvgm-reg-frm-inviteToken">Invite Code:</label>
+          <input name="inviteToken" id="imvgm-reg-frm-inviteToken" data-remote-form-component="" data-ng-model="newUser.inviteToken" type="text" placeholder="Full Name" />
+          <span class="help-inline" data-ng-show="!imvgmRegistrationForm.inviteToken.$valid && imvgmRegistrationForm.inviteToken.$error.server">Invalid Invite Code.</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.fullname.$valid}">

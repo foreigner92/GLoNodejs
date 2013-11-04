@@ -211,6 +211,7 @@ angular.module('account')
 					// $scope.$apply();
 				});
 
+
 		}]
 
 	};
@@ -224,6 +225,7 @@ angular.module('account')
 			invites: '='
 		},
 		controller: ['$scope', '$element', '$attrs', 'security', function ($scope, $element, $attrs, security) {
+
 
 			$scope.generateInviteCode = function () {
 				invitesService.generateInviteCode()
@@ -242,6 +244,16 @@ angular.module('account')
 
 			$scope.showPendingInvites = function (item) {
 				return (item.status === 'pending');
+			};
+
+			ZeroClipboard.setDefaults({
+				moviePath: '/components/zeroclipboard/ZeroClipboard.swf'
+			});
+
+
+			$scope.copyToClipboard = function (token) {
+				var clip = new ZeroClipboard();
+				clip.setText(token);
 			};
 		}]
 	};

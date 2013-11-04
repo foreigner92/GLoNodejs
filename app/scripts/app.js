@@ -43,7 +43,9 @@ angular.module('app', [
 	'ui.bootstrap.dropdownToggle',
 	'ui.bootstrap.tooltip',
 	'ui.bootstrap.tabs',
-	'angularFileUpload'
+	'angularFileUpload',
+	'chieffancypants.loadingBar',
+	'ngAnimate'
 ]);
 
 //TODO: move those messages to a separate module

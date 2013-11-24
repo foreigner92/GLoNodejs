@@ -1,0 +1,9 @@
+<div data-ng-show="validated">
+<h1>All done!</h1>
+<p>Your email address has been verified.  You're all ready to go. <a href="" data-ng-click="showLogin()">Login?</a></p>
+</div>
+
+<div data-ng-hide="validated">
+<h1>Uh oh!</h1>
+<p>It looks like something went wrong.  Perhaps you've already verified your email address.  Try <a href="" data-ng-click="showLogin()">logging in</a>.</p>
+</div>

@@ -1,0 +1,39 @@
+<div>
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancelLogin()">&times;</button>
+    <h3>Sign into your account</h3>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-warning" ng-show="authReason">
+      {{authReason}}
+    </div>
+    <div class="alert alert-error" ng-show="authError">
+      {{authError}}
+    </div>
+    <form novalidate class="form login-form">
+      <fieldset>
+        <div class="control-group">
+          <div class="controls">
+            <input name="email" data-ng-model="user.email" type="text" placeholder="Email" required autofocus />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <input name="password" data-ng-model="user.password" type="password" placeholder="Password" required />
+           <span class="help-block"><a ng-click="resetPassword()" href="">Forgotten your password?</a><br /><a href="#/register">Create an Account</a></span>
+          </div>
+        </div>
+    </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+      <label class="pull-left">
+      <input type="checkbox" data-ng-model="user.rememberLogin" value="true" /> Keep me logged in?
+      </label>
+    <button class="btn btn-primary login" ng-click="login()" ng-disabled='form.$invalid'>Sign in</button>
+    <button class="btn btn-warning cancel" ng-click="cancelLogin()">Cancel</button>
+  </div>
+
+</div>
+
+

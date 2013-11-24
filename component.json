@@ -1,8 +1,8 @@
 {
-  "name": "imvgmFrontend",
+  "name": "GloLiquid Frontend",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "~1.0.6",
+    "angular": "v1.2.0-rc.3",
     "angular-resource": "~1.0.6",
     "angular-sanitize": "~1.0.6",
     "angular-scenario": "~1.0.6",
@@ -13,7 +13,13 @@
     "sinon": "~1.6.0",
     "es5-shim": "~2.0.8",
     "select2": "~3.3.2",
-    "jquery": "~2.0.0"
+    "jquery": "~2.0.0",
+    "angular-ui-bootstrap": "~0.3.0",
+    "moment": "~2.4.0",
+    "zeroclipboard": "~1.2.2",
+    "angular-loading-bar": "~0.0.5",
+    "angular-route": "v1.2.0-rc.3",
+    "angular-animate": "v1.2.0-rc.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",

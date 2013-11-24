@@ -1,0 +1,41 @@
+<div class="account invites">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="well well-small">
+        <ul class="nav nav-list">
+          <li class="nav-header">My Account</li>
+          <li><a href="/#/developer/account/settings">Account Settings</a></li>
+          <li class="nav-header">Profile</li>
+          <li><a href="">Edit Profile</a></li>
+          <li><a href="">View Public Profile</a></li>
+          <li class="nav-header">Invites ({{ user.inviteCount }})</li>
+          <li class="active"><a href="/#/developer/account/invites">Invite People</a></li>
+        </ul> 
+      </div>
+
+    </div>
+    <div class="span9">
+
+
+      <h2>Invites</h2>
+      <form class="form" name="invitesForm">
+        <fieldset>
+          <legend>Invite by Email</legend>
+          <p>You can invite people by sending them an email.  You have <span class="badge badge-info">{{ user.inviteCount }}</span> invites remaning.<p>
+          <email-invites invites="invites"></email-invites>
+        </fieldset>
+      </form>
+      <form class="form">
+        <fieldset>
+          <legend>Generate Invite Code</legend>
+          <p>You can invite people by generating an invite code and sending the code to them yourself</p>
+          <active-invites invites="invites"></active-invites>
+          <hr />
+
+          <h4>Invite History</h4>
+          <invite-history invites="invites"></invite-history>
+        </div>
+      </div>
+
+    </div>
+

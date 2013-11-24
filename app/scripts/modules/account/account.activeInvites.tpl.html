@@ -1,0 +1,10 @@
+<div class="well well-large">
+  <h4>Active Invites</h4>
+  <p><em>You have {{ invites.filter(showPendingInvites).length }} active invites</em></p>
+  <p><a class="btn btn-mini" ng-click="generateInviteCode()">Generate a new Invite Code</a></p>
+  <ul class="codes">
+    <li ng-repeat="invite in invites | filter:showPendingInvites | orderBy:'updatedAt':true ">
+    <span class="label label-info copy-to-clipboard" data-clipboard-text="{{ invite.token }}" tooltip="Click to copy">{{ invite.token }}</span> <i class="icon-share pull-right"></i>
+    </li>
+  </ul>
+</div>

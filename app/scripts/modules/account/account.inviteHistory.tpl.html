@@ -1,0 +1,14 @@
+<div class="well well-large">
+  <ul class="codes">
+    <li ng-repeat="invite in invites | orderBy:'updatedAt':true">
+    <span class="label ng-class: {'label-success': (invite.status == 'redeemed'), 'label-info': (invite.status == 'sent')}" >{{invite.token}}</span> 
+    <em ng-hide="invite.status!='redeemed'">was redeemed by <i class="icon-user"></i><strong>{{ invite.redeemed_by_company || invite.redeemed_by_fullname }} </strong> {{ invite.redeemedAt | fromNow }}</em>
+    <em ng-hide="invite.status!='pending'">was generated {{ invite.createdAt | fromNow }}</em>
+    <em ng-hide="invite.status!='sent'">was sent to <i class="icon-envelope"></i><strong>{{ invite.sentToEmailAddress }}</strong> {{ invite.sentAt | fromNow }}</em>
+    </li>
+
+
+    <!-- <li><span class="label label-info">A23DSfGSD</span> <em>was sent to <i class="icon-envelope"></i><strong>matt@lucidmoon.co.uk</strong> yesterday at 20:22</em></li> -->
+    <!-- <li><span class="label">A23DSfGSD</span> <em>was generated yesterday at 13:49</em></li> -->
+  </ul>
+</div>

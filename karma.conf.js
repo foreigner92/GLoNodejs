@@ -1,5 +1,3 @@
-// Karma configuration
-
 // base path, that will be used to resolve files and exclude
 basePath = '';
 
@@ -7,22 +5,31 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'app/components/sinon/lib/sinon.js',
+  'app/components/jquery/jquery.js',
   'app/components/angular/angular.js',
   'app/components/angular-resource/angular-resource.js',
   'app/components/angular-mocks/angular-mocks.js',
+  'app/components/angular-ui/build/angular-ui.js',
+  'app/components/angular-ui-bootstrap/src/**/*.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
   'test/mock/**/*.js',
-  'test/spec/**/*.js'
+  'test/spec/**/*.js',
+  '.tmp/templates/**/*.js'
+
 ];
 
 // list of files to exclude
-exclude = [];
+exclude = [
+  'app/components/angular-ui-bootstrap/src/**/test/**/*.js',
+  'app/components/angular-ui/src/**/test/**/*.js',
+];
 
 // test results reporter to use
 // possible values: dots || progress || growl
 reporters = ['progress'];
+
+urlRoot = '/__test/';
 
 // web server port
 port = 8080;
@@ -38,7 +45,7 @@ colors = true;
 logLevel = LOG_INFO;
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
+autoWatch = true;
 
 // Start these browsers, currently available:
 // - Chrome
@@ -48,7 +55,8 @@ autoWatch = false;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome','Firefox','Opera','Safari'];
+// browsers = ['Chrome','Firefox','Opera','Safari'];
+browsers = ['PhantomJS'];
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 5000;

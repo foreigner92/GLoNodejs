@@ -1,20 +1,28 @@
-<form>
-	<fieldset>
-    <legend><h2>Login</h2></legend>
-		<div class="control-group">
-      <div class="controls">
-			 <input name="username" id="imvgm-reg-frm-username" data-ng-model="login.username" type="text" placeholder="Username" />
+<div data-nav-bar=""></div>
+
+<div class="container">
+  <!-- Main hero unit for a primary marketing message or call to action -->
+   <form data-remote-form="" data-remote-form-upon-valid="/auth/login">
+    <fieldset>
+      <legend><h2>Login</h2></legend>
+      <div class="control-group">
+        <div class="controls">
+         <input name="username" id="imvgm-reg-frm-username" data-ng-model="login.username" type="text" data-ng-required="" data-remote-form-component="" placeholder="Username" />
+        </div>
       </div>
-		</div>
-		<div class="control-group">
-      <div class="controls">
-			 <input name="password" id="imvgm-reg-frm-password" data-ng-model="login.password" type="text" placeholder="Password" />
+      <div class="control-group">
+        <div class="controls">
+         <input name="password" id="imvgm-reg-frm-password" data-ng-model="login.password" type="text" data-ng-required="" data-remote-form-component="" placeholder="Password" />
+        </div>
       </div>
-		</div>
-		<div class="control-group">
-      <div class="controls">
-			 <button class="btn" data-ng-click="login()">Log In</button>
+      <div class="control-group">
+        <div class="controls">
+         <button class="btn" data-ng-click="submit(login)">Log In</button>
+         <span class="help-block"><a href="#/password/reset">Forgotten your password?</a> | <a href="#/register">Register</a>.</span>
+
+        </div>
       </div>
-		</div>
-	</fieldset>
-</form>
+    </fieldset>
+  </form>
+</div> <!-- /container -->
+

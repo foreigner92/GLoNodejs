@@ -20,6 +20,18 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
+        // // banner:
+    // // '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+    // // '<%= pkg.homepage ? " * " + pkg.homepage + "\\n" : "" %>' +
+    // // ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;\n' +
+    // // ' * Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %>\n */\n',
+    src: {
+      js: ['<%= yeoman.app %>/scripts/**/*.js'],
+      tpl: {
+        app: ['app/scripts/**/*.tpl.html'],
+        common: ['app/scripts/common/**/*.tpl.html']
+      },
+    },
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -30,18 +42,44 @@ module.exports = function (grunt) {
         tasks: ['coffee:test']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/styles/{,**/}*.{scss,sass}'],
         tasks: ['compass']
+      },
+      html2js: {
+        files: ['**/*.tpl.html'],
+        tasks: ['html2js']
       },
       livereload: {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         tasks: ['livereload']
       }
+    },
+    html2js: {
+      app: {
+        options: {
+          base: 'app/scripts/modules'
+        },
+        src: ['<%= src.tpl.app %>'],
+        dest: '.tmp/templates/app.js',
+        module: 'templates.app'
+      },
+      common: {
+        options: {
+          base: 'app/scripts/common'
+        },
+        src: ['<%= src.tpl.common %>'],
+        dest: '.tmp/templates/common.js',
+        module: 'templates.common'
+      }
+    },
+    livereload: {
+      port: 35730
     },
     connect: {
       options: {
@@ -51,6 +89,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
+          // port: 35730,
           middleware: function (connect) {
             return [
               lrSnippet,
@@ -60,6 +99,7 @@ module.exports = function (grunt) {
           }
         }
       },
+
       test: {
         options: {
           middleware: function (connect) {
@@ -101,7 +141,6 @@ module.exports = function (grunt) {
     karma: {
       unit: {
         configFile: 'karma.conf.js',
-        singleRun: true
       }
     },
     coffee: {
@@ -132,7 +171,8 @@ module.exports = function (grunt) {
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: '<%= yeoman.app %>/components',
-        relativeAssets: true
+        relativeAssets: true,
+				require: 'bootstrap-sass'
       },
       dist: {},
       server: {
@@ -141,6 +181,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     concat: {
       dist: {
         files: {
@@ -234,6 +275,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%= yeoman.dist %>/scripts/{,*/}*.js',
+            '<%= yeoman.dist %>/templates/{,*/}*.js',
             '<%= yeoman.dist %>/styles/{,*/}*.css',
             '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             '<%= yeoman.dist %>/styles/fonts/*'
@@ -264,6 +306,7 @@ module.exports = function (grunt) {
   grunt.registerTask('server', [
     'clean:server',
     'coffee:dist',
+    'html2js',
     'compass:server',
     'livereload-start',
     'connect:livereload',
@@ -275,6 +318,7 @@ module.exports = function (grunt) {
     'clean:server',
     'coffee',
     'compass',
+    'html2js',
     'connect:test',
     'karma'
   ]);
@@ -285,6 +329,7 @@ module.exports = function (grunt) {
     'test',
     'coffee',
     'compass:dist',
+    'html2js',
     'useminPrepare',
     'imagemin',
     'cssmin',

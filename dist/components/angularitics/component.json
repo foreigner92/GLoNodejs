@@ -1,0 +1,8 @@
+{
+  "name": "angularitics",
+  "version": "0.8.5",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/luisfarzati/angulartics"
+  }
+}

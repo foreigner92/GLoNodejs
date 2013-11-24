@@ -224,7 +224,7 @@ angular.module('account')
 		scope: {
 			invites: '='
 		},
-		controller: ['$scope', '$element', '$attrs', 'security', function ($scope, $element, $attrs, security) {
+		controller: ['$scope', '$element', '$attrs', 'security', '$timeout', function ($scope, $element, $attrs, security, $timeout) {
 
 
 			$scope.generateInviteCode = function () {
@@ -246,14 +246,28 @@ angular.module('account')
 				return (item.status === 'pending');
 			};
 
-			ZeroClipboard.setDefaults({
+			// Wait a second for the ng-repet to finish
+			// TODO: refactor as a directive
+			$timeout(function () {
+				console.log('timeout');
+			console.log($element.find('.copy-top-clipboard'));
+			var clip = new ZeroClipboard($element.find('.copy-to-clipboard'),{
 				moviePath: '/components/zeroclipboard/ZeroClipboard.swf'
 			});
 
+			clip.on( "load", function(client) {
+				// alert( "movie is loaded" );
+
+				client.on( "complete", function(client, args) {
+					// `this` is the element that was clicked
+					alert("Copied text to clipboard: " + args.text );
+				} );
+			} );
+
+			}, 1000);
 
 			$scope.copyToClipboard = function (token) {
-				var clip = new ZeroClipboard();
-				clip.setText(token);
+				// clip.setText(token);
 			};
 		}]
 	};

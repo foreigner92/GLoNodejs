@@ -1,5 +1,5 @@
 'use strict';
-angular.module('account', ['config', 'security', 'services.invites', 'ngRoute'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
+angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 'templates.app'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 
   $routeProvider.when('/account', {
     templateUrl: 'account/account.tpl.html',
@@ -12,6 +12,11 @@ angular.module('account', ['config', 'security', 'services.invites', 'ngRoute'],
     templateUrl: 'account/account.register.success.tpl.html',
     controller:'AccountCtrl'
   })
+	.when('/account/login/:inviteCode', {
+		controller: ['security', function (security) {
+			security.showLogin();
+		}]
+	})
   .when('/account/verify/:token', {
     templateUrl: 'account/account.emailVerification.tpl.html',
     controller: 'AccountEmailVerificationCtrl',

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
+angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs', 'templates.app'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 	$routeProvider.when('/developer/account', {
 		templateUrl:'account/developer/account.developer.tpl.html',
 		controller:'DeveloperAccountCtrl',

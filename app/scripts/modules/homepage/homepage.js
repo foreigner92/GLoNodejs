@@ -1,5 +1,5 @@
 'use strict';
-angular.module('homepage', ['config', 'ngRoute'], ['$routeProvider', function($routeProvider) {
+angular.module('homepage', ['config', 'ngRoute', 'templates.app'], ['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
     templateUrl:'homepage/homepage.tpl.html',
     controller:'HomepageCtrl',

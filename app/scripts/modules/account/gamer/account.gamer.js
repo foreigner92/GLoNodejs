@@ -1,5 +1,5 @@
 'use strict';
-angular.module('account.gamer', ['config'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
+angular.module('account.gamer', ['config', 'templates.app'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
   $routeProvider.when('/gamer/account', {
     templateUrl:'account/gamer/account.gamer.tpl.html',
     controller:'GamerAccountCtrl',
@@ -13,7 +13,32 @@ angular.module('account.gamer', ['config'], ['$routeProvider', 'securityAuthoriz
 		resolve: {
 			authorization: securityAuthorizationProvider.requireGamerRole
 		}
+	})
+	.when('/gamer/account/invites', {
+		templateUrl: 'account/gamer/account.gamer.invites.tpl.html',
+		controller: 'GamerAccountInvitesCtrl',
+		resolve: {
+			authorization: securityAuthorizationProvider.requireGamerRole,
+			invites: ['$http','security', 'config', '$q', function ($http, security, config, $q) {
+				console.log('here');
+				return security.requestCurrentUser()
+					.then(function (user) {
+						var deferred = $q.defer();
+
+						$http.get(config.api.host + '/users/' + user.id + '/invites')
+							.success(function (data) {
+								deferred.resolve(data.invites);
+							})
+							.error(function (err) {
+								deferred.reject(err);
+							});
+
+							return deferred.promise;
+					});
+				}]
+		}
 	});
+;
 }]);
 
 angular.module('account.gamer').controller('GamerAccountCtrl',['$scope', 'config', 'security', 'User', 'i18nNotifications', '$http', 'usersService', function($scope, config, security, User, i18nNotifications, $http, usersService) {
@@ -72,6 +97,29 @@ angular.module('account.gamer').controller('GamerAccountCtrl',['$scope', 'config
 			console.log('invalid');
 		}
 	}
+}]);
+
+angular.module('account.gamer').controller('GamerAccountInvitesCtrl',['$q','$scope', 'security','config','$http', 'invites', 'invitesService', function ($q, $scope, security, config, $http, invites, invitesService) {
+
+	$q.when(invites).then(function (invites) {
+		$scope.invites = invites;
+	});
+
+
+	security.requestCurrentUser()
+	.then(function (user) {
+		$scope.user = user;
+	});
+
+	$scope.generateInviteCode = function() {
+		invitesService.generateInviteCode()
+			.success(function () {
+
+			})
+			.error(function () {
+			});
+	};
+
 }]);
 
 

@@ -28,7 +28,7 @@ module.exports = function (grunt) {
     src: {
       js: ['<%= yeoman.app %>/scripts/**/*.js'],
       tpl: {
-        app: ['app/scripts/**/*.tpl.html'],
+        app: ['app/scripts/modules/**/*.tpl.html'],
         common: ['app/scripts/common/**/*.tpl.html']
       },
     },
@@ -183,13 +183,19 @@ module.exports = function (grunt) {
     },
 
     concat: {
+
       dist: {
-        files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '.tmp/scripts/{,*/}*.js',
-            '<%= yeoman.app %>/scripts/{,*/}*.js'
-          ]
-        }
+				files: {
+					'<%= yeoman.dist %>/scripts/misc.js':
+
+						[
+							// '<%= yeoman.dist %>/scripts/scripts.js',
+							'.tmp/templates/app.js',
+							'.tmp/templates/common.js',
+							'.tmp/scripts/{,*/}*.js',
+						'<%= yeoman.app %>/scripts/{,*/}*.js'
+					],
+				}
       }
     },
     useminPrepare: {
@@ -325,9 +331,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'jshint',
-    'test',
-    'coffee',
+    // 'jshint',
+    // 'test',
+    // 'coffee',
     'compass:dist',
     'html2js',
     'useminPrepare',
@@ -335,11 +341,11 @@ module.exports = function (grunt) {
     'cssmin',
     'htmlmin',
     'concat',
-    'copy',
-    'cdnify',
-    'ngmin',
-    'uglify',
-    'rev',
+    // 'copy',
+    // 'cdnify',
+    // 'ngmin',
+    // 'uglify',
+    // 'rev',
     'usemin'
   ]);
 

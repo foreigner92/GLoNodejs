@@ -11,15 +11,13 @@
   "latedef": true,
   "newcap": true,
   "noarg": true,
-  "quotmark": "single",
   "regexp": true,
   "undef": true,
   "unused": true,
   "strict": true,
   "trailing": true,
-  "smarttabs": true,
   "laxcomma": true,
-  "indent": 2,
+  "white": false,
   "globals": {
     "angular": false,
     "describe": true,
@@ -29,7 +27,7 @@
     "it": true,
     "expect": true
   },
-  "prefdef":[
+  "predef":[
     "angular"
   ]
 

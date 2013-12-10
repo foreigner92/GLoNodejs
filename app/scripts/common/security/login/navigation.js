@@ -1,4 +1,4 @@
-angular.module('security.login.navigation', [])
+angular.module('security.login.navigation', ['templates.common'])
 
 // The loginToolbar directive is a reusable widget that can show login or logout buttons
 // and information the current authenticated user

@@ -1,14 +1,14 @@
 angular.module('account.gamer.register', ['resources.platforms', 'resources.genres', 'directives.remoteForm'])
 .config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/account/register/gamer', {
+  $routeProvider.when('/account/register/gamer/:inviteCode', {
     templateUrl:'account/gamer/account.gamer.register.tpl.html',
     controller:'AccountGamerRegisterCtrl',
   });
 }])
-.controller('AccountGamerRegisterCtrl', ['$scope', '$location', 'Platform', 'Genre', function ($scope, $location, Platform, Genre) {
-
+.controller('AccountGamerRegisterCtrl', ['$scope', '$location', 'Platform', 'Genre', '$routeParams', function ($scope, $location, Platform, Genre, $routeParams) {
   $scope.newUser = {
-    role: 'gamer'
+    role: 'gamer',
+		inviteToken: $routeParams.inviteCode
   };
 
   $scope.navigateToGameDeveloperRegistrationForm = function () {

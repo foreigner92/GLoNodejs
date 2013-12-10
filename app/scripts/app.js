@@ -2,6 +2,9 @@
 (function (angular) {
 
 angular.module('app', [
+	// Templates
+  'templates.app',
+  'templates.common',
   // Modules
   'homepage',
   'account',
@@ -26,9 +29,7 @@ angular.module('app', [
   'resources.genres',
   'resources.users',
 
-  // Templates
-  'templates.app',
-  'templates.common',
+
 
   // config
   'config',
@@ -71,7 +72,7 @@ angular.module('app').constant('I18N.MESSAGES', {
 	'account.details.updated.success': 'Account details succesfully updated'
 });
 
-angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+angular.module('app').config(['$routeProvider', function ($routeProvider) {
   // $locationProvider.html5Mode(true);
   $routeProvider.otherwise({redirectTo:'/'});
 }]);

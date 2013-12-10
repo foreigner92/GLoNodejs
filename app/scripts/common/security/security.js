@@ -4,7 +4,9 @@ angular.module('security.service', [
   'security.login',         // Contains the login form template and controller
   'ui.bootstrap.dialog',     // Used to display the login form as a modal dialog.
   'services.i18nNotifications',
-  'config'
+  'config',
+	'templates.common'
+
 ])
 
 .factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$dialog', 'config', '$injector', '$cookieStore', function($http, $q, $location, queue, $dialog, config, $injector, $cookieStore) {

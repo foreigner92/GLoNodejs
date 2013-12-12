@@ -5,7 +5,22 @@ angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 
     templateUrl: 'account/account.tpl.html',
     controller:'AccountCtrl',
     resolve: {
-      authorization: securityAuthorizationProvider.requireAuthenticatedUser
+      authorization: securityAuthorizationProvider.requireAuthenticatedUser,
+			accountStatus: ['security', '$q', function (security, $q) {
+				var deferred = $q.defer();
+
+				if (security.currentUser) {
+					if (security.currentUser._embedded.accounts[0].status === 'active') {
+						deferred.resolve();
+					} else {
+						deferred.reject(new Error('No active accounts found'));
+					}
+				} else {
+					deferred.reject(new Error('No active accounts found'));
+				}
+
+				return deferred.promise;
+			}]
     }
   })
   .when('/account/register/success', {
@@ -74,7 +89,6 @@ angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 
 
 angular.module('account')
 .controller('AccountCtrl',['$scope', 'config', '$location', 'security', 'i18nNotifications', function($scope, config, $location, security, i18nNotifications) {
-
   switch(security.currentUser.role) {
     case 'gamer':
       $location.path('/gamer/account');

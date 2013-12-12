@@ -1,6 +1,11 @@
 angular.module('account.gamer.register', ['resources.platforms', 'resources.genres', 'directives.remoteForm'])
 .config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/account/register/gamer/:inviteCode', {
+   $routeProvider.when('/account/register/gamer', {
+    templateUrl:'account/gamer/account.gamer.register.tpl.html',
+    controller:'AccountGamerRegisterCtrl',
+  });
+
+	$routeProvider.when('/account/register/gamer/:inviteCode', {
     templateUrl:'account/gamer/account.gamer.register.tpl.html',
     controller:'AccountGamerRegisterCtrl',
   });

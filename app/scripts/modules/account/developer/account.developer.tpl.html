@@ -1,25 +1,18 @@
   <div class="row-fluid">
+    
     <div class="span3">
       <div class="well well-small">
-      <ul class="nav nav-list">
-        <li class="nav-header">My Account</li>
-        <li><a href="/#/developer/account/settings">Account Settings</a></li>
-        <li class="nav-header">Profile</li>
-        <li><a href="">Edit Profile</a></li>
-        <li><a href="">View Public Profile</a></li>
-        <li class="nav-header">Invites ({{ user.inviteCount }})</li>
-        <li><a href="/#/developer/account/invites">Invite People</a></li>
-      </ul> 
+        <developer-account-nav></developer-account-nav>
+      </div>
     </div>
 
-    </div>
     <div class="span9">
-
       <h1>Developer account</h1>
       <p>Hey {{user.username}}. You are a {{user.role}} and your account ID is {{user.id}}</p>
       <p ng-show="user.inviteCount">You have {{ user.inviteCount }} invite<span ng-show="(user.inviteCount > 1)">s</span> remaining. <em ng-show="user.inviteCount == 1">Better use it wisely!</em></p>
       <p ng-hide="user.inviteCount">You have no Invites remaining :( <a href="#">Want some more?</a></p>
       <!--Body content-->
     </div>
+
   </div>
 

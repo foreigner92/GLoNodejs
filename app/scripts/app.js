@@ -47,7 +47,8 @@ angular.module('app', [
 	'ui.bootstrap.tabs',
 	'angularFileUpload',
 	'chieffancypants.loadingBar',
-	'ngAnimate'
+	'ngAnimate',
+
 
 ]);
 

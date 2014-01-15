@@ -118,4 +118,13 @@ angular.module('account.developer').controller('DeveloperAccountInvitesCtrl',['$
 
 }]);
 
+angular.module('account.developer').directive('developerAccountNav', function () {
+
+	return {
+		restrict: 'E',
+		templateUrl: 'account/developer/account.developer.nav.tpl.html',
+	};
+
+});
+
 

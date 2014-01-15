@@ -61,22 +61,25 @@ module.exports = function (grunt) {
       }
     },
     html2js: {
+			options: {
+				base: '<%= yeoman.app %>/scripts'
+			},
       app: {
-        options: {
-          base: 'app/scripts/modules'
-        },
-        src: ['<%= src.tpl.app %>'],
-        dest: '.tmp/templates/app.js',
-        module: 'templates.app'
+				options: {
+					module: 'templates.app'
+				},
+				src: ['<%= yeoman.app %>/scripts/modules/**/*.html'],
+				dest: '.tmp/templates/app.js'
       },
-      common: {
-        options: {
-          base: 'app/scripts/common'
-        },
-        src: ['<%= src.tpl.common %>'],
-        dest: '.tmp/templates/common.js',
-        module: 'templates.common'
-      }
+
+			common: {
+				options: {
+					module: 'templates.common'
+
+				},
+				src: ['<%= yeoman.app %>/scripts/common/**/*.html'],
+				dest: '.tmp/templates/common.js'
+			}
     },
     livereload: {
       port: 35730
@@ -182,22 +185,19 @@ module.exports = function (grunt) {
       }
     },
 
-    concat: {
+    // concat: {
 
-      dist: {
-				files: {
-					'<%= yeoman.dist %>/scripts/misc.js':
-
-						[
+    //   // dist: {
+				// files: {
+					// '<%= yeoman.dist %>/scripts/misc.js':
+					// 	[
 							// '<%= yeoman.dist %>/scripts/scripts.js',
-							'.tmp/templates/app.js',
-							'.tmp/templates/common.js',
-							'.tmp/scripts/{,*/}*.js',
-						'<%= yeoman.app %>/scripts/{,*/}*.js'
-					],
-				}
-      }
-    },
+							// '.tmp/templates/{,*/}*.js',
+							// '<%= yeoman.app %>/scripts/{,*/}*.js'
+					// ],
+				// }
+    //   }
+    // },
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
       options: {
@@ -300,7 +300,7 @@ module.exports = function (grunt) {
             '*.{ico,txt}',
             '.htaccess',
             'components/**/*',
-            'images/{,*/}*.{gif,webp}'
+            'images/{,*/}*.{gif,webp}',
           ]
         }]
       }
@@ -341,9 +341,9 @@ module.exports = function (grunt) {
     'cssmin',
     'htmlmin',
     'concat',
-    // 'copy',
-    // 'cdnify',
-    // 'ngmin',
+    'copy',
+    'cdnify',
+    'ngmin',
     // 'uglify',
     // 'rev',
     'usemin'

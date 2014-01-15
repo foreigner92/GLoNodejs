@@ -4,7 +4,7 @@ angular.module('security.login.navigation', ['templates.common'])
 // and information the current authenticated user
 .directive('userNavigation', ['security', '$location', function(security, $location) {
   var directive = {
-    templateUrl: 'security/login/navigation.tpl.html',
+    templateUrl: 'common/security/login/navigation.tpl.html',
     restrict: 'A',
     replace: true,
     scope: true,
@@ -25,9 +25,6 @@ angular.module('security.login.navigation', ['templates.common'])
       $scope.register = function () {
         $location.path('/account/register/gamer');
       }
-
-
-
     }
   };
   return directive;

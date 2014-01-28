@@ -29,45 +29,6 @@
           <li class="active"><a href="/for-gamers.html">For Gamers</a></li>
           <li><a href="/for-game-developers.html">For Game Developers</a></li>
         </ul>
-        <ul class="pull-right user-registration nav pull-right" data-user-navigation="">
-  <li class="divider-vertical"></li>
-  <li ng-show="isAuthenticated()" style="">
-
-  </li>
-  <li class="dropdown" ng-hide="isAuthenticated()" style="display: none;">
-  <a href="#" class="dropdown-toggle ng-scope">
-    <i class="icon-lock"></i>
-    <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu">
-    <li ng-hide="isAuthenticated()" class="login" style="display: none;">
-    <a ng-click="login()">Log in</a>
-    </li>
-    <li ng-hide="isAuthenticated()" class="login" style="display: none;">
-    <a ng-click="register()">Register</a>
-    </li>
-  </ul>
-  </li>
-  <li ng-show="isAuthenticated()" class="dropdown" style="">
-  <a href="#" class="dropdown-toggle avatar ng-class: {'avatar-default': !currentUser.profilePicture} ng-scope ng-binding">
-    angelface@lucidmoon.co.uk&nbsp;
-    <span class="profile-picture"><i ng-hide="currentUser.profilePicture" class="icon icon-user" style="display: none;"></i></span>
-      
-      <img src="http://localhost:3030/profile_pictures/46a385fe0895cee83fdaac65584e9d16d4d4648752a6a820aa1db85fe5e7c012.JPG" ng-hide="!currentUser.profilePicture" alt="" width="32" height="32" style="">
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-    <li class="nav-header ng-binding">Super Game Corp.</li>
-    <li><a href="/#/account/settings">Account</a></li>
-    <li><a ng-click="profile()">Profile</a></li><li>
-    </li><li><a href="/#/account/invites">Invites</a></li><li>
-    </li><li class="divider"></li>
-    <li ng-show="isAuthenticated()" class="logout" style="">
-    <a ng-click="logout()">Log out</a>
-    </li>
-  </ul>
-  </li>
-</ul>
       </div>
     </div>
   </div>

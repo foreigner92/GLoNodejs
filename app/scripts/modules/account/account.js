@@ -2,7 +2,7 @@
 angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 'templates.app'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 
   $routeProvider.when('/account', {
-    templateUrl: 'account/account.tpl.html',
+    templateUrl: 'modules/account/account.tpl.html',
     controller:'AccountCtrl',
     resolve: {
       authorization: securityAuthorizationProvider.requireAuthenticatedUser,
@@ -24,7 +24,7 @@ angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 
     }
   })
   .when('/account/register/success', {
-    templateUrl: 'account/account.register.success.tpl.html',
+    templateUrl: 'modules/account/account.register.success.tpl.html',
     controller:'AccountCtrl'
   })
 	.when('/account/login/:inviteCode', {
@@ -33,7 +33,7 @@ angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 
 		}]
 	})
   .when('/account/verify/:token', {
-    templateUrl: 'account/account.emailVerification.tpl.html',
+    templateUrl: 'modules/account/account.emailVerification.tpl.html',
     controller: 'AccountEmailVerificationCtrl',
     resolve: {
       verification: ['security', '$q', '$route', function (security, $q, $route) {
@@ -59,11 +59,11 @@ angular.module('account', ['config', 'security', 'services.invites', 'ngRoute', 
     }
   })
 	.when('/account/password/reset', {
-		templateUrl: 'account/account.resetPassword.tpl.html',
+		templateUrl: 'modules/account/account.resetPassword.tpl.html',
 		controller: 'AccountPasswordResetCtrl'
 	})
 	.when('/account/password/reset/:token', {
-		templateUrl: 'account/account.resetPassword.tpl.html',
+		templateUrl: 'modules/account/account.resetPassword.tpl.html',
 		controller: 'AccountPasswordResetCtrl',
 		// resolve: {
 		// verification: ['security', '$q', '$route', function (security, $q, $route) {
@@ -215,7 +215,7 @@ angular.module('account')
 }]).directive('inviteHistory', [function () {
 	var directive = {
 		restrict: 'E',
-		templateUrl: 'scripts/modules/account/account.inviteHistory.tpl.html',
+		templateUrl: 'modules/account/account.inviteHistory.tpl.html',
 		scope: {
 			invites: '='
 		},
@@ -239,7 +239,7 @@ angular.module('account')
 }]).directive('activeInvites', ['invitesService', function(invitesService) {
 	var directive = {
 		restrict: 'E',
-		templateUrl: 'scripts/modules/account/account.activeInvites.tpl.html',
+		templateUrl: 'modules/account/account.activeInvites.tpl.html',
 		scope: {
 			invites: '='
 		},

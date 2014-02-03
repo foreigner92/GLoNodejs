@@ -16382,7 +16382,7 @@ angular.module('account', [
   'securityAuthorizationProvider',
   function ($routeProvider, securityAuthorizationProvider) {
     $routeProvider.when('/account', {
-      templateUrl: 'account/account.tpl.html',
+      templateUrl: 'modules/account/account.tpl.html',
       controller: 'AccountCtrl',
       resolve: {
         authorization: securityAuthorizationProvider.requireAuthenticatedUser,
@@ -16405,7 +16405,7 @@ angular.module('account', [
         ]
       }
     }).when('/account/register/success', {
-      templateUrl: 'account/account.register.success.tpl.html',
+      templateUrl: 'modules/account/account.register.success.tpl.html',
       controller: 'AccountCtrl'
     }).when('/account/login/:inviteCode', {
       controller: [
@@ -16415,7 +16415,7 @@ angular.module('account', [
         }
       ]
     }).when('/account/verify/:token', {
-      templateUrl: 'account/account.emailVerification.tpl.html',
+      templateUrl: 'modules/account/account.emailVerification.tpl.html',
       controller: 'AccountEmailVerificationCtrl',
       resolve: {
         verification: [
@@ -16441,10 +16441,10 @@ angular.module('account', [
         ]
       }
     }).when('/account/password/reset', {
-      templateUrl: 'account/account.resetPassword.tpl.html',
+      templateUrl: 'modules/account/account.resetPassword.tpl.html',
       controller: 'AccountPasswordResetCtrl'
     }).when('/account/password/reset/:token', {
-      templateUrl: 'account/account.resetPassword.tpl.html',
+      templateUrl: 'modules/account/account.resetPassword.tpl.html',
       controller: 'AccountPasswordResetCtrl'
     });
   }
@@ -16569,7 +16569,7 @@ angular.module('account').controller('AccountCtrl', [
   }]).directive('inviteHistory', [function () {
     var directive = {
         restrict: 'E',
-        templateUrl: 'scripts/modules/account/account.inviteHistory.tpl.html',
+        templateUrl: 'modules/account/account.inviteHistory.tpl.html',
         scope: { invites: '=' },
         controller: [
           '$scope',
@@ -16593,7 +16593,7 @@ angular.module('account').controller('AccountCtrl', [
   function (invitesService) {
     var directive = {
         restrict: 'E',
-        templateUrl: 'scripts/modules/account/account.activeInvites.tpl.html',
+        templateUrl: 'modules/account/account.activeInvites.tpl.html',
         scope: { invites: '=' },
         controller: [
           '$scope',
@@ -16642,15 +16642,15 @@ angular.module('account.gamer', [
   'securityAuthorizationProvider',
   function ($routeProvider, securityAuthorizationProvider) {
     $routeProvider.when('/gamer/account', {
-      templateUrl: 'account/gamer/account.gamer.tpl.html',
+      templateUrl: 'modules/account/gamer/account.gamer.tpl.html',
       controller: 'GamerAccountCtrl',
       resolve: { authorization: securityAuthorizationProvider.requireGamerRole }
     }).when('/gamer/account/settings', {
-      templateUrl: 'account/gamer/account.gamer.settings.tpl.html',
+      templateUrl: 'modules/account/gamer/account.gamer.settings.tpl.html',
       controller: 'GamerAccountCtrl',
       resolve: { authorization: securityAuthorizationProvider.requireGamerRole }
     }).when('/gamer/account/invites', {
-      templateUrl: 'account/gamer/account.gamer.invites.tpl.html',
+      templateUrl: 'modules/account/gamer/account.gamer.invites.tpl.html',
       controller: 'GamerAccountInvitesCtrl',
       resolve: {
         authorization: securityAuthorizationProvider.requireGamerRole,
@@ -16758,11 +16758,11 @@ angular.module('account.gamer.register', [
   '$routeProvider',
   function ($routeProvider) {
     $routeProvider.when('/account/register/gamer', {
-      templateUrl: 'account/gamer/account.gamer.register.tpl.html',
+      templateUrl: 'modules/account/gamer/account.gamer.register.tpl.html',
       controller: 'AccountGamerRegisterCtrl'
     });
     $routeProvider.when('/account/register/gamer/:inviteCode', {
-      templateUrl: 'account/gamer/account.gamer.register.tpl.html',
+      templateUrl: 'modules/account/gamer/account.gamer.register.tpl.html',
       controller: 'AccountGamerRegisterCtrl'
     });
   }
@@ -16796,15 +16796,15 @@ angular.module('account.developer', [
   'securityAuthorizationProvider',
   function ($routeProvider, securityAuthorizationProvider) {
     $routeProvider.when('/developer/account', {
-      templateUrl: 'account/developer/account.developer.tpl.html',
+      templateUrl: 'modules/account/developer/account.developer.tpl.html',
       controller: 'DeveloperAccountCtrl',
       resolve: { authorization: securityAuthorizationProvider.requireDeveloperRole }
     }).when('/account/settings', { redirectTo: '/developer/account/settings' }).when('/developer/account/settings', {
-      templateUrl: 'account/developer/account.developer.settings.tpl.html',
+      templateUrl: 'modules/account/developer/account.developer.settings.tpl.html',
       controller: 'DeveloperAccountCtrl',
       resolve: { authorization: securityAuthorizationProvider.requireDeveloperRole }
     }).when('/account/invites', { redirectTo: '/developer/account/invites' }).when('/developer/account/invites', {
-      templateUrl: 'account/developer/account.developer.invites.tpl.html',
+      templateUrl: 'modules/account/developer/account.developer.invites.tpl.html',
       controller: 'DeveloperAccountInvitesCtrl',
       resolve: {
         authorization: securityAuthorizationProvider.requireDeveloperRole,
@@ -16901,7 +16901,7 @@ angular.module('account.developer').controller('DeveloperAccountInvitesCtrl', [
 angular.module('account.developer').directive('developerAccountNav', function () {
   return {
     restrict: 'E',
-    templateUrl: 'account/developer/account.developer.nav.tpl.html'
+    templateUrl: 'modules/account/developer/account.developer.nav.tpl.html'
   };
 });
 angular.module('account.developer.register', [
@@ -16912,7 +16912,7 @@ angular.module('account.developer.register', [
   '$routeProvider',
   function ($routeProvider) {
     $routeProvider.when('/account/register/developer', {
-      templateUrl: 'account/developer/account.developer.register.tpl.html',
+      templateUrl: 'modules/account/developer/account.developer.register.tpl.html',
       controller: 'AccountDeveloperRegisterCtrl'
     });
   }

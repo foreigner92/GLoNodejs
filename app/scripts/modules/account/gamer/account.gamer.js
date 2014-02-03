@@ -1,21 +1,21 @@
 'use strict';
 angular.module('account.gamer', ['config', 'templates.app'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
   $routeProvider.when('/gamer/account', {
-    templateUrl:'account/gamer/account.gamer.tpl.html',
+    templateUrl:'modules/account/gamer/account.gamer.tpl.html',
     controller:'GamerAccountCtrl',
     resolve: {
       authorization: securityAuthorizationProvider.requireGamerRole
     }
   })
 	.when('/gamer/account/settings', {
-		templateUrl:'account/gamer/account.gamer.settings.tpl.html',
+		templateUrl:'modules/account/gamer/account.gamer.settings.tpl.html',
 		controller: 'GamerAccountCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireGamerRole
 		}
 	})
 	.when('/gamer/account/invites', {
-		templateUrl: 'account/gamer/account.gamer.invites.tpl.html',
+		templateUrl: 'modules/account/gamer/account.gamer.invites.tpl.html',
 		controller: 'GamerAccountInvitesCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireGamerRole,

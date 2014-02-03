@@ -1,7 +1,7 @@
 'use strict';
 angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs', 'templates.app'], ['$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 	$routeProvider.when('/developer/account', {
-		templateUrl:'account/developer/account.developer.tpl.html',
+		templateUrl:'modules/account/developer/account.developer.tpl.html',
 		controller:'DeveloperAccountCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireDeveloperRole
@@ -10,7 +10,7 @@ angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs', 
 	})
 	.when('/account/settings', {redirectTo: '/developer/account/settings'})
 	.when('/developer/account/settings', {
-		templateUrl:'account/developer/account.developer.settings.tpl.html',
+		templateUrl:'modules/account/developer/account.developer.settings.tpl.html',
 		controller: 'DeveloperAccountCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireDeveloperRole,
@@ -19,7 +19,7 @@ angular.module('account.developer', ['config', 'security', 'ui.bootstrap.tabs', 
 	})
 	.when('/account/invites', {redirectTo: '/developer/account/invites'})
 	.when('/developer/account/invites', {
-		templateUrl: 'account/developer/account.developer.invites.tpl.html',
+		templateUrl: 'modules/account/developer/account.developer.invites.tpl.html',
 		controller: 'DeveloperAccountInvitesCtrl',
 		resolve: {
 			authorization: securityAuthorizationProvider.requireDeveloperRole,
@@ -122,7 +122,7 @@ angular.module('account.developer').directive('developerAccountNav', function ()
 
 	return {
 		restrict: 'E',
-		templateUrl: 'account/developer/account.developer.nav.tpl.html',
+		templateUrl: 'modules/account/developer/account.developer.nav.tpl.html',
 	};
 
 });

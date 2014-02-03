@@ -66,7 +66,7 @@ module.exports = function (grunt) {
 			},
       app: {
 				options: {
-					module: 'templates.app'
+					module: 'templates.app',
 				},
 				src: ['<%= yeoman.app %>/scripts/modules/**/*.html'],
 				dest: '.tmp/templates/app.js'

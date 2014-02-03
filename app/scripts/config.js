@@ -4,10 +4,10 @@ angular.module('config').constant('config', {
   version: '1.0',
   api: {
     host: (function () {
-			if (location.href.match(/localhost/).length) {
+			if (location.href.match(/localhost/)) {
 				return 'http://localhost:3030';
 			} else {
-				return 'http://tm-app-staging.cloudapp.net:3030/';
+				return 'http://tm-app-staging.cloudapp.net:3030';
 			}
 		}())
   }

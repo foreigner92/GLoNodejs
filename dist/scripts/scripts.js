@@ -16532,7 +16532,7 @@ angular.module('account').controller('AccountCtrl', [
 ]).directive('emailInvites', [function () {
     var directive = {
         restrict: 'E',
-        templateUrl: 'scripts/modules/account/account.emailInvites.tpl.html',
+        templateUrl: 'modules/account/account.emailInvites.tpl.html',
         scope: { invites: '=' },
         controller: [
           '$scope',
@@ -16999,7 +16999,7 @@ angular.module('modules/account/account.tpl.html', []).run([
 angular.module('modules/account/developer/account.developer.invites.tpl.html', []).run([
   '$templateCache',
   function ($templateCache) {
-    $templateCache.put('modules/account/developer/account.developer.invites.tpl.html', '<div class="account invites">\n' + '  <div class="row-fluid">\n' + '    <div class="span3">\n' + '      <div class="well well-small">\n' + '        <ul class="nav nav-list">\n' + '          <li class="nav-header">My Account</li>\n' + '          <li><a href="/#/developer/account/settings">Account Settings</a></li>\n' + '          <li class="nav-header">Profile</li>\n' + '          <li><a href="">Edit Profile</a></li>\n' + '          <li><a href="">View Public Profile</a></li>\n' + '          <li class="nav-header">Invites ({{ user.inviteCount }})</li>\n' + '          <li class="active"><a href="/#/developer/account/invites">Invite People</a></li>\n' + '        </ul> \n' + '      </div>\n' + '\n' + '    </div>\n' + '\n' + '    <div class="span9" data-ng-include="\'scripts/modules/account/account.invites.tpl.html\'"></div>\n' + '\n' + '');
+    $templateCache.put('modules/account/developer/account.developer.invites.tpl.html', '<div class="account invites">\n' + '  <div class="row-fluid">\n' + '    <div class="span3">\n' + '      <div class="well well-small">\n' + '        <ul class="nav nav-list">\n' + '          <li class="nav-header">My Account</li>\n' + '          <li><a href="/#/developer/account/settings">Account Settings</a></li>\n' + '          <li class="nav-header">Profile</li>\n' + '          <li><a href="">Edit Profile</a></li>\n' + '          <li><a href="">View Public Profile</a></li>\n' + '          <li class="nav-header">Invites ({{ user.inviteCount }})</li>\n' + '          <li class="active"><a href="/#/developer/account/invites">Invite People</a></li>\n' + '        </ul>\n' + '      </div>\n' + '\n' + '    </div>\n' + '\n' + '    <div class="span9" data-ng-include="\'modules/account/account.invites.tpl.html\'"></div>\n' + '\n' + '');
   }
 ]);
 angular.module('modules/account/developer/account.developer.nav.tpl.html', []).run([
@@ -17029,7 +17029,7 @@ angular.module('modules/account/developer/account.developer.tpl.html', []).run([
 angular.module('modules/account/gamer/account.gamer.invites.tpl.html', []).run([
   '$templateCache',
   function ($templateCache) {
-    $templateCache.put('modules/account/gamer/account.gamer.invites.tpl.html', '<div class="account invites">\n' + '  <div class="row-fluid">\n' + '    <div class="span3">\n' + '      <div class="well well-small">\n' + '        <ul class="nav nav-list">\n' + '          <li class="nav-header">My Account</li>\n' + '          <li><a href="/#/gamer/account/settings">Account Settings</a></li>\n' + '          <li class="nav-header">Profile</li>\n' + '          <li><a href="">Edit Profile</a></li>\n' + '          <li><a href="">View Public Profile</a></li>\n' + '          <li class="nav-header">Invites ({{ user.inviteCount }})</li>\n' + '          <li class="active"><a href="/#/gamer/account/invites">Invite People</a></li>\n' + '        </ul> \n' + '      </div>\n' + '\n' + '    </div>\n' + '\n' + '    <div class="span9" data-ng-include="\'scripts/modules/account/account.invites.tpl.html\'"></div>\n' + '\n' + '\n' + '');
+    $templateCache.put('modules/account/gamer/account.gamer.invites.tpl.html', '<div class="account invites">\n' + '  <div class="row-fluid">\n' + '    <div class="span3">\n' + '      <div class="well well-small">\n' + '        <ul class="nav nav-list">\n' + '          <li class="nav-header">My Account</li>\n' + '          <li><a href="/#/gamer/account/settings">Account Settings</a></li>\n' + '          <li class="nav-header">Profile</li>\n' + '          <li><a href="">Edit Profile</a></li>\n' + '          <li><a href="">View Public Profile</a></li>\n' + '          <li class="nav-header">Invites ({{ user.inviteCount }})</li>\n' + '          <li class="active"><a href="/#/gamer/account/invites">Invite People</a></li>\n' + '        </ul>\n' + '      </div>\n' + '\n' + '    </div>\n' + '\n' + '    <div class="span9" data-ng-include="\'modules/account/account.invites.tpl.html\'"></div>\n' + '\n' + '\n' + '');
   }
 ]);
 angular.module('modules/account/gamer/account.gamer.register.tpl.html', []).run([

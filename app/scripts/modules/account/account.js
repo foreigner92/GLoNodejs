@@ -171,7 +171,7 @@ angular.module('account')
 
 	var directive = {
 		restrict: 'E',
-		templateUrl: 'scripts/modules/account/account.emailInvites.tpl.html',
+		templateUrl: 'modules/account/account.emailInvites.tpl.html',
 		scope: {
 			invites: '='
 		},

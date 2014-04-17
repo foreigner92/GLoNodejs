@@ -32,17 +32,18 @@
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.password.$valid && imvgmRegistrationForm.password.$error.server">Please enter a strong password.</span>
         </div>
       </div>
-      <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.agreeToTerms.$valid}">
-        <div class="controls">
-        <label for="imvgm-reg-frm-terms"><input name="agreeToTerms" target="_blank" id="imvgm-reg-frm-terms" data-remote-form-component="" data-ng-model="newUser.agreeToTerms" type="checkbox" /> Accept terms of use </a></label>
-        <span class="help-inline" ng-show="!imvgmRegistrationForm.agreeToTerms.$valid && imvgmRegistrationForm.agreeToTerms.$error.server">You must agree to the terms &amp; conditions</span>
-      </div>
-      </div>
       <div class="control-group">
         <div class="controls">
           <input type="hidden" name="role" data-ng-model="newUser.role" data-remote-form-component="" />
           <a href="#" class="join_btn" data-ng-click="submit(newUser)" data-ng-disabled="imvgmRegistrationForm.$pristine" />
         </div>
       </div>
+      <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.agreeToTerms.$valid}">
+        <div class="controls">
+        <label for="imvgm-reg-frm-terms"><input name="agreeToTerms" target="_blank" id="imvgm-reg-frm-terms" data-remote-form-component="" data-ng-model="newUser.agreeToTerms" type="checkbox" /> Accept terms of use </a></label>
+        <span class="help-inline" ng-show="!imvgmRegistrationForm.agreeToTerms.$valid && imvgmRegistrationForm.agreeToTerms.$error.server">You must agree to the terms &amp; conditions</span>
+      </div>
+      </div>
+
     </fieldset>
   </form>

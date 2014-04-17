@@ -240,6 +240,9 @@ body{
     text-decoration: none;
     float:left;
 }
+.signin_inputrow input {
+    height: 21px;
+}
 .singin_block{
     float:right;
     width:510px;
@@ -297,14 +300,16 @@ body{
     margin: 0;
 }
 .signin_linkrow{
-    margin-top:10px;
+    margin-top: 4px;
     position:relative;
     height: 30px;
+    font-size: 95%;
 }
 .signin_linkrow label, .signin_linkrow a{
     color: #c2c2c2;
     text-decoration: none;
     margin-right: 30px;
+    line-height: 20px;
 }
 .signin_linkrow label{
     margin-left: 20px;
@@ -390,6 +395,9 @@ input.join_input:-moz-placeholder{color:#1d1d1b}
 input.join_input::-moz-placeholder{color:#1d1d1b}
 input.join_input:-ms-input-placeholder{color:#1d1d1b}
 input.join_input::-webkit-input-placeholder {color:#1d1d1b}
+input.join_input {
+    padding: 6px 15px 5px;
+}
 .join_btn{
     position: relative;
     content:"";
@@ -446,11 +454,11 @@ h1{
 
 #dev_form {
     width: 40%;
-    padding-left: 125px;
+    padding-left: 115px;
     padding-right: 20px;
 }
 #dev_form input {
-    height: 30px;
+    height: 25px;
     font-size: 1.2em;
 }
 #gamer_form {
@@ -458,11 +466,18 @@ h1{
     padding-left: 600px;
 }
 #gamer_form input {
-    height: 30px;
+    height: 25px;
     font-size: 1.2em;
 }
 
 label#rem_me {
     width: 150px;
     margin-right: 10px;
+}
+input.join_input {
+    border-color: #d5e5f1;
+}
+:checked :focus {
+    outline: 1px solid blue;
+    background-color: blue;
 }

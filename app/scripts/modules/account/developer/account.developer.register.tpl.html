@@ -1,6 +1,6 @@
-  <form name="imvgmRegistrationForm" data-remote-form="" data-remote-form-action="/auth/register" data-ng-success="success()">
+
+  <form id="dev_form" name="imvgmRegistrationForm" data-remote-form="" data-remote-form-action="/auth/register" data-ng-success="success()">
     <fieldset>
-      <legend><h2>Create Developer account</h2></legend>
 
       <div class="alert alert-error" data-ng-show="!imvgmRegistrationForm.$valid">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -8,44 +8,44 @@
       </div>
 
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.company.$valid}">
-        <div class="controls">
-          <label for="imvgm-reg-frm-company">Company Name:</label>
-          <input name="company" id="imvgm-reg-frm-company" data-remote-form-component="" data-ng-model="newUser.company" type="text" placeholder="Company Name" />
+        <div class="controls"> 
+          <input name="company" id="imvgm-reg-frm-company" data-remote-form-component="" data-ng-model="newUser.company" type="text" placeholder="Company" value="" onfocus="if(this.placeholder=='Company')this.placeholder='';" onblur="if(this.placeholder=='')this.placeholder='Company';" class="join_input">
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.company.$valid && imvgmRegistrationForm.company.$error.server">{{serverValidationError['company']}}</span>
         </div>
       </div>
+
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.fullname.$valid}">
         <div class="controls">
-          <label for="imvgm-reg-frm-fullname">Full Name:</label>
-          <input name="fullname" id="imvgm-reg-frm-fullname" data-remote-form-component="" data-ng-model="newUser.fullname" type="text" placeholder="Full Name" />
+          <input name="fullname" id="imvgm-reg-frm-fullname" data-remote-form-component="" data-ng-model="newUser.fullname" type="text" placeholder="Name" value="" onfocus="if(this.placeholder=='Name')this.placeholder='';" onblur="if(this.placeholder=='')this.placeholder='Name';" class="join_input"/>
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.fullname.$valid && imvgmRegistrationForm.fullname.$error.server">{{serverValidationError['fullname']}}</span>
         </div>
       </div>
+
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.email.$valid}">
         <div class="controls">
-          <label for="imvgm-reg-frm-email">Email</label>
-          <input name="email" id="imvgm-reg-frm-email" data-email data-remote-form-component="" data-ng-model="newUser.email" type="text" placeholder="Email Address" />
+          <input name="email" id="imvgm-reg-frm-email" data-email data-remote-form-component="" data-ng-model="newUser.email" type="text" placeholder="Email" value="" onfocus="if(this.placeholder=='Email')this.placeholder='';" onblur="if(this.placeholder=='')this.placeholder='Email';" class="join_input"/>
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.email.$valid">{{serverValidationError['email']}}</span>
         </div>
       </div>
+
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.password.$valid}">
         <div class="controls">
-          <label for="imvgm-reg-frm-password">Password</label>
-          <input name="password" id="imvgm-reg-frm-password" data-remote-form-component="" data-ng-model="newUser.password" type="password" placeholder="Password" />
+          <input name="password" id="imvgm-reg-frm-password" data-remote-form-component="" data-ng-model="newUser.password" type="password" placeholder="Password" value="" onfocus="if(this.placeholder=='Password')this.placeholder='';" onblur="if(this.placeholder=='')this.placeholder='Password';" class="join_input"/>
           <span class="help-inline" data-ng-show="!imvgmRegistrationForm.password.$valid && imvgmRegistrationForm.password.$error.server">Please enter a strong password.</span>
         </div>
       </div>
       <div class="control-group" data-ng-class="{error: !imvgmRegistrationForm.agreeToTerms.$valid}">
         <div class="controls">
-        <label for="imvgm-reg-frm-terms"><input name="agreeToTerms" id="imvgm-reg-frm-terms" data-remote-form-component="" data-ng-model="newUser.agreeToTerms" type="checkbox" /> I agree to the <a href="/terms.html">Terms &amp; Conditions</a></label>
+        <label for="imvgm-reg-frm-terms"><input name="agreeToTerms" id="imvgm-reg-frm-terms" data-remote-form-component="" data-ng-model="newUser.agreeToTerms" type="checkbox" /> Accept terms of use</label>
         <span class="help-inline" ng-show="!imvgmRegistrationForm.agreeToTerms.$valid && imvgmRegistrationForm.agreeToTerms.$error.server">You must agree to the terms &amp; conditions</span>
       </div>
       </div>
       <div class="control-group">
         <div class="controls">
           <input type="hidden" name="role" value="game_developer" data-ng-model="newUser.role" />
-          <button class="btn" data-ng-click="submit(newUser)" data-ng-disabled="imvgmRegistrationForm.$pristine">Create Account</button>
+          <a href="" class="join_btn" data-ng-click="submit(newUser)" data-ng-disabled="imvgmRegistrationForm.$pristine"></a>
         </div>
       </div>
     </fieldset>
   </form>
+

@@ -1,20 +1,24 @@
-<div class="navbar navbar-inverse navbar-fixed-top" data-ng-controller="HeaderCtrl">
-  <div class="navbar-inner">
-    <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">{{ config.name }} <em>{{ config.version }}</em></a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/for-gamers.html">For Gamers</a></li>
-          <li><a href="/for-game-developers.html">For Game Developers</a></li>
-        </ul>
-        <div class="pull-right user-registration" data-user-navigation=""></div>
-      </div>
+    <div class="head_block">
+        <div class="insidecomtainer">
+            <a href="/"><img src="img/gloliquid_logo.png" alt="Gloliquid" title="Gloliquid" class="logo"></a>
+
+            <div class="singin_block">
+                <div class="signin_inputrow">
+                    <input type="text" value="" placeholder="Email"
+                           onfocus="if(this.placeholder=='Email')this.placeholder='';"
+                           onblur="if(this.placeholder=='')this.placeholder='Email';" class="signin_input">
+                    <input type="text" value="" placeholder="Password"
+                           onfocus="if(this.placeholder=='Password')this.placeholder='';"
+                           onblur="if(this.placeholder=='')this.placeholder='Password';" class="signin_input">
+                    <a href="#" onclick="return false;" id="signin_btn">&nbsp;</a>
+                </div>
+                <div class="signin_linkrow">
+                    <a href="#" onclick="return false;" id="reset_password">Reset Password</a>
+                    <input type="checkbox" id="remmemberme" name="remmemberme"><label id="rem_me" for="remmemberme">Remmember Me</label>
+
+
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
-</div>

@@ -12,14 +12,27 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/main.css">
   </head>
+
+
   <body data-ng-controller="AppCtrl" data-ng-cloak="">
 
     <div data-ng-include="'common/templates/header.tpl.html'"></div>
+
     <div class="container">
       <div ng-include="'common/templates/notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>
       <div class="view" data-ng-view=""></div>
       <div data-ng-include="'common/templates/footer.tpl.html'"></div>
     </div>
+
+
+
+
+
+
+
+
+
+
 
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -38,6 +51,7 @@
 
   ga('create', 'UA-45381200-1', '127.0.0.1:9000');
     </script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="components/jquery/jquery.min.js"><\/script>')</script>
 

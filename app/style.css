@@ -1,185 +1,3 @@
-@import "compass";
-@import "compass_twitter_bootstrap";
-@import "compass_twitter_bootstrap_awesome";
-// @import "compass_twitter_bootstrap_responsive";
-@import "animate";
-@import "../../components/select2/select2.css";
-
-@import "common/header";
-@import "modules/account/account_invites";
-
-// @import "common/security/login/_navigation"
-
-body {
-  padding: 0 0 0 0;
-}
-
-.navbar .nav > li,
-.navbar .brand {
-  line-height: 32px;
-}
-
-.navbar .nav .dropdown-toggle .caret {
-  margin-top: 16px;
-}
-
-.alert {
-  .error {
-    @include animate(shake, 1s, 0s);
-  }
-}
-
-.modal {
-  @include animate(bounceInDown, 1s, 0s);
-}
-
-.avatar {
-  &.avatar-default {
-    > span {
-    background: #ccc;
-    display: inline-block;
-    width: 32px; height: 32px;
-    text-align: center;
-    &:hover {
-      background: #ccc !important;
-    }
-  }
-  }
-
-}
-
-.account {
-
-  input[type=file] {
-    display: none;
-  }
-
-  .avatar {
-      cursor: pointer;
-      height: 200px;
-      width: 200px;
-    &.avatar-default {
-      > span {
-        display: block;
-        color: #999;
-        width: 200px; height: 200px;
-        background: #ccc;
-      }
-      font-size: 200px;
-      padding: 20px;
-      text-align: center;
-    }
-  }
-}
-
-
-/* Make clicks pass-through */
-#loading-bar,
-#loading-bar-spinner {
-  pointer-events: none;
-  -webkit-pointer-events: none;
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-}
-
-#loading-bar.ng-enter,
-#loading-bar.ng-leave.ng-leave-active,
-#loading-bar-spinner.ng-enter,
-#loading-bar-spinner.ng-leave.ng-leave-active {
-  opacity: 0;
-}
-
-#loading-bar.ng-enter.ng-enter-active,
-#loading-bar.ng-leave,
-#loading-bar-spinner.ng-enter.ng-enter-active,
-#loading-bar-spinner.ng-leave {
-  opacity: 1;
-}
-
-#loading-bar .bar {
-  -webkit-transition: width 500ms;
-  -moz-transition: width 500ms;
-  -o-transition: width 500ms;
-  transition: width 500ms;
-
-  background: #29d;
-  position: fixed;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-}
-
-/* Fancy blur effect */
-#loading-bar .peg {
-  display: block;
-  position: absolute;
-  right: 0px;
-  width: 100px;
-  height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-  opacity: 1.0;
-
-  -webkit-transform: rotate(3deg) translate(0px, -4px);
-  -moz-transform: rotate(3deg) translate(0px, -4px);
-  -ms-transform: rotate(3deg) translate(0px, -4px);
-  -o-transform: rotate(3deg) translate(0px, -4px);
-  transform: rotate(3deg) translate(0px, -4px);
-}
-
-#loading-bar-spinner {
-  display: block;
-  position: fixed;
-  z-index: 100;
-  top: 10px;
-  left: 10px;
-}
-
-#loading-bar-spinner .spinner-icon {
-  width: 14px;
-  height: 14px;
-
-  border:  solid 2px transparent;
-  border-top-color:  #29d;
-  border-left-color: #29d;
-  border-radius: 10px;
-
-  -webkit-animation: loading-bar-spinner 400ms linear infinite;
-  -moz-animation:    loading-bar-spinner 400ms linear infinite;
-  -ms-animation:     loading-bar-spinner 400ms linear infinite;
-  -o-animation:      loading-bar-spinner 400ms linear infinite;
-  animation:         loading-bar-spinner 400ms linear infinite;
-}
-
-
-@-webkit-keyframes loading-bar-spinner {
-  0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-moz-keyframes loading-bar-spinner {
-  0%   { -moz-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-o-keyframes loading-bar-spinner {
-  0%   { -o-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-ms-keyframes loading-bar-spinner {
-  0%   { -ms-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@keyframes loading-bar-spinner {
-  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { transform: rotate(360deg); transform: rotate(360deg); }
-}
-
-
-
-
-
 html {
     font-size: 100%;
     overflow-y: scroll;
@@ -278,14 +96,14 @@ body{
     left:0;
     height:32px;
     width:114px;
-    background-image:url(../img/enter_button.png);
+    background-image:url(img/enter_button.png);
     background-size: 80px;
     background-repeat:no-repeat;
     background-position-x:0px;
     background-position-y:0px;
 }
 #signin_btn:hover{
-    background-image:url(../img/enter_button.png);
+    background-image:url(img/enter_button.png);
     background-position-x:0px;
     background-position-y:-32px;
 }
@@ -299,7 +117,6 @@ body{
 .signin_linkrow{
     margin-top:10px;
     position:relative;
-    height: 30px;
 }
 .signin_linkrow label, .signin_linkrow a{
     color: #c2c2c2;
@@ -347,7 +164,7 @@ body{
      display:block;
      width:50px;
      height:50px;
-     background-image:url(../img/developer-unselected.png);
+     background-image:url(img/developer-unselected.png);
      background-size: 50px;
      background-repeat:no-repeat;
      background-position-x:0px;
@@ -355,7 +172,7 @@ body{
      margin: 0 auto 4px;
  }
 #developer_head_link.selected:before{
-    background-image:url(../img/developer-selected.png);
+    background-image:url(img/developer-selected.png);
 }
 #gamer_head_link:before{
     position: relative;
@@ -363,7 +180,7 @@ body{
     display:block;
     width:50px;
     height:50px;
-    background-image:url(../img/developer-unselected.png);
+    background-image:url(img/developer-unselected.png);
     background-size: 50px;
     background-repeat:no-repeat;
     background-position-x:0px;
@@ -371,7 +188,7 @@ body{
     margin: 0 auto 4px;
 }
 #gamer_head_link.selected:before{
-    background-image:url(../img/developer-selected.png);
+    background-image:url(img/developer-selected.png);
 }
 .join_input{
     -moz-border-radius: 5px;
@@ -390,20 +207,20 @@ input.join_input:-moz-placeholder{color:#1d1d1b}
 input.join_input::-moz-placeholder{color:#1d1d1b}
 input.join_input:-ms-input-placeholder{color:#1d1d1b}
 input.join_input::-webkit-input-placeholder {color:#1d1d1b}
-.join_btn{
+a.join_btn{
     position: relative;
     content:"";
     display:block;
     width:75px;
     height:38px;
-    background-image:url(../img/join_button.png);
+    background-image:url(img/join_button.png);
     background-size: 75px;
     background-repeat:no-repeat;
     background-position-x:0px;
     background-position-y:0px;
-    margin: 10px 100px 4px 75px;
+    margin: 10px auto 4px;
 }
-.join_btn:hover{
+a.join_btn:hover{
     background-position-y:-38px;
 }
 .termofuse_block{
@@ -442,27 +259,4 @@ h1{
     font-style:normal;
     font-weight:normal;
 
-}
-
-#dev_form {
-    width: 40%;
-    padding-left: 125px;
-    padding-right: 20px;
-}
-#dev_form input {
-    height: 30px;
-    font-size: 1.2em;
-}
-#gamer_form {
-    width: 40%;
-    padding-left: 600px;
-}
-#gamer_form input {
-    height: 30px;
-    font-size: 1.2em;
-}
-
-label#rem_me {
-    width: 150px;
-    margin-right: 10px;
 }

@@ -281,14 +281,14 @@ body{
     left:0;
     height:32px;
     width:114px;
-    background-image:url(../img/enter_button.png);
+    background-image:url(../images/enter_button.png);
     background-size: 80px;
     background-repeat:no-repeat;
     background-position-x:0px;
     background-position-y:0px;
 }
 #signin_btn:hover{
-    background-image:url(../img/enter_button.png);
+    background-image:url(../images/enter_button.png);
     background-position-x:0px;
     background-position-y:-32px;
 }
@@ -352,7 +352,7 @@ body{
      display:block;
      width:50px;
      height:50px;
-     background-image:url(../img/developer-unselected.png);
+     background-image:url(../images/developer-unselected.png);
      background-size: 50px;
      background-repeat:no-repeat;
      background-position-x:0px;
@@ -360,7 +360,7 @@ body{
      margin: 0 auto 4px;
  }
 #developer_head_link.selected:before{
-    background-image:url(../img/developer-selected.png);
+    background-image:url(../images/developer-selected.png);
 }
 #gamer_head_link:before{
     position: relative;
@@ -368,7 +368,7 @@ body{
     display:block;
     width:50px;
     height:50px;
-    background-image:url(../img/developer-unselected.png);
+    background-image:url(../images/developer-unselected.png);
     background-size: 50px;
     background-repeat:no-repeat;
     background-position-x:0px;
@@ -376,7 +376,7 @@ body{
     margin: 0 auto 4px;
 }
 #gamer_head_link.selected:before{
-    background-image:url(../img/developer-selected.png);
+    background-image:url(../images/developer-selected.png);
 }
 .join_input{
     -moz-border-radius: 5px;
@@ -404,7 +404,7 @@ input.join_input {
     display:block;
     width:75px;
     height:38px;
-    background-image:url(../img/join_button.png);
+    background-image:url(../images/join_button.png);
     background-size: 75px;
     background-repeat:no-repeat;
     background-position-x:0px;

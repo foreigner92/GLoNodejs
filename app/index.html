@@ -69,6 +69,25 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script>window.jQuery || document.write('<script src="components/jquery/jquery.min.js"><\/script>')</script>
+    <script>
+    jQuery(document).ready(function($) {
+
+        $( "#gamer_head_link" ).on('click',function() {
+            $('#developer_head_link').removeClass('selected');
+            $('.content_container .gamer_block').css('visibility', 'visible');
+            $('.content_container .developer_block').css('visibility', 'hidden');
+            $(this).addClass('selected');
+        });
+        $( "#developer_head_link" ).on('click',function() {
+            $('#gamer_head_link').removeClass('selected');
+            $('.content_container .developer_block').css('visibility', 'visible');
+            $('.content_container .gamer_block').css('visibility', 'hidden');
+            $(this).addClass('selected');
+        });
+
+
+    });
+    </script>
 
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
